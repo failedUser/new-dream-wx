@@ -1,0 +1,24 @@
+<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+<view class='main'>
+    <view class='main-mid'>
+        <view class='nocollectios' wx:if="{{collection.length===0}}">
+            <image src='/images/utils/noProduct.png'></image>
+            <text>您还没有收藏任何的商品</text>
+        </view>
+        <view class='hot-wrap' wx:else>
+            <view class='hot'>
+                <view class='hot-list'>
+                    <navigator url='/pages/shop/product/product?barcode={{product.barcode}}' class='single-hot' hover-class='none' wx:for="{{products}}" wx:for-item="product" wx:key="c" bindlongpress='deleteCollection' data-id="{{product.barcode}}">
+                        <image src='{{product.barcode==undefined?"":("https://cdn.newdreamer.cn/products/"+product.barcode+"/%E4%B8%BB%E5%9B%BE/"+utils.split(product.image," ")[0]+".jpg")}}'></image>
+                        <text class='hot-name'>{{product.product_Name}}</text>
+                        <text class='hot-price'>￥{{product.price}}</text>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='main-bot'>
+        <import src='/pages/template/support.wxml' />
+        <template is='support' />
+    </view>
+</view>

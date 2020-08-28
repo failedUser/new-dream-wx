@@ -1,0 +1,202 @@
+<wxs module="utils" src="../../../utils/utils.wxs"></wxs>
+<view class='container'>
+	<scroll-view scroll-y="true" style="height:100%;" bindScroll="bindScrollListen" enable-back-to-top>
+		<view class='goods-gallery'>
+			<swiper indicator-dots autoplay circular interval="3000" duration="500" style='height:975rpx;' bindchange="bindSwiper">
+				<swiper-item wx:for="{{products[mainProduct].image}}" wx:key="key" wx:for-item="img">
+					<image src='{{products[mainProduct].barcode==undefined?"":("https://cdn.newdreamer.cn/products/"+products[mainProduct].barcode+"/%E4%B8%BB%E5%9B%BE/"+img+".jpg")}}' class='goods-gallery-img' lazy-load='true' mode="aspectFill" />
+				</swiper-item>
+			</swiper>
+			<text class="swiperCount">{{currentImage}}/{{products[mainProduct].image.length}}</text>
+		</view>
+		<view class='goods-info'>
+			<view class='goods-info0'>
+				<text class='goods-name'>{{products[mainProduct].product_Name}}</text>
+				<block wx:if="{{phone==''}}">
+					<button class="ButtonCover share" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+						<image class="icon-share" src="/images/icon/share.png"></image>
+						<text style="font-size:14px;color:#AAA;">分享</text>
+					</button>
+				</block>
+				<block wx:else>
+					<button class="ButtonCover share" open-type="share" wx:if="{{Distributor_Wechat_Id==''}}">
+						<image class="icon-share" src="/images/icon/share.png"></image>
+						<text style="font-size:14px;color:#AAA;">分享</text>
+					</button>
+					<view class="shareInfo" wx:else>本商品由{{Distributor_Wechat_Name}}分享</view>
+				</block>
+			</view>
+			<view class='goods-info1'>
+				<view class='goods-price'>
+					<text>￥{{price.min==price.max?price.max:(price.min+"-"+price.max)}}</text>
+				</view>
+				<view class='goods-sales'>月销量 : {{sales}}</view>
+			</view>
+		</view>
+		<view class='goods-specInfo'>
+			<view>
+				<text class="title">产品款号：</text>
+				<text class="value">{{products[mainProduct].barcode}}</text>
+			</view>
+			<view>
+				<text class="title">面料颜色：</text>
+				<text class="value">{{products[mainProduct].color}}</text>
+			</view>
+			<view>
+				<text class="title">产品款式：</text>
+				<text class="value">{{products[mainProduct].style}}</text>
+			</view>
+			<view>
+				<text class="title">产品版型：</text>
+				<text class="value">{{products[mainProduct].type}}</text>
+			</view>
+			<view>
+				<text class="title">面料厚度：</text>
+				<text class="value">{{products[mainProduct].thickness}}</text>
+			</view>
+			<view>
+				<text class="title">面料弹性：</text>
+				<text class="value">{{products[mainProduct].elasticity}}</text>
+			</view>
+			<view>
+				<text class="title">面料材质：</text>
+				<text class="value">{{products[mainProduct].material}}</text>
+			</view>
+		</view>
+		<!--
+        <view class='chooseSpec' bindtap='bindChooseSpec' data-buynow="3">
+            <view>
+                <text>定制西装：{{specText}}</text>
+            </view>
+            <image src='/images/arrow-right.png' class='arrow'></image>
+        </view>
+		-->
+		<view class="mid-nav {{isFixedTop===true?'fixed':''}}" id="nav">
+			<view class="swiper-tab">
+				<view class="swiper-tab-list {{tabID==0?'on':''}}" data-tab="0" bindtap="navTap">详情</view>
+				<view class="swiper-tab-list {{tabID==1?'on':''}}" data-tab="1" bindtap="navTap">评价({{comments.length}})</view>
+				<view class="swiper-tab-list {{tabID==2?'on':''}}" data-tab="2" bindtap="navTap">常见问题</view>
+			</view>
+		</view>
+		<view class="product-box">
+			<view class='main'>
+				<view class='main-mid'>
+					<view wx:if="{{tabID==0}}">
+						<image src='{{products[mainProduct].barcode==undefined?"":("https://cdn.newdreamer.cn/products/"+products[mainProduct].barcode+"/%E8%AF%A6%E6%83%85%E5%9B%BE/1.jpg")}}' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' />
+					</view>
+					<view class="goods-comment" wx:elif="{{tabID==1}}">
+						<!--
+						<view class='commentType'>
+                            <text wx:for="{{commentType}}" class="{{etActiveIndex==etIndex?'active':''}}" wx:key="commentType" wx:for-index="etIndex" wx:for-item="etItem" bindtap='etActive' id='{{etIndex}}'>{{etItem.tit}}</text>
+                        </view>
+						-->
+						<view class='commentList'>
+							<text class='nocomment' wx:if="{{comments.length==0}}">暂无评价</text>
+							<view class='comment' wx:for="{{comments}}" wx:key="id" wx:for-item="comment">
+								<view class='comment-user'>
+									<view style="display:flex;align-items:center;margin-bottom:5px;">
+										<!--<image class='avatar' src='{{comment.userAvatar}}'></image>-->
+										<text class='nickname'>{{utils.hideName(comment.name)}}</text>
+										<block wx:for="{{utils.defineArray(comment.star)}}" wx:key="1">
+											<image class="img" src="https://cdn.newdreamer.cn/icon/comment/comment star active.png" mode="aspectFit" />
+										</block>
+										<block wx:for="{{utils.defineArray(5-comment.star)}}" wx:key="2">
+											<image class="img" src="https://cdn.newdreamer.cn/icon/comment/comment star.png" mode="aspectFit" />
+										</block>
+									</view>
+									<text class='comment-time'>{{comment.evaluation_Time}}</text>
+								</view>
+								<text class='comment-content'>{{comment.evaluation_Content}}</text>
+								<view style="height:15px;" />
+							</view>
+						</view>
+					</view>
+					<view wx:elif="{{tabID==2}}">
+						<image src='https://cdn.newdreamer.cn/index/Q%26A/Q%26A%20pic.png' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' />
+					</view>
+				</view>
+			</view>
+		</view>
+	</scroll-view>
+	<!--规格-->
+	<view class="spec-wrap {{showSpec==0?'hidden':''}}">
+		<view class='goods-house-wrap'>
+			<view class='goods-house'>
+				<image src='{{products[mainProduct].barcode==undefined?"":("https://cdn.newdreamer.cn/products/"+products[mainProduct].barcode+"/%E4%B8%BB%E5%9B%BE/"+products[selectProduct].image[0]+".jpg")}}' class='goods-img' mode="aspectFill"></image>
+				<view class='goods-house1'>
+					<text class='goods-price'>￥{{Distributor_Wechat_Id!=''||scene!=''?((products[selectProduct].price-products[selectProduct].distributor_Deduction)+' (分销优惠)'):products[selectProduct].price}}</text>
+					<view class='goods-house2'>
+						<text></text>
+						<text>已选：{{products[selectProduct]["product_Name"]}}{{products[selectProduct]["mark"]=="定制"?"(定制)":""}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view>
+			<view class='type'>
+				<view class="key">
+					<text>产品</text>
+				</view>
+				<view class='type-list'>
+					<text wx:for="{{products}}" wx:for-item="product" wx:for-index="pid" class="{{pid==selectProduct?'sel':''}}" bindtap='choseProduct' data-pid='{{pid}}' wx:key="ps">{{product.product_Name}}{{product.mark=="定制"?"(定制)":""}}</text>
+				</view>
+			</view>
+			<view class='type' wx:if="{{products[selectProduct]['mark']=='定制'}}">
+				<view class="key">
+					<text>尺寸</text>
+				</view>
+				<view class='type-list'>
+					<text wx:for="{{measureData}}" wx:for-item="data" class="{{data.liangti_bianhao==selectSize?'sel':''}}" bindtap='choseSize' data-did='{{data.liangti_bianhao}}' data-name="{{data.liangti_mingcheng}}" wx:key="ps">{{data.liangti_mingcheng}}</text>
+				</view>
+			</view>
+			<view class='type' wx:else>
+				<view class="key">
+					<text>尺寸</text>
+				</view>
+				<view class='type-list'>
+					<text wx:for="{{products[selectProduct]['size']}}" wx:for-item="data" class="{{data==selectSize?'sel':''}}" bindtap='choseSize' data-did='{{data}}' data-name='{{data}}' wx:key="ps">{{data}}</text>
+				</view>
+			</view>
+			<view class='type' wx:for="{{products[mainProduct].productSpec}}" wx:key="productSpec" wx:for-item="specItem">
+				<text>{{specItem.name}}:</text>
+				<view class='type-list'>
+					<text wx:for="{{specItem.subproperty}}" wx:for-item="subpropertyItem" class="{{subpropertyItem.ischosein==1?'sel':''}}" bindtap='choseProperty' data-propertyid="{{subpropertyItem.propertyid}}" data-subpropertyid='{{subpropertyItem.id}}' wx:key="subpropertyKey">{{subpropertyItem.nametrue}}
+					</text>
+				</view>
+			</view>
+			<view class='amount-wrap'>
+				<view class="key">
+					<text>数量</text>
+				</view>
+				<view class='amount-box'>
+					<text class='amount-minus' bindtap='onProductCountChange' data-delta="-1">-</text>
+					<text class='amount-num'>{{count}}</text>
+					<text class='amount-add' bindtap='onProductCountChange' data-delta="1">+</text>
+				</view>
+			</view>
+		</view>
+		<view class='act-spec-sure'>
+			<view bindtap='submit' class='spec-sure'>确定</view>
+		</view>
+	</view>
+	<view class="mask" catchtap="distpickerCancel" hidden="{{!showSpec}}"></view>
+	<view class='goodsDetails-footer'>
+		<view class='footer-l'>
+			<view>
+				<button class='consult' open-type='contact' session-from="新梦想家商场（微信小程序）" show-message-card>
+					<image src="https://cdn.newdreamer.cn/icon/order/售后.png" style="margin-bottom:2px;"></image>
+				</button>
+			</view>
+			<view style="position:relative;">
+				<button class='consult' bindtap='bindCart'>
+					<image src="/images/icon/cart_grey.png" style="margin-bottom:2px;"></image>
+				</button>
+				<text class='cartCount' wx:if="{{cart.length>0}}">{{cart.length}}</text>
+			</view>
+		</view>
+		<view class='footer-r'>
+			<text class='act-cart' bindtap='bindChooseSpec' data-buynow="1">加入购物车</text>
+			<text class='act-buy' bindtap='bindChooseSpec' data-buynow="2">立即购买</text>
+		</view>
+	</view>
+</view>

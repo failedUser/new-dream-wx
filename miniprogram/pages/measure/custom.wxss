@@ -1,0 +1,147 @@
+Page {
+    background-color: #fff;
+}
+
+.bodyShape-wrap {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.bodyShape-wrap .title {
+    font-size: 16px;
+    margin: 25rpx 0 50rpx;
+}
+
+.bodyShape-wrap .image-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.bodyShape-wrap .image-wrap .block {
+    margin-bottom: 40rpx;
+}
+
+.bodyShape-wrap .image-wrap .block .image {
+    width: 200rpx;
+    height: 300rpx;
+    border: 2px solid white;
+    margin-bottom: 50rpx;
+}
+
+.bodyShape-wrap .image-wrap .block .image.fabric {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 20rpx;
+}
+
+.bodyShape-wrap .image-wrap .block .key {
+    width: 120rpx;
+    padding: 10rpx 20rpx;
+    border-radius: 20rpx;
+    font-size: 28rpx;
+    color: #fff;
+    text-align: center;
+    background-color: var(--colorBlue);
+}
+
+.bodyShape-wrap .image-wrap .block .key.selected {
+    background-color: var(--colorGold);
+}
+
+.next {
+    width: 750rpx;
+    height: 125rpx;
+    bottom: 0;
+    margin-top: 100rpx;
+    background-color: #222;
+    color: #fff;
+    font-size: 32rpx;
+    letter-spacing: 10rpx;
+    opacity: 0.8;
+}
+
+
+.toast-box {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+
+.toastbg {
+    opacity: 0.2;
+    background-color: black;
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.showToast {
+    position: absolute;
+    opacity: 1;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 40%;
+}
+
+.toast-title {
+    padding-left: 5%;
+    background-color: var(--colorBlue);
+    color: white;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-top-right-radius: 16rpx;
+    border-top-left-radius: 16rpx;
+}
+
+.toast-main {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-color: white;
+    text-align: center;
+}
+
+.toast-input {
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 1px solid #ddd;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.toast-button {
+    display: flex;
+}
+
+.button1 {
+    width: 50%;
+}
+
+.button2 {
+    width: 50%;
+}
+
+.button1 button {
+    width: 100%;
+    padding:20rpx 0;
+    background-color: white;
+    color: red;
+    border-radius: 0px;
+    border-bottom-left-radius: 16rpx;
+}
+
+.button2 button {
+    width: 100%;
+    padding:20rpx 0;
+    background-color: white;
+    color: black;
+    border-radius: 0px;
+    border-bottom-right-radius: 16rpx;
+}

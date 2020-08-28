@@ -1,0 +1,55 @@
+<view style="height:50rpx;"></view>
+<view class="bodyShape-wrap">
+	<view class="title row">
+		<text space="nbsp">————————    面料    ————————</text>
+	</view>
+	<view class="image-wrap">
+		<view class="block column fw3" wx:for="{{fabrics}}" wx:for-item="fabric" wx:key="fs" bindtap="onFabricChage" data-value="{{fabric.fabric_Id}}">
+			<image class="image fabric" lazy-load src="{{fabric.fabric_Image}}" mode="widthFix" />
+			<text class="key {{fabricID==fabric.fabric_Id?'selected':''}}">{{fabric.fabric_Id}}</text>
+		</view>
+		<view class="block column fw3" bindtap="otherFabric">
+			<image class="image fabric" lazy-load src="{{fabric.fabric_Image}}" mode="widthFix" />
+			<text class="key {{fabricID==-1?'selected':''}}">{{fabricID==-1?otherFabric:'其他'}}</text>
+		</view>
+	</view>
+</view>
+<view class="bodyShape-wrap" wx:for="{{styles}}" wx:for-item="choice" wx:for-index="style" wx:key="style">
+	<view class="title row">
+		<text space="nbsp">————————    {{style}}    ————————</text>
+	</view>
+	<view class="image-wrap">
+		<view class="block column fw3" wx:for="{{choice}}" wx:for-item="type" wx:key="cs" bindtap="onPicChage" data-key="{{style}}" data-value="{{type}}">
+			<image class="image" lazy-load src="https://cdn.newdreamer.cn/customization/款式/{{category}}/{{style}}/{{type}}.png" mode="aspectFit" />
+			<text class="key {{userData[style]==type?'selected':''}}">{{type}}</text>
+		</view>
+	</view>
+</view>
+<block wx:if="{{isShowConfirm}}">
+	<view class='toast-box'>
+		<view class='toastbg'></view>
+		<view class='showToast'>
+			<view class='toast-title'>
+				<text>其他面料</text>
+			</view>
+			<view class='toast-main'>
+				<view class='toast-input'>
+					<input type='password' placeholder='输入面料编号' bindinput='setValue' data-name='stuEidtName'></input>
+				</view>
+			</view>
+			<view class='toast-button'>
+				<view class='button1'>
+					<button catchtap='cancel'>取消</button>
+				</view>
+				<view class='button2'>
+					<button data-url="../allOrder/allOrder" catchtap='confirmAcceptance'>确定</button>
+				</view>
+			</view>
+		</view>
+	</view>
+</block>
+<view class="row jc-c ai-c" bindtap="submit" wx:if="{{allowModified}}">
+	<view class="next row jc-c ai-c">
+		<text>完成</text>
+	</view>
+</view>

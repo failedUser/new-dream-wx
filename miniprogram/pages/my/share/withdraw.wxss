@@ -1,0 +1,49 @@
+.wrap {
+    width: 650rpx;
+    padding: 25rpx;
+    margin: 50rpx auto;
+    border-radius: 25rpx;
+    background: #ddd;
+}
+
+.content {
+    width: 620rpx;
+    padding: 15rpx;
+    margin: 15rpx auto;
+    border-radius: 15rpx;
+    background: #fff;
+}
+
+.count{
+    margin-top:25rpx;
+    font-size: 48rpx;
+    line-height: 64rpx;
+    margin-bottom: 20rpx;
+}
+
+.confirm {
+    width: 600rpx;
+    padding: 15rpx;
+    margin: 15rpx auto;
+    border-radius: 15rpx;
+    color: #fff;
+    background: var(--colorBlue);
+}
+
+.t {
+    color: #555;
+    font-size: 32rpx;
+}
+
+.t.gold {
+    color: var(--colorGold);
+}
+
+.t.red{
+    color:red;
+}
+
+input{
+    border-bottom: solid 1px #ddd;
+    padding:20rpx;
+}

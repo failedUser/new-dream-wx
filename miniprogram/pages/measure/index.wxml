@@ -1,0 +1,42 @@
+<view class="topBlue" wx:if="{{measureData.reservation_infos.length>0}}"></view>
+<view class="measureData-wrap" wx:for="{{measureData.reservation_infos}}" wx:for-item="data" wx:key="md" wx:for-index="i">
+	<!--<view class="left"></view>-->
+	<!--<view class="right"></view>-->
+	<view class="title-wrap">
+		<view class="left">
+			<view class="title">
+				<text>{{data.name}}</text>
+			</view>
+		</view>
+		<view>
+			<text style="color:#ccc;" wx:if="{{data.reservation_Status=='预约中'}}">{{data.reservation_Status}}</text>
+			<text style="color:#ccc;" wx:elif="{{data.reservation_Status=='已量体'}}">{{measureData.volumers[i].time}}</text>
+			<text style="color:red;" wx:else>{{data.reservation_Status}}</text>
+		</view>
+	</view>
+	<view class="data-wrap" wx:if="{{data.reservation_Status=='已量体'}}">
+		<view class="data small" wx:for="{{measureData.size[i]}}"><text class="title">{{index}}</text><text>：{{item}}</text></view>
+	</view>
+	<view class="data-wrap" wx:else>
+		<view class="data"><text class="title">量体时间</text><text>：{{data.time}}</text></view>
+		<view class="data"><text class="title">量体地址</text><text>：{{data.adress}}</text></view>
+		<view class="data" wx:if="{{data.reservation_Status!='预约中'}}"><text class="title">量体师</text><text>：{{measureData.volumers[i].name}}</text></view>
+	</view>
+	<view class="row jc-fe ai-c">
+		<view class="dataTag cancel" bindtap="cancelReservation" data-id="{{data.reservation_Id}}" wx:if="{{data.reservation_Status=='预约中'}}">
+			<text>取消预约</text>
+		</view>
+		<view class="dataTag" bindtap="lookMeasureData" data-id="{{data.reservation_Id}}" data-status="{{data.reservation_Status}}" wx:if="{{data.reservation_Status=='已量体'}}">
+			<text>查看数据</text>
+		</view>
+		<view class="dataTag default" bindtap="call" data-phone="{{measureData.volumers[i].phone}}" wx:if="{{data.reservation_Status=='已接单'}}">
+			<text>联系量体师</text>
+		</view>
+	</view>
+</view>
+<view hidden="{{measureData.reservation_infos.length>0}}">
+	<image src='https://cdn.newdreamer.cn/index/volume%20reservation/vo_lres_1.png' mode="widthFix" style="width:100%;margin:0;" />
+	<view class="row jc-c ai-c" style="position:fixed;bottom:25rpx;width:100vw;">
+		<navigator class='goShopping' style="width:400rpx;" open-type="switchTab" url="/pages/shop/category/classify">预约量体·选购商品</navigator>
+	</view>
+</view>

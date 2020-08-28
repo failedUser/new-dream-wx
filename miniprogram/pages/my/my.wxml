@@ -1,0 +1,93 @@
+<view class='myBanner'>
+	<view class='userInfo row'>
+		<button class='row' open-type="getUserInfo">
+			<open-data class='userAvatar' type="userAvatarUrl"></open-data>
+		</button>
+		<view class='column jc-c ai-fs' style="margin-left:25rpx;">
+			<open-data class='userName' type="userNickName"></open-data>
+			<button class="bindPhone" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{phone==''}}">获取手机号</button>
+			<view class="row jc-fs ai-c" style="margin-top:15rpx;"wx:else>
+				<text class="phone">{{phone}}</text>
+				<button class="phone" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">更换 ›</button>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="wrap">
+	<view class='nav-wrap'>
+		<navigator url='/pages/order/allOrders?currentTab=全部' class='weui-cell weui-cell_access allOrder' hover-class='weui-cell_active'>
+			<view class='weui-cell__bd'>我的订单</view>
+			<view class='weui-cell__ft weui-cell__ft_in-access'>全部</view>
+		</navigator>
+	</view>
+	<view class='order-type'>
+		<navigator url='/pages/order/allOrders?currentTab=待支付' class='order-nav column' hover-class='none'>
+			<image src='https://cdn.newdreamer.cn/icon/order/待支付.png'></image>
+			<!-- <text class='iconfont icon-daizhifu'></text> -->
+			<text>待支付</text>
+			<text class='count' wx:if="{{orderCount.toPay>0}}">{{orderCount.toPay}}</text>
+		</navigator>
+		<navigator url='/pages/order/allOrders?currentTab=待发货' class='order-nav column' hover-class='none'>
+			<image src='https://cdn.newdreamer.cn/icon/order/待支付.png'></image>
+			<!-- <text class='iconfont icon-daifahuo'></text>-->
+			<text>待发货</text>
+			<text class='count' wx:if="{{orderCount.toDeliver}}">{{orderCount.toDeliver}}</text>
+		</navigator>
+		<navigator url='/pages/order/allOrders?currentTab=待收货' class='order-nav column' hover-class='none'>
+			<image src='https://cdn.newdreamer.cn/icon/order/待收货.png'></image>
+			<!-- <text class='iconfont icon-daishouhuo'></text>-->
+			<text>待收货</text>
+			<text class='count' wx:if="{{orderCount.toReceive>0}}">{{orderCount.toReceive}}</text>
+		</navigator>
+		<navigator url='/pages/order/allOrders?currentTab=待评价' class='order-nav column' hover-class='none'>
+			<image src='https://cdn.newdreamer.cn/icon/order/待评价.png'></image>
+			<!-- <text class='iconfont icon-weibiaoti2fuzhi06'></text> -->
+			<text>待评价</text>
+			<text class='count' wx:if="{{orderCount.toComment>0}}">{{orderCount.toComment}}</text>
+		</navigator>
+		<navigator url='/pages/order/allOrders?currentTab=售后' class='order-nav column' hover-class='none'>
+			<image src='https://cdn.newdreamer.cn/icon/order/售后.png'></image>
+			<!-- <text class='iconfont icon-tuikuan'></text>-->
+			<text>售后</text>
+			<text class='count' wx:if="{{orderCount.toRefund>0}}">{{orderCount.toRefund}}</text>
+		</navigator>
+	</view>
+</view>
+<view class="wrap">
+	<view class='nav-wrap'>
+		<view class='weui-cell weui-cell_access allOrder'>
+			<view class='weui-cell__bd'>我的服务</view>
+		</view>
+	</view>
+	<view class="server-warp row jc-se">
+		<button class="column" bindtap="nav" data-url='/pages/measure/index' data-type="switchTab">
+			<image src="https://cdn.newdreamer.cn/icon/my/mySize.png" mode="aspectFit" />
+			<text>我的尺寸</text>
+		</button>
+		<button class="column AddressButtonCover" bindtap='chooseAddress' wx:if="{{AddressAccess}}">
+			<image src="https://cdn.newdreamer.cn/icon/my/myAddress.png" mode="aspectFit" />
+			<text>我的地址</text>
+		</button>
+		<button class="column AddressButtonCover" open-type="openSetting" wx:else>
+			<image src="https://cdn.newdreamer.cn/icon/my/myAddress.png" mode="aspectFit" />
+			<text>我的地址</text>
+		</button>
+		<button class="column" bindtap="nav" data-url='share/index'>
+			<image src="https://cdn.newdreamer.cn/icon/my/mySale.png" mode="aspectFit" />
+			<text>分享赚</text>
+		</button>
+		<button class="column" bindtap="nav" data-url='/pages/measure/volumer/center{{orderCount.toVolume>0?"?new=1":""}}' wx:if="{{isVolumer}}">
+			<image src="https://cdn.newdreamer.cn/icon/my/myVolumer.png" mode="aspectFit" />
+			<text>量体师</text>
+			<text class='count down' wx:if="{{orderCount.toVolume>0}}"> </text>
+		</button>
+		<button class="column AddressButtonCover" open-type='contact'>
+			<image src="https://cdn.newdreamer.cn/icon/my/myContact.png" mode="aspectFit" />
+			<text>客服</text>
+		</button>
+		<button class="column" bindtap="debug">
+			<image src="https://cdn.newdreamer.cn/icon/my/switch.png" mode="aspectFit" />
+			<text>开关调试</text>
+		</button>
+	</view>
+</view>

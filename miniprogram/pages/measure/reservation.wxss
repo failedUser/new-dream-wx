@@ -1,0 +1,91 @@
+.next {
+    width: 700rpx;
+    height: 100rpx;
+    margin-top: 50rpx;
+    background-color: var(--colorBlue);
+    color: #fff;
+    font-size: 32rpx;
+    letter-spacing: 10rpx;
+    border-radius: 25rpx;
+    border:solid 1px #fff;
+}
+
+.next:hover {
+    opacity: 0.5;
+}
+
+.wrap {
+    padding-top: 50rpx;
+}
+
+.info-wrap {
+    width: 650rpx;
+    padding: 25rpx;
+    margin: 0 auto;
+    border-radius: 25rpx;
+    background: #fff;
+}
+
+.info-wrap .info {
+    padding: 25rpx 10rpx;
+    border-bottom: solid 1px #ddd;
+}
+
+.info-wrap .info.noBorder {
+    border-bottom: none;
+}
+
+.info-wrap .info view {
+    height: 50rpx;
+    padding-left: 5rpx;
+    text-align: justify;
+    color: #666;
+    letter-spacing: 5rpx;
+}
+
+.info-wrap .info input,
+.info-wrap .info picker {
+    width: 350rpx;
+    height: 50rpx;
+    padding: 5rpx;
+    color: #666;
+    opacity: 0.8;
+    text-align: right;
+    letter-spacing: 10rpx;
+}
+
+.info-wrap .info picker view {
+    width: 350rpx;
+    text-align: right;
+}
+
+.info-wrap .info input:hover {
+    animation: focus 0.75s linear forwards alternate;
+}
+
+@keyframes focus {
+    from {
+        opacity: 0.8;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.resv .title {
+    font-size: 34rpx;
+    color: #888;
+    margin: 40rpx 0;
+}
+
+.resv .sub-title {
+    font-size: 30rpx;
+    color: #666;
+}
+
+.resv .content {
+    font-size: 24rpx;
+    color: #aaa;
+    margin: 30rpx 0 60rpx;
+}

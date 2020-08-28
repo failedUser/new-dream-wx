@@ -1,0 +1,75 @@
+<view class="topBlue" style="position:fixed;z-index: 99998;"></view>
+<view class="container" style="position:fixed;z-index: 99999;">
+	<!--
+	<view class="row jc-fs ai-c" style="margin:20rpx;font-size:30rpx;">
+		<text class="b" style="color:#aaa;">订单筛选</text>
+	</view>
+	<view class="line row js-fs ai-c">
+		<picker class="picker" mode="date" data-key="timeStart" bindchange="bindChange">
+			<view class="row jc-fs ai-c"><text class="b">开始时间 </text><text class="wrap">{{timeStart?timeStart:'请选择日期'}}</text></view>
+		</picker>
+	</view>
+	<view class="line row js-fs ai-c">
+		<picker class="picker" mode="date" data-key="timeEnd" bindchange="bindChange">
+			<view class="row jc-fs ai-c"><text class="b">结束时间 </text><text class="wrap">{{timeEnd?timeEnd:'请选择日期'}}</text></view>
+		</picker>
+	</view>
+	<view class="line row js-fs ai-c">
+		<view class="picker row jc-fs ai-c">
+			<text class="b">客户名称 </text>
+			<input class="wrap" value="{{name}}" data-key="name" bindinput="bindChange" placeholder="请输入名称" placeholder-class="ph"></input>
+		</view>
+	</view>
+	<view class="row js-c ai-c">
+		<view class="btn0" bindtap="search">搜索</view>
+	</view>
+	-->
+	<view class="row js-sb ai-c">
+		<input class="wrap" value="{{name}}" data-key="name" bindinput="bindChange" placeholder="请输入客户名称" placeholder-class="ph"></input>
+		<view class="btn1" bindtap="search">搜索</view>
+	</view>
+</view>
+<view class='main' style="padding-top:200rpx;">
+	<view class='main-mid'>
+		<view class='orderList'>
+			<view class='noOrder' hidden="{{orderList.length>0}}">
+				<image src='/images/utils/noOrder.png' class='noOrderImg'></image>
+				<text class='noOrderText'>无订单</text>
+			</view>
+			<view class='order' wx:for="{{orderList}}" wx:key="order" wx:for-index="orderIndex" wx:for-item="order">
+				<view class='order-top'>
+					<text class='order-date b'>订单号：{{order.order_Id}}</text>
+					<text class="copy" bindtap="setClipboardData" data-data="订单号：{{order.order_Id}}">复制</text>
+				</view>
+				<view class='order-mid' bindtap='bindOrderDetails' data-id='{{order.order_Id}}'>
+					<view class='order-info'>
+						<view class="data-wrap">
+							<view class="data full">客户名称：{{order.receiver_Name}} {{receiver_Phone}}</view>
+							<view class="data full">下单时间：{{order.creation_Time}}</view>
+							<view class="data full">订单状态：{{order.order_Status}}</view>
+						</view>
+					</view>
+				</view>
+				<view class='order-mid column' bindtap='bindOrderDetails' data-id='{{order.order_Id}}'>
+					<view class="row jc-sb ai-c" style="width:100%;">
+						<view class="t">奖励金额</view>
+						<view class="t">￥{{volumerRewardInfos[orderIndex].reward_Price}}</view>
+					</view>
+					<view class="row jc-sb ai-c" style="width:100%;">
+						<view class="t">返修扣款</view>
+						<view class="t red">-￥{{volumerRewardInfos[orderIndex].deduction_Fee}}</view>
+					</view>
+					<view class="row jc-sb ai-c" style="width:100%;">
+						<view class="t gold b">实际奖励</view>
+						<view class="t gold b">￥{{volumerRewardInfos[orderIndex].actual_Reward}}</view>
+					</view>
+				</view>
+				<view class='order-info' style="justify-content:flex-end;">
+					<view class='product-sum'>
+						<text space="nbsp" style="text-align:right;">总计￥{{order.total_Original_Price}}，优惠￥0，实付款：￥{{order.total_Received_Amount}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

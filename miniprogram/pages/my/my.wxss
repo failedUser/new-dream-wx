@@ -1,0 +1,185 @@
+.myBanner {
+    width: 750rpx;
+    height: 300rpx;
+    overflow: hidden;
+    background-color: var(--colorBlue);
+}
+
+.userInfo {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    background-color: var(--colorBlue);
+    padding: 1rem;
+}
+
+.userInfo:hover {
+    background: transparent;
+}
+
+.userInfo::after {
+    border: none;
+}
+
+.userAvatar {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 25rpx;
+}
+
+.userName {
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.bindPhone {
+    margin-top: 10rpx;
+    font-size: 22rpx;
+    padding: 2rpx 25rpx;
+    border-radius: 25rpx;
+    border: solid 1px #fff;
+    color: #fff;
+}
+
+.phone {
+    margin-right: 15rpx;
+    font-size: 22rpx;
+    color: #fff;
+}
+
+.wrap {
+    position: relative;
+    top: -112rpx;
+    width: 700rpx;
+    margin: 25rpx auto;
+    border-radius: 25rpx;
+    background: #fff;
+}
+
+.nav-wrap {
+    border-bottom: solid 1px #ccc;
+}
+
+.weui-cell__bd {
+    font-size: 32rpx;
+    color: #333;
+}
+
+.order-type {
+    height: 174rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.order-nav .iconfont {
+    color: goldenrod;
+    display: block;
+    margin: 0 auto;
+    font-size: 50rpx;
+}
+
+.order-nav text {
+    display: block;
+    text-align: center;
+    color: #555;
+    font-size: 28rpx;
+}
+
+.order-nav image {
+    width: 45rpx;
+    height: 45rpx;
+    margin-bottom: 25rpx;
+}
+
+.order-type navigator {
+    width: 125rpx;
+    position: relative;
+}
+
+.count {
+    position: absolute;
+    top: -10rpx;
+    right: 30rpx;
+    height: 1.6em;
+    width: 1.6em;
+    line-height: 1.6;
+    padding: 0 0.4em;
+    font-size: 28rpx;
+    font-weight: 700;
+    border-radius: 0.8em;
+    background-color: var(--bgcolor);
+    color: #fff !important;
+    text-align: center;
+    white-space: nowrap;
+    transform: translateX(50%) scale(0.6);
+    transform-origin: center;
+    z-index: 10;
+    box-shadow: 0 0 0 2px #fff;
+    box-sizing: border-box;
+}
+
+.count.down {
+    height: 1em;
+    width: 1em;
+    top: 30rpx;
+    right: 60rpx;
+    background:var(--bgcolor);
+}
+
+.contact {
+    padding: 0;
+    margin: 0;
+    background: none !important;
+    font-size: 32rpx;
+    color: #333;
+    text-align: left;
+    line-height: normal;
+}
+
+.contact::after {
+    border: none 0;
+}
+
+.login-btn {
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.login-btn::after {
+    border: 0;
+}
+
+/* 自定义 */
+
+.server-warp {
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.server-warp button {
+    width: 225rpx !important;
+    height: 225rpx !important;
+    margin-bottom: 15rpx;
+}
+
+.server-warp image {
+    width: 55rpx;
+    height: 55rpx;
+    margin: 10rpx auto;
+}
+
+.server-warp text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1;
+}
+
+button::after {
+    border: none;
+}

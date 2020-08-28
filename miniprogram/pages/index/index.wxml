@@ -1,0 +1,50 @@
+<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+<view class="column" style="padding-bottom:25rpx;">
+	<view class='scroll-banner'>
+		<swiper indicator-dots autoplay circular interval="3000" duration="500">
+			<swiper-item wx:for="{{index.banners}}" wx:for-item="banner" wx:key='b'>
+				<image src="https://cdn.newdreamer.cn/index/{{banner.image}}.jpg" mode="aspectFill" />
+			</swiper-item>
+		</swiper>
+	</view>
+	<view class='notice row jc-sb ai-c' hidden='{{index.notices.length==0}}'>
+		<view class='row jc-fs ai-c'>
+			<image src="/images/utils/lb.png" style="width:32rpx;height:32rpx;"></image>
+			<swiper style='width:450rpx;height:32rpx;' interval="3000" duration="1000" autoplay circular vertical>
+				<swiper-item class='notice-text' wx:for="{{index.notices}}" wx:key="n" wx:for-item="notice">
+					<text class='notice-text'>{{notice.content}}</text>
+				</swiper-item>
+			</swiper>
+		</view>
+		<!--
+		<view class="dropdown">
+			<text space="nbsp">男士 ▼</text>
+		</view>
+		-->
+		<view class="classify-arrow" bindtap="switchGender">
+			<image src="/images/icon/male.png" style="width:40rpx;height:40rpx;" wx:if="{{gender=='男'}}"></image>
+			<image src="/images/icon/female.png" style="width:40rpx;height:40rpx;" wx:else></image>
+		</view>
+	</view>
+	<view class="classify-wrap row jc-se">
+		<view class="classify column" wx:for="{{index.classify}}" wx:for-item="class" wx:key="cs" bindtap="bindClassifyIconTap" data-id="{{class.id}}">
+			<image src="https://cdn.newdreamer.cn/category/{{class.text}}.png" mode="aspectFit"></image>
+			<text>{{class.text}}</text>
+		</view>
+	</view>
+	<view class='all-wrap'>
+		<view class='all' wx:for="{{index.blocks}}" wx:for-item="block" wx:key="bs">
+			<view class="row jc-sb">
+				<view class='all-title'>{{block.title}}</view>
+				<view class='weui-cell__ft weui-cell__ft_in-access'>更多</view>
+			</view>
+			<scroll-view class='all-list row jc-fs ai-c' scroll-x>
+				<navigator class='all-single' url='/pages/shop/product/product?barcode={{product.barcode}}' wx:for="{{block.content}}" wx:key="b" wx:for-item="product">
+					<image src='{{product.barcode==undefined?"":("https://cdn.newdreamer.cn/products/"+product.barcode+"/%E4%B8%BB%E5%9B%BE/"+utils.split(product.image," ")[0]+".jpg")}}' class='all-img' mode='aspectFill' lazy-load='true'></image>
+					<view class='all-name'>{{product.product_Name}}</view>
+					<view class='all-price'>￥{{product.retail_Price}}</view>
+				</navigator>
+			</scroll-view>
+		</view>
+	</view>
+</view>

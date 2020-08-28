@@ -1,0 +1,295 @@
+.classify-box {
+    position: sticky;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 500;
+    width: 100%;
+    height: 140rpx;
+    background: fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.classify-header {
+    padding: 10rpx 10rpx 0 10rpx;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+
+.classify-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    height: 2.5rem;
+    background-color: #fff;
+}
+
+.classify-scroll {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    background-color: #fff;
+}
+
+.classify-scroll .scroll-tab-list {
+    display: inline-block;
+    min-width: 5rem;
+    padding: 0 10rpx;
+    text-align: center;
+    line-height: 90rpx;
+    border-bottom: 2px solid transparent;
+}
+
+.classify-scroll .scroll-tab-list.on {
+    font-weight: 700;
+    color: var(--colorBlue);
+    border-bottom: solid 2px var(--colorGold);
+}
+
+.category-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.category-block .category {
+    width: 20%;
+    margin: 0 2% 0.5rem 2%;
+    text-align: center;
+    font-size: 14px;
+    line-height: 36px;
+    color: #555;
+    border: 1px solid #bbb;
+}
+
+.category-block .category.on {
+    font-weight: 700;
+    color: var(--colorBlue);
+    border: 1px solid var(--colorGold);
+}
+
+.allCategory {
+    color: var(--colorBlue);
+    margin-left: 10px;
+}
+
+.icon-classify {
+    width: 30rpx;
+    height: 30rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+.text-classify {
+    font-size: 28rpx;
+    color: #999;
+    display: block;
+    text-align: center;
+}
+
+/* .text-search {
+    font-size: 30rpx;
+    width: 100px;
+    height: 30px;
+    display: block;
+    color: #fff;
+    background-color: #ff7d28;
+    text-align: center;
+} */
+
+.classify-header input {
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 28rpx;
+    display: inline-block;
+}
+
+.inline-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 30rpx;
+    height: 80rpx;
+    background-color: #e3e3e3;
+    border-radius: 40rpx;
+}
+
+.classify-header form {
+    flex-grow: 2;
+}
+
+/* 排序 */
+
+.sort-wrap {
+    display: flex;
+    justify-content: space-around;
+    height: 90rpx;
+    align-items: center;
+    background-color: #eee;
+}
+
+.sort-type {
+    flex-grow: 2;
+    text-align: center;
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.sort-arrow {
+    display: inline-block;
+}
+
+.sort-arrow image {
+    width: 7px;
+    height: 10px;
+    display: block;
+}
+
+/*商品列表*/
+
+.goods-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.goods {
+    width: 320rpx;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20rpx;
+    border-radius: 25rpx;
+}
+
+.goods-img {
+    flex-shrink: 0;
+    width: 100%;
+    width: 320rpx;
+    margin-bottom: 0.5rem;
+    border-radius: 25rpx 25rpx 0 0;
+}
+
+.goods-info {
+    width: 270rpx;
+    padding: 5rpx 25rpx 20rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.goods-name {
+    width: 100%;
+    align-self: flex-start;
+    display: -webkit-box !important;
+    word-break: break-all;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 28rpx;
+    color: #333;
+    margin-left: 0;
+}
+
+.goods-info-b {
+    width: 100%;
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-img {
+    width: 45rpx;
+    height: 40rpx;
+}
+
+.goods-desb {
+    /* margin-left: 20rpx; */
+    color: var(--colorGold);
+    font-size: 24rpx;
+}
+
+.goods-price {
+    font-size: 30rpx;
+    color: rgb(221, 32, 32);
+    font-weight: bold;
+}
+
+.sort-type.active {
+    color: var(--color);
+}
+
+.arrowUp {
+    transform: rotate(180deg);
+}
+
+.hide {
+    display: none;
+}
+
+.text-search {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 30rpx;
+    background-color: var(--bgcolor);
+    color: #fff;
+    font-size: 28rpx;
+    border-radius: 40rpx;
+}
+
+.nogoods {
+    margin-top: 160px;
+}
+
+.nogoods image {
+    width: 240rpx;
+    height: 320rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+.nogoods text {
+    margin-top: 40rpx;
+    display: block;
+    color: #555;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.icon-gouwuche1 {
+    color: var(--color);
+    font-size: 34rpx;
+}
+
+.mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 990;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.categorySelecter-warp {
+    position: fixed;
+    width: 100%;
+    min-height: 8rem;
+    top: 0;
+    background: #fff;
+    z-index: 998;
+}

@@ -1,0 +1,22 @@
+<view class="ticket" wx:for="{{tickets}}" wx:for-item="ticket" wx:key="t">
+    <view>
+        <view class="title">{{ticket.mingcheng}}</view>
+    </view>
+    <view>
+        <view class="description">{{ticket.shuoming}}</view>
+    </view>
+    <view>
+        <text>满</text>
+        <text class="num" space="nbsp"> {{ticket.xianzhi_manjian}} </text>
+        <text>元减</text>
+        <text class="num" space="nbsp"> {{ticket.youhui}} </text>
+        <text>元</text>
+    </view>
+    <view>
+        <view class="description">失效时间：{{ticket.d}}</view>
+    </view>
+</view>
+<view class='noOrder' hidden="{{tickets.length>0}}">
+    <image src='/images/utils/noOrder.png' class='noOrderImg'></image>
+    <text class='noOrderText'>暂无可用优惠券</text>
+</view>

@@ -1,0 +1,106 @@
+.express-header image {
+    width: 100rpx;
+    height: 100rpx;
+    margin-right: 40rpx;
+}
+
+.express-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 30rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.scroll-view_H {
+    padding: 30rpx 0;
+}
+
+.express-info view {
+    color: #999;
+    font-size: 28rpx;
+}
+
+.express-info view text {
+    color: #555;
+}
+
+.express-details {
+    background-color: #fff;
+    padding-top: 80rpx;
+}
+
+.item-context {
+    font-size: 28rpx;
+}
+
+.item-time {
+    font-size: 24rpx;
+}
+
+.express-items {
+    position: relative;
+    padding: 0 30rpx;
+}
+
+.express-item {
+    border-bottom: 1px solid #eee;
+    padding: 30rpx 0 30rpx 30rpx;
+    border-left: 1px solid #eee;
+}
+
+.express-items-active {
+    position: relative;
+    padding: 0 30rpx;
+}
+
+.point {
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    background-color: #cbcecb;
+    position: absolute;
+    top: 30rpx;
+    left: 15rpx;
+    z-index: 2;
+}
+
+.point-active {
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    background-color: #fb881f;
+    position: absolute;
+    top: 30rpx;
+    left: 15rpx;
+    z-index: 2;
+}
+
+.noexpress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.noexpress image {
+    width: 270rpx;
+    height: 120rpx;
+    display: block;
+    margin: 40rpx auto;
+}
+
+.noexpress text {
+    display: block;
+    font-size: 28rpx;
+    color: #555;
+    text-align: center;
+}
+
+.express-details {
+    box-sizing: border-box;
+    padding-top: 220rpx;
+}

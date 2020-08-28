@@ -1,0 +1,44 @@
+var findInArr = function(obj, arr) {
+    var result = arr != undefined && arr.indexOf(obj) != -1
+    return result
+}
+
+var split = function(str, key) {
+    if (str == "" || str == undefined) return ""
+    return str.split(key)
+}
+
+var defineArray = function(length) {
+    length = Math.round(length)
+    var arr = []
+    for (var i = 0; i < length; i++) {
+        arr.push(i + 1)
+    }
+    return arr
+}
+
+var round = function(num) {
+    return Math.round(num)
+}
+
+var abs = function(num) {
+    return Math.abs(num)
+}
+
+var JSONstringify = function(obj) {
+    return JSON.stringify(obj)
+}
+
+var hideName = function(name) {
+    return name[0] + "**"
+}
+
+module.exports = {
+    findInArr: findInArr,
+    split: split,
+    defineArray: defineArray,
+    round: round,
+    abs: abs,
+    JSONstringify: JSONstringify,
+    hideName: hideName
+}

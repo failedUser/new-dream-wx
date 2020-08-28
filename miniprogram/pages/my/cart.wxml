@@ -1,0 +1,97 @@
+<wxs module="utils" src="../../utils/utils.wxs"></wxs>
+<block wx:if="{{cart.length>0}}">
+	<scroll-view scroll-y style="height:100%;" class='cart-goods-list'>
+		<view class='main' style="background-color: #f8f8f8;">
+			<view class='main-mid'>
+				<block wx:for="{{cart}}" wx:key="key" wx:for-index="index" wx:for-item="product">
+					<view class='cart-goods' data-id="{{product.barcode}}">
+						<text class='iconfont icon-xuanze2 uncheck2' bindtap='onProductSelected' data-index="{{index}}" wx:if="{{utils.findInArr(index,selectedProducts)}}"></text>
+						<text class='iconfont icon-choose uncheck2' bindtap='onProductSelected' data-index="{{index}}" wx:else></text>
+						<!-- <image wx:if="{{product.ischeck=='1'}}" src='/images/check1.png' class='uncheck2' data-check='{{product.ischeck}}' data-id='{{product.id}}' bindtap='bindCheckbox' data-index="{{index}}"></image>
+            <image wx:if="{{product.ischeck=='0'}}" src='/images/uncheck1.png' class='uncheck2' data-check='{{product.ischeck}}' data-id='{{product.id}}' bindtap='bindCheckbox' data-index="{{index}}"></image> -->
+						<view class='goods-info'>
+							<navigator url="/pages/shop/product/product?barcode={{product.barcode_Main}}" hover-class="none">
+								<image src='{{product.barcode_Main==undefined?"":("https://cdn.newdreamer.cn/products/"+product.barcode_Main+"/%E4%B8%BB%E5%9B%BE/0.jpg")}}' class='goods-img'></image>
+							</navigator>
+							<view class='goods-info1'>
+								<view class="goods-title">
+									<navigator url="/pages/shop/product/product?barcode={{product.barcode}}" hover-class="none">
+										<view class='goods-name'>
+											<text>{{product.product_Name}}</text>
+											<text style="color:red" wx:if="{{product.Distributor_Wechat_Id!=''||product.scene!=''}}"> (分享赚)</text>
+										</view>
+										<text class='goods-size'>尺寸：{{product.measureName}}</text>
+									</navigator>
+									<view class="del-cart">
+										<!-- <image src='/images/del.png' bindtap="delCart" data-id='{{product.id}}' data-index='{{index}}'></image> -->
+										<text class='iconfont icon-icon' bindtap="deleteCart" data-id='{{product.id}}' data-index='{{index}}'></text>
+									</view>
+								</view>
+								<view class='goods-info2'>
+									<text wx:if="{{product.Distributor_Wechat_Id==''&&product.scene==''}}">{{product.price}}</text>
+									<text style="color:red;" wx:else>￥{{product.price-product.Distributor_Deduction}} <text style="color:#aaa;text-decoration:line-through;font-size: 22rpx;">{{product.price}}</text></text>
+									<view class='amount-wrap'>
+										<text class="{{product.count<=1?'disabled':''}}" data-index="{{index}}" data-delta='-1' bindtap='onProductCountChange'>-</text>
+										<text type='countber' class="countber">{{product.count}}</text>
+										<text class="{{product.count>=99?'disabled':''}}" data-index="{{index}}" data-delta='1' bindtap='onProductCountChange'>+</text>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</block>
+			</view>
+		</view>
+	</scroll-view>
+	<!-- 商品底部 -->
+	<view class='cart-footer'>
+		<view class='cart-footer-l'>
+			<view class='icon-allChoose'>
+				<text class='iconfont icon-xuanze2 uncheck2' wx:if="{{selectedProducts.length==cart.length}}" bindtap='onAllSelected' />
+                <text class='iconfont icon-choose uncheck2' wx:else bindtap='onAllSelected' />
+                <!-- <image wx:if="{{selectedAllStatus}}" src='/images/check1.png' class='uncheck2' bindtap='bindAllChoose'></image>
+        <image wx:if="{{!selectedAllStatus}}" src='/images/uncheck1.png' class='uncheck2' bindtap='bindAllChoose'></image> -->
+                <text class='text-allChoose' bindtap='onAllSelected'>全选</text>
+			</view>
+			<view class='total-price'>
+				<view class='total-wrap'>总计:
+					<text>￥{{total==0?"0.00":total}}</text>
+				</view>
+			</view>
+		</view>
+		<view class='cart-footer-r' bindtap='bindBalance'>
+			去结算
+		</view>
+	</view>
+</block>
+
+<block wx:if="{{cart.length==0}}">
+	<view class='main'>
+		<view class='main-mid'>
+			<view style="height:30%;" />
+			<view class='noGoods'>
+				<image src='/images/utils/noCart.png'></image>
+				<view style="text-align:center;color:#888;">
+					<text>空荡荡的购物车，怎能安抚你的心</text>
+				</view>
+				<navigator class='goShopping' url="/pages/shop/category/classify" open-type="switchTab">去逛逛</navigator>
+			</view>
+			<!--
+            <view class='hot-wrap'>
+                <view class='hot'>
+                    <view class='index-tit'>热门产品</view>
+                    <view class='hot-list'>
+                        <view class='single-hot' wx:for='{{hotprolist}}' wx:key='key' wx:for-index="key" wx:for-item="product">
+                            <navigator url='/pages/goodsDetails/goodsDetails?id={{product.id}}'>
+                                <image src='{{product.images}}'></image>
+                                <text class='hot-name'>{{product.product_Name}}</text>
+                                <text class='hot-price'>￥{{product.price}}</text>
+                            </navigator>
+                        </view>
+                    </view>
+                </view>
+            </view>
+			-->
+		</view>
+	</view>
+</block>

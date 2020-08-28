@@ -1,0 +1,171 @@
+.order-top {
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.copy {
+    font-size: 12px;
+    height: 20px;
+    border: 1px solid #aaa;
+    border-radius: 50px;
+    color: #aaa;
+    line-height: 20px;
+    padding: 0 7px 0 7px;
+    margin-left: 15px;
+}
+
+.product-custom {
+    font-size: 12px;
+    margin: 0 10px 0 10px;
+    padding: 10rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    background: var(--colorGold);
+    color: #fff;
+}
+
+.product-sum {
+    font-size: 12px;
+    margin: 20rpx 30rpx;
+    color: #333;
+    font-weight: 700;
+}
+
+.on {
+    color: var(--colorBlue);
+    border-bottom: 5rpx solid var(--colorGold);
+}
+
+.noOrder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.noOrderImg {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+.noOrderText {
+    font-size: 28rpx;
+    color: #555;
+    display: block;
+    text-align: center;
+    margin-top: 40rpx;
+}
+
+.search_no {
+    padding-top: 120rpx;
+}
+
+.orderList {
+    box-sizing: border-box;
+    padding-top: 25rpx;
+}
+
+.order-info-bot {
+    padding-left: 0;
+}
+
+.button {
+    font-size: 28rpx;
+    height: 50rpx;
+    border: 1px solid var(--colorGold);
+    color: var(--colorGold);
+    line-height: 50rpx;
+    padding: 0 20rpx;
+}
+
+.data-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.data-wrap .data {
+    width: 300rpx;
+    height: 25px;
+    line-height: 30rpx;
+    color: #888;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.data-wrap .data.full {
+    width: 650rpx;
+}
+
+.container {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 650rpx;
+    border-radius: 20rpx;
+    padding: 10rpx 25rpx;
+    margin: 1rem;
+    box-shadow: 5px 5px 5px #5555;
+}
+
+.container .line {
+    border-top: solid 1px #ddd;
+}
+
+.container .picker {
+    width: 600rpx;
+    margin: 30rpx 0;
+}
+
+.ph {
+    font-size: 28rpx;
+    color: #888;
+    font-weight: 400;
+}
+
+.container .wrap {
+    width: 400rpx;
+    margin-left: 50rpx;
+    font-size: 28rpx;
+    color: #888;
+    font-weight: 400;
+}
+
+.container .btn0 {
+    width: 600rpx;
+    padding: 15rpx 0;
+    margin: 15rpx auto;
+    border-radius: 15rpx;
+    text-align: center;
+    color: #fff;
+    background: var(--colorBlue);
+}
+
+.container .btn1 {
+    width: 150rpx;
+    padding: 15rpx 0;
+    margin: 15rpx auto;
+    border-radius: 50rpx;
+    text-align: center;
+    color: #fff;
+    background: var(--colorBlue);
+}
+
+.b {
+    font-weight: 800;
+}
+
+.t {
+    color: #555;
+    font-size: 28rpx;
+}
+
+.t.gold {
+    color: var(--colorGold);
+}
+
+.t.red {
+    color: red;
+}

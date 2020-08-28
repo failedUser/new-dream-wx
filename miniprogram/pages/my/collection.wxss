@@ -1,0 +1,57 @@
+.nocollectios {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nocollectios image {
+    width: 240rpx;
+    height: 320rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+.nocollectios text {
+    color: #555;
+    display: block;
+    text-align: center;
+    font-size: 28rpx;
+}
+
+.hot-wrap {
+    background-color: #fff;
+    padding: 30rpx;
+}
+
+.single-hot {
+    margin-bottom: 20rpx;
+    width: 330rpx;
+}
+
+.single-hot image {
+    width: 330rpx;
+    height: 300rpx;
+    display: block;
+}
+
+.hot-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.hot-price {
+    display: block;
+    font-size: 28rpx;
+    color: var(--color);
+}
+
+.hot-list {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+}

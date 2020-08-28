@@ -1,0 +1,34 @@
+.save-btn{
+  width: calc(100% - 30rpx);
+  display:block;
+  margin: 40rpx auto;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #fff;
+  background-color: #e6154c;
+}
+.default-switch{
+  margin-top: 40rpx;
+}
+ .weui-label{
+  color: #555;
+  font-size: 32rpx;
+}
+.weui-input{
+  color: #555;
+  font-size: 32rpx;
+}
+.weui-select{
+  color: #555;
+  font-size: 32rpx;
+}
+.weui-cell__bd{
+  color: #555;
+  font-size: 32rpx;
+} 
+.weui-cells{
+  background-color: #fff;
+}

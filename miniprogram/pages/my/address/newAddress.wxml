@@ -1,0 +1,75 @@
+<form bindsubmit="saveAddress">
+<view class="page__bd">
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">姓名</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" name="truename" placeholder="请输入姓名" value='{{truename}}'/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">手机号码</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" type='number' name="phonenumber" placeholder="请输入联系方式" value='{{phonenumber}}' />
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">省</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindProvinceChange" value="{{provinceIndex}}" range="{{provinceInfo}}" range-key='cnname'>
+          <view class="weui-select weui-select_in-select-after">
+            <block wx:if="{{addressmsg.province}}" >{{addressmsg.prcnname}}</block>
+            <block wx:else>--请选择--</block>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">市</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindCityChange" value="{{cityIndex}}" range="{{cityInfo}}" range-key='cnname'      disabled='{{cityDisabled}}'>
+          <view class="weui-select weui-select_in-select-after">
+            <block wx:if="{{addressmsg.city}}">{{addressmsg.cicnname}}</block>
+            <block wx:else>--请选择--</block>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label">区</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindDistrictChange" value="{{districtIndex}}" range="{{districtInfo}}" range-key='cnname' disabled='{{districtDisabled}}'>
+          <view class="weui-select weui-select_in-select-after">
+            <block wx:if="{{addressmsg.district}}">{{addressmsg.dicnname}}</block>
+            <block wx:else>--请选择--</block>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" name="addressDetails" placeholder="请输入具体地址" value='{{address}}' style="height:100rpx;resize:none;" />
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
+  <input type="text" name="province" value="{{addressmsg.province}}" class="hidden" />
+  <input type="text" name="city" value="{{addressmsg.city}}" class="hidden" />
+  <input type="text" name="district" value="{{addressmsg.district}}" class="hidden" />
+  <button formType="submit" class="save-btn">保 存</button>
+</form>
+<import src="/pages/template/loading.wxml" />
+<template is="loading" data="{{...loadingData}}"/>

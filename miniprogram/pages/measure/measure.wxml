@@ -1,0 +1,38 @@
+<view class="topBlue"></view>
+<view class="wrap">
+	<view class="info-wrap row jc-c ai-fs" hidden="{{tab!='0'}}">
+		<view class="info row jc-sb ai-c">
+			<view class="bold">性别</view>
+			<picker bindchange="change" data-type="info" data-key="性别" data-range="{{['男','女']}}" value="{{info['性别']}}" range="{{['男','女']}}" disabled="{{!allowModified}}">
+				<view>{{info['性别']}}</view>
+			</picker>
+		</view>
+		<view class="info row jc-sb ai-c" wx:for="{{info}}" wx:for-index="para" wx:key="para" wx:if="{{para!='性别'}}">
+			<view class="bold">{{para}}</view>
+			<input type="text" value="{{item}}" bindinput="change" data-type="info" data-key="{{para}}" disabled="{{!allowModified}}"></input>
+		</view>
+	</view>
+	<view class="para-wrap row jc-c ai-fs" hidden="{{tab!='1'}}">
+		<view class="para fw2 row jc-c ai-c" wx:for="{{paras}}" wx:for-index="para" wx:key="para">
+			<view bindtap="preview" data-name="{{para}}">{{para}}</view>
+			<input type="digit" value="{{item}}" bindinput="change" data-type="paras" data-key="{{para}}" disabled="{{!allowModified}}"></input>
+		</view>
+	</view>
+	<view class="shape-wrap column jc-fs ai-fs" hidden="{{tab!='2'}}">
+		<view class="shape row jc-fs ai-c" wx:for="{{shape}}" wx:for-index="para" wx:for-item="shape" wx:key="para">
+			<view class="title">{{para}}</view>
+			<view class="btn0 {{item?'active':''}} row jc-c ai-c" bindtap="{{allowModified?'choose':''}}" data-type="{{para}}" data-key="{{index}}" wx:for="{{shape}}" wx:key="index"><text>{{index}}</text></view>
+		</view>
+	</view>
+</view>
+<view class="row jc-se ai-c">
+	<view class="next grey row jc-c ai-c" wx:if="{{tab>0}}" bindtap="previous">
+		<text>上一页</text>
+	</view>
+	<view class="next row jc-c ai-c" bindtap="next" hidden="{{tab==2}}">
+		<text>下一页</text>
+	</view>
+	<view class="next gold row jc-c ai-c" bindtap="next" hidden="{{tab<2}}">
+		<text>{{allowModified?'保存':'关闭'}}</text>
+	</view>
+</view>

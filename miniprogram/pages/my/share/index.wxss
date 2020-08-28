@@ -1,0 +1,222 @@
+Page {
+    font-family: 阿里巴巴普惠体L;
+}
+
+.container {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 650rpx;
+    border-radius: 5px;
+    padding: 25rpx;
+    margin: 1rem;
+    box-shadow: 5px 5px 5px #5555;
+}
+
+.container .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.container .row view {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0.25rem;
+    width: 40%;
+}
+
+.num {
+    color: #000;
+    font-size: 66rpx;
+}
+
+.des {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.title {
+    color: #333;
+    font-size: 16px;
+    margin: 0 0.25rem;
+}
+
+.title-right {
+    float: right;
+    color: var(--colorGold);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.block {
+    width: 250rpx;
+    border-radius: 5px;
+    padding: 25rpx;
+    height: 150rpx;
+    margin: 35rpx auto;
+    text-align: center;
+    background: 100% no-repeat;
+    box-shadow: 5px 5px 5px #5555;
+}
+
+.block .des {
+    color: #fff;
+    text-shadow: #000 1px 0 0, #000 0 1px 0, #000 -1px 0 0, #000 0 -1px 0;
+    font-size: 60rpx;
+    font-weight: 900;
+    margin: 5px auto;
+}
+
+.order-top {
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.copy {
+    font-size: 12px;
+    height: 20px;
+    border: 1px solid #aaa;
+    border-radius: 50px;
+    color: #aaa;
+    line-height: 20px;
+    padding: 0 7px 0 7px;
+    margin-left: 15px;
+}
+
+.product-custom {
+    font-size: 12px;
+    margin: 0 10px 0 10px;
+    padding:10rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    background: var(--colorGold);
+    color: #fff;
+}
+
+.product-sum {
+    font-size: 12px;
+    margin: 20rpx 30rpx;
+    color: #333;
+    font-weight: 700;
+}
+
+.on {
+    color: var(--colorBlue);
+    border-bottom: 5rpx solid var(--colorGold);
+}
+
+.noOrder {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.noOrderImg {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+.noOrderText {
+    font-size: 28rpx;
+    color: #555;
+    display: block;
+    text-align: center;
+    margin-top: 40rpx;
+}
+
+.search_no {
+    padding-top: 120rpx;
+}
+
+.orderList {
+    box-sizing: border-box;
+    padding-top: 25rpx;
+}
+
+.order-info-bot {
+    padding-left: 0;
+}
+
+.button {
+    font-size: 28rpx;
+    height: 50rpx;
+    border: 1px solid var(--colorGold);
+    color: var(--colorGold);
+    line-height: 50rpx;
+    padding: 0 20rpx;
+}
+
+.data-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 0.5rem;
+}
+
+.data-wrap .data {
+    width: 300rpx;
+    height: 25px;
+    color: #888;
+    font-size: 13px;
+    margin: 10rpx 0 10rpx 10rpx;
+}
+
+.data-wrap .data.full {
+    width: 650rpx;
+}
+
+.container .line{
+    border-top: solid 1px #ddd;
+}
+
+.container .picker {
+    width:600rpx;
+    margin: 30rpx 0;
+}
+
+.ph{
+    font-size: 28rpx;
+    color:#888;
+    font-weight: 400;
+}
+
+.container .wrap {
+    width:400rpx;
+    margin-left: 50rpx;
+    font-size: 28rpx;
+    color:#888;
+    font-weight: 400;
+}
+
+.container .btn0{
+    width: 600rpx;
+    padding: 15rpx 0;
+    margin: 15rpx auto;
+    border-radius: 15rpx;
+    text-align: center;
+    color: #fff;
+    background: var(--colorBlue);
+}
+
+.b{
+    font-weight: 800;
+}
+
+.t {
+    color: #555;
+    font-size: 28rpx;
+}
+
+.t.gold {
+    color: var(--colorGold);
+}
+
+.t.red{
+    color:red;
+}

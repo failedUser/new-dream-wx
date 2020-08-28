@@ -1,0 +1,39 @@
+<view class='main'>
+  <view class='main-mid'>
+    <view class='refund-header'>
+      <view>退款金额:
+        <text>￥{{orderInfo.overprice}}</text>
+      </view>
+      <view>退款状态:
+        <text>{{orderInfo.orderstatuname}}</text>
+      </view>
+    </view>
+    <view class='refund-main'>
+      <view class='refund-tit'>退款信息</view>
+      <view class='refund-info' wx:for='{{orderInfo.promsg}}' wx:for-index='proIndex' wx:for-item='proItem'>
+        <image wx:if="{{proItem.proimage==''}}" src='/images/example.png' class='goods-img'></image>
+        <image wx:if="{{proItem.proimage!=''}}" src='{{proItem.proimage}}' class='goods-img'></image>
+        <view class='refund-goods-info'>
+          <text class='refund-goods-name'>{{proItem.prescriptionname}}</text>
+          <view class='refund-goods-info2'>
+            <text class='refund-goods-spec'>{{proItem.prescription}}</text>
+            <text>x{{proItem.pronum}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='refund-details'>
+        <view>退款原因:{{orderInfo.refundreason}}</view>
+        <view>退款金额:￥{{orderInfo.overprice}}</view>
+        <!-- <view>退款件数:0000</view> -->
+        <view>申请退款时间:{{orderInfo.adddate}}</view>
+      </view>
+    </view>
+    <!-- <view class='refund-footer'>
+咨询客服
+</view> -->
+  </view>
+  <view class='main-bot'>
+    <import src='/pages/template/support.wxml' />
+    <template is='support' />
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<view class='main'>
+    <view class='main-mid'>
+        <view class='express-header'>
+            <image src='/images/utils/car.png'></image>
+            <view class='express-info'>
+                <view>快递公司：
+                    <text>{{deliverCompany}}</text>
+                </view>
+                <view>快递编号：
+                    <text>{{deliverID}}</text>
+                </view>
+            </view>
+        </view>
+        <view class='noexpress' wx:if="{{expressInfo==''}}">
+            <image src='/images/utils/noexpress.png'></image>
+            <text>暂无物流信息</text>
+        </view>
+        <view class="express-details scroll-view_H" hidden="{{expressInfo.length===0?true:false}}" style="width: 100%;">
+            <view wx:for="{{expressInfo}}" wx:key="{{index}}" wx:for-item="item" class="{{!index?'express-items-active':'express-items'}}">
+                <view class="express-item">
+                    <view class="{{!index?'point-active':'point'}}"></view>
+                    <view class="item-context">{{item.context}}</view>
+                    <view class="item-time">{{item.time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='main-bot'>
+        <import src='/pages/template/support.wxml' />
+        <template is='support' />
+    </view>
+</view>

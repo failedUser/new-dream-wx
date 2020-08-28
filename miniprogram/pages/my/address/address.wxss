@@ -1,0 +1,102 @@
+.address-list{
+  padding-bottom: 120rpx;
+  box-sizing: border-box;
+}
+.address-single{
+  margin-bottom: 20rpx;
+  padding: 30rpx;
+  background-color: #fff;
+}
+.address-name{
+  color: #777;
+  font-size: 28rpx;
+  margin-right: 40rpx;
+}
+.address-tel{
+  color: #777;
+  font-size: 28rpx;
+}
+.address-details{
+  display: block;
+  color: #777;
+  margin-top: 20rpx;
+  font-size: 28rpx;
+}
+.address-act{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.address-btn text{
+  width: 80rpx;
+  height: 44rpx;
+  font-size: 28rpx;
+  color: #e6154c;
+  border: 1px solid #e6154c;
+  text-align: center;
+}
+.address-btn{
+  width: 200rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.text-default{
+  font-size: 28rpx;
+  color: #333;
+  display: inline-block;
+  margin-left: 20rpx;
+}
+.addAddress-wrap{
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #eee;
+}
+.addAddress{
+  background-color: #e6154c;
+  width: calc(100% - 30rpx);
+  height: 80rpx;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin:auto;
+}
+.addAddress image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.addAddress text{
+  font-size: 32rpx;
+  color: #fff;
+}
+.default-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+.noAddress{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.noAddress image{
+  width: 240rpx;
+  height: 320rpx;
+  display: block;
+  margin: 0 auto;
+}
+.noAddress text{
+  white-space: nowrap;
+  color: #555;
+  display: block;
+  text-align: center;
+  font-size: 28rpx;
+}

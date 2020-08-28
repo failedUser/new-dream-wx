@@ -1,0 +1,191 @@
+page {
+    --main: #1F4E79;
+    --black: #222;
+    --white: #fff;
+    --shadow: rgba(0, 0, 0, 0.15);
+}
+
+.backgroundImg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* 字号 */
+
+text.p1 {
+    font-size: 36rpx;
+}
+
+text.p2 {
+    font-size: 32rpx;
+}
+
+text.p3 {
+    font-size: 28rpx;
+}
+
+text.p4 {
+    font-size: 24rpx;
+}
+
+text.p5 {
+    font-size: 22rpx;
+}
+
+text.bold {
+    font-weight: bold;
+}
+
+/* 字体对齐 */
+
+text.left {
+    text-align: left;
+    vertical-align: middle;
+}
+
+text.center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+text.right {
+    text-align: right;
+    vertical-align: middle;
+}
+
+/* 标准圆 */
+
+.cir {
+    border-radius: 50%;
+}
+
+/* 阴影 */
+
+.shadow {
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+/* 标准flex */
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.column.rev{
+    flex-direction: column-reverse;
+}
+
+.row.jc-fs,
+.column.jc-fs {
+    justify-content: flex-start;
+}
+
+.row.jc-fe,
+.column.jc-fe {
+    justify-content: flex-end;
+}
+
+.row.jc-sa,
+.column.jc-sa {
+    justify-content: space-around;
+}
+
+.row.jc-sb,
+.column.jc-sb {
+    justify-content: space-between;
+}
+
+.row.jc-c,
+.column.jc-c {
+    justify-content: center;
+}
+
+.row.ai-fs,
+.column.ai-fs {
+    align-items: flex-start;
+}
+
+.row.ai-fe,
+.column.ai-fe {
+    align-items: flex-end;
+}
+
+.row.ai-bl,
+.column.ai-bl {
+    align-items: baseline;
+}
+
+.row.ai-c,
+.column.ai-c {
+    align-items: center;
+}
+
+.fw2 {
+    width: 50%;
+    flex: 1 1 auto;
+}
+
+.fw3 {
+    width: 33%;
+    flex: 1 1 auto;
+}
+
+.fw4 {
+    width: 25%;
+    flex: 1 1 auto;
+}
+
+.fw5 {
+    width: 20%;
+    flex: 1 1 auto;
+}
+
+/* 标签 */
+
+sup {
+    font-size: 13px;
+    vertical-align: text-top;
+}
+
+sub {
+    font-size: 13px;
+    vertical-align: text-bottom;
+}
+
+/* 重写button样式 */
+
+button {
+    padding: initial;
+    border: initial;
+    border-radius: initial;
+    min-height: initial;
+    background-color: transparent;
+    line-height: initial;
+    margin:initial;
+    width:initial;
+}
+
+button::after {
+    border: initial;
+    border-radius: initial;
+}

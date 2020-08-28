@@ -1,0 +1,77 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/shop/category/classify",
+        "pages/shop/product/product",
+        "pages/my/my",
+        "pages/my/cart",
+        "pages/my/collection",
+        "pages/order/allOrders",
+        "pages/order/express",
+        "pages/order/operation/confirmOrder",
+        "pages/order/operation/comment",
+        "pages/measure/index",
+        "pages/measure/custom",
+        "pages/my/ticket",
+        "pages/measure/measure",
+        "pages/measure/reservation",
+        "pages/measure/volumer/center",
+        "pages/measure/volumer/myMeasureList",
+        "pages/measure/volumer/myOrderList",
+        "pages/measure/volumer/withdraw",
+        "pages/my/share/index",
+        "pages/my/share/withdraw"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#1F4E79",
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "新梦想家西服"
+    },
+    "tabBar": {
+        "color": "#555",
+        "selectedColor": "#234E78",
+        "backgroundColor": "#fff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/menu/menu1.png",
+                "selectedIconPath": "images/menu/menu1-sel.png"
+            },
+            {
+                "pagePath": "pages/shop/category/classify",
+                "text": "分类",
+                "iconPath": "images/menu/menu2.png",
+                "selectedIconPath": "images/menu/menu2-sel.png"
+            },
+            {
+                "pagePath": "pages/measure/index",
+                "text": "量体",
+                "iconPath": "images/menu/menu3.png",
+                "selectedIconPath": "images/menu/menu3-sel.png"
+            },
+            {
+                "pagePath": "pages/my/cart",
+                "text": "购物车",
+                "iconPath": "images/menu/menu4.png",
+                "selectedIconPath": "images/menu/menu4-sel.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "个人中心",
+                "iconPath": "images/menu/menu5.png",
+                "selectedIconPath": "images/menu/menu5-sel.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 20000,
+        "downloadFile": 20000,
+        "connectSocket": 20000,
+        "uploadFile": 20000
+    },
+    "plugins": {},
+    "debug": true,
+    "sitemapLocation": "sitemap.json"
+}

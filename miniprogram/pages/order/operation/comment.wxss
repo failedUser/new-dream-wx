@@ -1,0 +1,264 @@
+Page {
+    background-color: #fff;
+}
+
+.product-wrap {
+    width: 100%;
+    display: flex;
+    background: #fff;
+}
+
+.product-wrap .product-image {
+    width: 125rpx;
+    height: 125rpx;
+    margin: 25rpx;
+}
+
+.product-wrap .product-info {
+    width: 65%;
+    margin: 2.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-wrap .product-info .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.product-wrap .product-info .row .product_Name {
+    width: 100%;
+    font-size: 16px;
+    color: #000;
+}
+
+.product-wrap .product-info .row .productData {
+    line-height: 20px;
+    font-size: 16px;
+    color: #666;
+}
+
+.comment-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.comment-wrap .comment {
+    width: 95%;
+    margin: 2.5% 2.5% 2.5% 2.5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-wrap .comment.vertical {
+    flex-direction: column !important;
+}
+
+.comment-wrap .comment .block {
+    width: 1.75rem;
+    margin: 0 2% 0 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+}
+
+.comment-wrap .comment .block.horizontal {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    margin-top: 0.5rem;
+}
+
+.comment-wrap .comment .block.widen3 {
+    width: 14% !important;
+}
+
+.comment-wrap .comment .block.widen4 {
+    width: 20% !important;
+}
+
+.comment-wrap .comment .block.widen100 {
+    width: 97.5% !important;
+}
+
+.comment-wrap .comment .block .title {
+    width: 100%;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 16px;
+    text-align: left;
+    color: #555;
+}
+
+.comment-wrap .comment .block .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.comment-wrap .comment .block .tip {
+    font-size: 12px;
+    text-align: center;
+    color: #aaa;
+}
+
+.comment-wrap .comment .block .textarea {
+    width: 93%;
+    height: 7rem;
+    padding: 2%;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: left;
+    color: #555;
+    background: #fafafa;
+    border-radius: 3px;
+}
+
+.comment-wrap .comment .block .textarea-tip {
+    width: 93%;
+    height: 18px;
+    padding: 2%;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #555;
+    background: #fafafa;
+}
+
+.comment-wrap .comment .block .textarea-placeholder {
+    font-size: 14px;
+    line-height: 22px;
+    color: #888;
+}
+
+.comment-wrap .comment .score-bar {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    height: 2rem;
+    margin: 0.75rem 0.5rem 0.5rem 0;
+    border: 1px solid #888;
+    z-index: 6;
+}
+
+.comment-wrap .comment .score-bar .score {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.comment-wrap .comment .score-bar .score.active {
+    background: #fab647;
+}
+
+.comment-wrap .comment .bubble-wrap {
+    position: relative;
+    top: -1.25rem;
+}
+
+.comment-wrap .comment .bubble-wrap .tip-bubble {
+    position: relative;
+    background-color: deepskyblue;
+    min-width: 2rem;
+    max-width: 4rem;
+    height: 1.5rem;
+    margin-bottom: -1.5rem;
+    font-size: 12px;
+    color: white;
+    border-radius: 10px;
+    font-family: sans-serif;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.comment-wrap .comment .bubble-wrap .tip-bubble:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid;
+}
+
+.comment-wrap .comment .bubble-wrap .tip-bubble.top:after {
+    border-bottom-color: deepskyblue;
+    bottom: 100%;
+    left: 35%;
+}
+
+.comment-wrap .comment .bubble-wrap .tip-bubble.right:after {
+    border-left-color: deepskyblue;
+    top: 20%;
+    left: 99%;
+}
+
+.comment-wrap .comment .bubble-wrap .tip-bubble.bottom:after {
+    border-top-color: deepskyblue;
+    top: 100%;
+    left: 35%;
+}
+
+.comment-wrap .comment .bubble-wrap .tip-bubble.left:after {
+    border-right-color: deepskyblue;
+    top: 20%;
+    right: 99%;
+}
+
+.comment-wrap .comment.image .block {
+    flex-wrap: wrap;
+    justify-content: flex-start !important;
+}
+
+.comment-wrap .comment.image .block .image {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 0.3rem 0.3rem 0;
+    background: #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-wrap .comment.image .block .image .circle {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #888;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-wrap .comment.image .block .image .circle .plus {
+    position: relative;
+    top: -2px;
+    font-size: 2rem;
+    line-height: 2rem;
+    color: #888;
+    text-align: center;
+    vertical-align: center;
+}
+
+.submit {
+    width: 250rpx;
+    padding: 15rpx 0;
+    margin: 15rpx auto;
+    border-radius: 15rpx;
+    text-align: center;
+    color: #fff;
+    background: var(--colorBlue);
+}

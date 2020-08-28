@@ -1,0 +1,28 @@
+<view class='container'>
+  <form bindsubmit='formSubmit'>
+    <view class='drawback-wrap'>
+      <view class='title'>退款原因</view>
+      <view class='textarea-wrap'>
+        <textarea class='textarea' name='content' placeholder='请输入退款原因'></textarea>
+      </view>
+      <view class='title'>退款信息</view>
+      <view class='goods-info'>
+        <view class='goods-info-main' wx:for='{{orderInfo.promsg}}' wx:key='promsg' wx:for-index='proIndex' wx:for-item='proItem'> 
+          <image src='{{proItem.proimage}}' class='goods-img'></image>
+          <view class='goods-info1'>
+            <text class='goods-name'>{{proItem.prescriptionname}}</text>
+            <view class='goods-info2'>
+             <text class='goods-spec'>{{proItem.prescription}}</text>
+             <text class='goods-num'>x{{proItem.pronum}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='amount-wrap'>
+          <text>退款金额:￥{{orderInfo.overprice}}</text>
+          <!-- <text>退款件数:0000</text> -->
+        </view>
+      </view>
+      <button form-type='submit' class='btn-sub'>提交申请</button>
+    </view>
+  </form>
+</view>

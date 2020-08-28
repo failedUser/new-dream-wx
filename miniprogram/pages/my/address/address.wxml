@@ -1,0 +1,39 @@
+<view class='container'>
+
+  <view class='noAddress' wx:if="{{address.length===0}}">
+    <image src='/images/utils/nogoods.png'></image>
+    <text>还没有收货地址，请添加收货地址</text>
+  </view>
+
+  <scroll-view wx:else scroll-y class='address-list' style="height:{{winHeight}}px;">
+
+    <view bindtap='choseaddress' class='address-single' wx:for="{{address}}" wx:key="address" wx:for-index="addressIndex" wx:for-item="addressItem" data-id='{{addressItem.id}}'>
+      <text class='address-name'>{{addressItem.truename}}</text>
+      <text class='address-tel'>{{addressItem.phonenumber}}</text>
+      <text class='address-details'>{{addressItem.prcnname}},{{addressItem.cicnname}},{{addressItem.dicnname}},{{addressItem.address}}</text>
+      <view class='address-act'>
+        <view class='default-wrap' bindtap='bindDefault' data-id='{{addressItem.id}}' data-addressindex='{{addressIndex}}'>
+          <image wx:if="{{addressItem.isdefault==0}}" src='/images/uncheck2.png' class='uncheck2'></image>
+          <image wx:if="{{addressItem.isdefault==1}}" src='/images/check2.png' class='uncheck2'></image>
+          <text class='text-default' wx:if="{{addressItem.isdefault==0}}">设为默认</text>
+          <text class='text-default' wx:if="{{addressItem.isdefault==1}}">默认地址</text>
+        </view>
+        <view class='address-btn'>
+          <text bindtap='edit' data-id='{{addressItem.id}}'>编辑</text>
+          <text bindtap='delete' data-id='{{addressItem.id}}' data-addressindex='{{addressIndex}}'>删除</text>
+        </view>
+      </view>
+    </view>
+
+  </scroll-view>
+
+  <view class='addAddress-wrap'>
+    <view class='addAddress' bindtap='addAddress'>
+        <text>添加新地址</text>
+    </view>
+   
+  </view>
+
+</view>
+<import src="/pages/template/loading.wxml" />
+<template is="loading" data="{{...loadingData}}" />

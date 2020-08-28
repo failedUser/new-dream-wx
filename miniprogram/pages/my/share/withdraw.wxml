@@ -1,0 +1,36 @@
+<view class="topBlue"></view>
+<view class="wrap">
+	<view class="row jc-sb ai-fs">
+		<text class="t">收款账户</text>
+		<text class="t gold">微信余额</text>
+	</view>
+	<view class="content column jc-fs ai-fs">
+		<text class="t">提现金额</text>
+		<view class="count row jc-fs ai-c">
+			<text>￥</text>
+			<input type="digit" value="{{count}}" bindinput="change"></input>
+		</view>
+		<text class="t" wx:if="{{tip}}">{{tip}}</text>
+		<text class="t red" wx:else>输入金额超过可提现金额</text>
+	</view>
+	<view class="column jc-fs ai-fs">
+		<text>提现金额会在5个工作日内转入收款账户</text>
+		<text>每笔提现金额不能少于{{min}}元</text>
+	</view>
+	<view class="confirm row jc-c ai-c" bindtap="submit">
+		<text>提现</text>
+	</view>
+</view>
+<view class="wrap" wx:for="{{records}}" wx:for-item="record" wx:key="*this">
+	<view class="row jc-sb ai-c">
+		<view>分享赚奖励提现</view>
+		<view>-{{record.withdrawal_Amount}}</view>
+	</view>
+	<view class="row jc-sb ai-c">
+		<view style="color:#999;">余额提现</view>
+		<view style="color:red;">{{record.withdraw_Status}}</view>
+	</view>
+	<view class="row jc-sb ai-c">
+		<view style="color:#999;">{{record.application_Date}}</view>
+	</view>
+</view>

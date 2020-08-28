@@ -1,0 +1,52 @@
+.ticket {
+    width: 88%;
+    height: 10rem;
+    padding: 3%;
+    margin: 1rem 3%;
+    background: linear-gradient(to right, #f8f3eb, #d9c39a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.ticket view {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.ticket view .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--colorGold);
+}
+
+.ticket view .num {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--colorGold);
+}
+
+.noOrder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.noOrderImg {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+.noOrderText {
+    font-size: 28rpx;
+    color: #555;
+    display: block;
+    text-align: center;
+    margin-top: 40rpx;
+}

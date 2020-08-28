@@ -1,0 +1,105 @@
+Page {
+    font-family: 阿里巴巴普惠体L;
+}
+
+.container {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 650rpx;
+    border-radius: 25rpx;
+    padding: 25rpx;
+    margin: 1rem;
+}
+
+.container.small {
+    padding: 10rpx 25rpx;
+}
+
+.container .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.container .row view {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0.25rem;
+    width: 40%;
+}
+
+.num {
+    color: #000;
+    font-size: 56rpx;
+    line-height: 60rpx;
+}
+
+.des {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.title {
+    color: #333;
+    font-size: 16px;
+    margin: 0 0.25rem;
+}
+
+.title-right {
+    float: right;
+    color: var(--colorGold);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.block {
+    position: relative;
+    width: 300rpx;
+    border-radius: 25rpx;
+    padding: 15rpx;
+    height: 150rpx;
+    margin: 15rpx auto;
+    text-align: center;
+    background: 100% no-repeat;
+}
+
+.block .des {
+    color: #555;
+    font-size: 36rpx;
+    line-height: 36rpx;
+    font-weight: 900;
+    margin: 15rpx;
+}
+
+.count {
+    position: absolute;
+    top: -10rpx;
+    right: 30rpx;
+    height: 1.6em;
+    width: 1.6em;
+    line-height: 1.6;
+    padding: 0 0.4em;
+    font-size: 28rpx;
+    font-weight: 700;
+    border-radius: 0.8em;
+    background-color: var(--bgcolor);
+    color: #fff !important;
+    text-align: center;
+    white-space: nowrap;
+    transform: translateX(50%) scale(0.6);
+    transform-origin: center;
+    z-index: 10;
+    box-shadow: 0 0 0 2px #fff;
+    box-sizing: border-box;
+}
+
+.count.down {
+    height: 1em;
+    width: 1em;
+    top: 20rpx;
+    right: 30rpx;
+    background: var(--bgcolor);
+}

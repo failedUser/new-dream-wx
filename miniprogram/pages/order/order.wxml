@@ -1,0 +1,80 @@
+<view class="topBlue"></view>
+<view class='detailsHeader'>
+	<view>
+		<text>订单编号:</text>
+		<text>{{orderInfo.order_Id}}</text>
+		<text class="copy" bindtap="setClipboardData" data-data="订单号：{{orderInfo.orderID}}">复制</text>
+	</view>
+	<view>
+		<text>订单状态:</text>
+		<text class='red'>{{itemInfos[0].refund_Status==''?orderInfo.order_Status:'售后'}}</text>
+	</view>
+	<view class="row jc-sb ai-c">
+		<text>运单编号：{{orderInfo.shipment_Id}}</text>
+		<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+	</view>
+</view>
+<view class='order-list'>
+	<view class='order'>
+		<view class='order-mid' wx:for="{{itemInfos}}" wx:key="promsg" wx:for-index="proIndex" wx:for-item="product">
+			<image src='https://cdn.newdreamer.cn/products/{{product.barcode_Main}}/%E4%B8%BB%E5%9B%BE/0.jpg'></image>
+			<view class='order-info'>
+				<view class='order-info-top'>
+					<view class='goods-name'>{{product.product_Name}}<text hidden="{{isSelf}}">({{product.barcode}})</text></view>
+					<view class='goods-price'>x {{product.count}}</view>
+				</view>
+				<view class='order-info-mid'>
+					<view class="row jc-fs ai-c">
+						<text style="margin-left:10px;">尺寸：</text>
+						<text wx:if="{{itemInfos[0].refund_Status!=''}}">{{product.size}}</text>
+						<text class="order-btn" bindtap='reserveMeasure' data-id='{{orderInfo.order_Id}}' data-status="待预约" wx:elif="{{product.needMeasure==2}}">预约量体</text>
+						<text class="order-btn" bindtap='reserveMeasure' data-id='{{product.reservation_Id}}' data-status="预约中" wx:elif="{{product.needMeasure==3}}">预约中</text>
+						<text class="order-btn" bindtap='reserveMeasure' data-id='{{product.reservation_Id}}' data-status="待量体" wx:elif="{{product.needMeasure==4}}">预约成功</text>
+						<text class="order-btn" bindtap='lookMeasureData' data-id='{{product.reservation_Id}}' data-status="已量体" wx:elif="{{product.needMeasure==5}}">量体数据</text>
+						<text wx:else>{{product.size}}</text>
+					</view>
+					<view class='product-price'>￥{{product.priceFinal}}</view>
+				</view>
+				<view class='order-info-bot'>
+					<text class="goods-price red" wx:if="{{product.refund_Status=='退款中'}}">退款中</text>
+					<text class="goods-price red" wx:elif="{{product.refund_Status=='已退款'}}">已退款</text>
+					<text class="goods-price red" wx:elif="{{product.refund_Status=='拒绝退款'}}">退款申请被拒绝</text>
+					<block wx:else>
+						<navigator class='product-custom' url="/pages/measure/custom?id={{product.item_Id}}{{isSelf?'':'&allowModified=0'}}" wx:if="{{product.crafts=='高级定制'}}">个性化定制</navigator>
+						<view wx:else></view>
+						<text class="order-btn" bindtap='refund' data-id='{{product.item_Id}}' hidden="{{!isSelf}}">申请退款</text>
+					</block>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class='money'>
+	<view class="row jc-sb ai-c">
+		<text>总价</text>
+		<text>￥{{orderInfo.total_Original_Price}}</text>
+	</view>
+	<view class="row jc-sb ai-c">
+		<text>分销优惠</text>
+		<text>-￥{{orderInfo.distritutor_Discount}}</text>
+	</view>
+	<view class="row jc-sb ai-c bold">
+		<text>实付款</text>
+		<text>￥{{orderInfo.total_Received_Amount}}</text>
+	</view>
+</view>
+<view class='addressInfo'>
+	<view class='personalInfo'><text class="bold">{{orderInfo.receiver_Name}} </text><text> {{orderInfo.receiver_Phone}}</text></view>
+	<text class='addressDetails'>{{orderInfo.receiver_Adress}}</text>
+</view>
+<view class='money'>
+	<view class="row jc-sb ai-c">
+		<text>创建时间</text>
+		<text>{{orderInfo.creation_Time}}</text>
+	</view>
+	<view class="row jc-sb ai-c">
+		<text>支付时间</text>
+		<text>{{orderInfo.payment_Time}}</text>
+	</view>
+	<button class="btn-kf" open-type="contact">联系客服</button>
+</view>

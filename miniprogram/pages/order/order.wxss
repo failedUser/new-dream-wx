@@ -1,0 +1,116 @@
+.detailsHeader {
+    background-color: #fff;
+    width: 650rpx;
+    margin: 40rpx auto 15rpx;
+    padding: 25rpx;
+    border-radius: 25rpx;
+}
+
+.money {
+    width: 650rpx;
+    margin: 15rpx auto;
+    padding: 25rpx;
+    background-color: #fff;
+    border-radius: 25rpx;
+}
+
+.order-mid {
+    border-bottom: none !important;
+    border-top: none !important;
+}
+
+.money view text {
+    color: #555;
+    font-size: 28rpx;
+}
+
+.addressInfo {
+    background-color: #fff;
+    width: 650rpx;
+    margin: 15rpx auto;
+    padding: 25rpx;
+    border-radius: 25rpx;
+}
+
+.detailsTit {
+    font-size: 32rpx;
+    color: #555;
+    font-weight: bold;
+    padding-bottom: 20rpx;
+}
+
+.personalInfo {
+    margin-bottom: 10rpx;
+    color: #777;
+}
+
+.addressDetails {
+    color: #777;
+}
+
+.weui-cell__bd {
+    font-size: 32rpx;
+    color: #555;
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.detailsHeader view,
+.delieveHeader view {
+    color: #999;
+    font-size: 28rpx;
+}
+
+.detailsHeader view text,
+.delieveHeader view text {
+    margin-left: 20rpx;
+}
+
+.delieveHeader {
+    width: 650rpx;
+    margin: 15rpx auto;
+    padding: 25rpx;
+    background-color: #fff;
+}
+
+.order-btn {
+    font-size: 24rpx;
+    border: 1px solid #ccc;
+    color: #bbb;
+    line-height: 40rpx;
+    padding: 3rpx 15rpx;
+    border-radius: 10rpx;
+}
+
+.product-custom {
+    font-size: 24rpx;
+    color: #bbb;
+    line-height: 40rpx;
+    padding: 3rpx 15rpx;
+    border-radius: 15rpx;
+    background: var(--colorGold);
+    color: #fff;
+}
+
+.product-measure {
+    font-size: 12px;
+    padding: 10rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    background: var(--colorBlue);
+    color: #fff;
+}
+
+.copy {
+    font-size: 12px;
+    height: 20px;
+    border: 1px solid #aaa;
+    border-radius: 50px;
+    color: #aaa;
+    line-height: 20px;
+    padding: 0 7px 0 7px;
+    margin-left: 15px;
+}

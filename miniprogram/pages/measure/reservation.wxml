@@ -1,0 +1,52 @@
+<!--预约-->
+<view class="wrap" wx:if="{{status=='待预约'}}">
+	<view class="topBlue"></view>
+	<view class="info-wrap row jc-c ai-fs">
+		<view class="info row jc-c ai-c">
+			<view class="bold">性别</view>
+			<picker bindchange="change" data-type="info" data-key="性别" data-range="{{['男','女']}}" value="{{info['性别']}}" range="{{['男','女']}}">
+				<view>{{info['性别']}}</view>
+			</picker>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info row jc-c ai-c" wx:for="{{info}}" wx:for-index="para" wx:key="para" hidden="{{para=='性别'||para=='量体时间'}}">
+			<view class="bold">{{para}}</view>
+			<input type="text" value="{{item}}" bindinput="change" data-type="info" data-key="{{para}}"></input>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info noBorder row jc-c ai-c">
+			<view class="bold">时间</view>
+			<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+				<view class="picker">
+					{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}
+				</view>
+			</picker>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+	</view>
+	<view class="row jc-c ai-c" bindtap="next">
+		<view class="next row jc-c ai-c">
+			<text>确定预约</text>
+		</view>
+	</view>
+	<image src='https://cdn.newdreamer.cn/index/volume%20reservation/cof_sucessful_1.jpg' mode="widthFix" style="width:100%;margin-top:50rpx;" />
+</view>
+<!--量体师信息-->
+<view class="resv" wx:else>
+	<image class="backgroundImg" src="/images/bg_white.png" mode="aspectFill"></image>
+	<!--量体师信息-->
+	<view class="column jc-c ai-c" wx:if="{{status=='已接单'}}">
+		<view class="title">————— 量体师信息 —————</view>
+		<view class="sub-title">{{VolumerInfo.volumer_Name}}</view>
+		<view class="content">{{VolumerInfo.volumer_Phone}}</view>
+	</view>
+	<view class="column jc-c ai-c">
+		<view class="title">————— 预约信息 —————</view>
+		<view class="sub-title">时间</view>
+		<view class="content">{{reservationInfo.time}}</view>
+		<view class="sub-title">地点</view>
+		<view class="content">{{reservationInfo.adress}}</view>
+		<view class="sub-title">联系方式</view>
+		<view class="content">{{reservationInfo.phone}}</view>
+	</view>
+</view>
