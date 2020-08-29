@@ -1,0 +1,15 @@
+<view class="nd-auth-modal {{visible? 'nd-auth-modal--visible' : ''}}">
+  <view class="auth-modal-content">
+      <view class="auth-modal-title" >{{title}}</view>
+      
+      <view class="auth-modal-btns">
+          <view bindtap="cancel" class="modal-btns-item modal-btns-item--border">取消</view>
+          <button bindtap="handleConfirmBtn" class="modal-btns-item modal-btns-item--confirm" wx:if="{{authType === 'userInfo'}}"  bindgetuserinfo="onGetUserInfo" open-type="getUserInfo">同意</button>
+           <button bindtap="handleConfirmBtn" class="modal-btns-item modal-btns-item--confirm" wx:if="{{authType === 'getPhoneNumber'}}"  bindgetphonenumber="onGetPhoneNumber" open-type="getPhoneNumber">同意</button>
+      </view>
+  </view>
+</view>
+<view wx:if="{{type === 'share'}}">
+  	<button wx:if="{{showShareBtn}}" open-type="share"><slot name="shareBtn"> </slot></button>
+    <button wx:else bindtap="startAuth"><slot name="shareBtn"> </slot></button>
+</view>

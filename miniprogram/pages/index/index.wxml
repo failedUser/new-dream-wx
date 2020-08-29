@@ -47,4 +47,5 @@
 			</scroll-view>
 		</view>
 	</view>
+	<auth-modal authes="{{authes}}"  bind:authError="onAuthError" bind:authSuccess="onAuthSuccess" ></auth-modal>
 </view>

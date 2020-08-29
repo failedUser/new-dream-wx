@@ -2,11 +2,21 @@ const app = getApp()
 Page({
     data: {
         index: {},
-        gender: "男"
+        gender: "男",
+        authes: ['userInfo']
     },
 
     onShow: function (options) {
         this.request()
+    },
+    onAuthError() {
+        console.log('授权失败了');
+    }, 
+    onAuthSuccess() {
+        console.log('授权成功了');
+    },
+    onLoad: function (options) {
+        console.log('----options---', options);
     },
 
     request: function () {

@@ -1,0 +1,52 @@
+.nd-auth-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s linear, opacity 0.2s linear, height 0.2s linear;
+}
+.nd-auth-modal--visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.auth-modal-content {
+  width: 80%;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+.auth-modal-title {
+  padding: 40rpx 30rpx;
+  font-size: 34rpx;
+  font-weight: 400;
+  text-align: center;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.auth-modal-btns {
+  display: flex;
+}
+.modal-btns-item {
+  flex: 1;
+  height: 96rpx;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 96rpx;
+  font-weight: 400;
+}
+.modal-btns-item--border {
+  border-right: 1rpx solid #f0f0f0;
+}
+.modal-btns-item--confirm {
+  border-right: 1rpx solid #f0f0f0;
+  font-weight: 400;
+}
+

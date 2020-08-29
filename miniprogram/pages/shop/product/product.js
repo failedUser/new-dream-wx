@@ -28,7 +28,8 @@ Page({
         Distributor_Wechat_Id: "",
         Distributor_Wechat_Name: "",
         scene: app.globalData.share,
-        phone: ""
+        phone: "",
+        authes: ['userInfo', 'phoneNumber']
     },
     onLoad: function (options) {
         this.setData({
@@ -347,6 +348,13 @@ Page({
         }
     },
 
+    showShareImage: function () {
+        app.request('https://newdreamer.cn:8080/api/QRcode/get', {
+            path: this.shareUrl(),
+
+        })
+    },
+
     getPhoneNumber: function (e) {
         if (e.detail.errMsg == "getPhoneNumber:ok") {
             app.request("https://newdreamer.cn:8080/api/phone/set", e.detail).then(phone => {
@@ -358,10 +366,14 @@ Page({
         }
     },
 
+    shareUrl: function (){
+        const { EncodeID, openId, userInfo = {} } = app.globalData;
+        return `pages/shop/product/product?barcode=${this.data.barcode}&dwi=${EncodeID}&dwn=${userInfo.nickName}`
+    },
+    
     onShareAppMessage: function (res) {
-        let url = 'pages/shop/product/product?barcode=' + this.data.barcode + "&dwi=" + app.globalData.EncodeID + "&dwn=" + app.globalData.userInfo.nickName
         return {
-            path: url
+            path: this.shareUrl()
         }
     }
 })
