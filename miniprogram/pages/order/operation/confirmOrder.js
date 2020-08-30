@@ -147,7 +147,7 @@ Page({
                     console.log(res, data);
                     if (this.data.isDIY) {
                         wx.redirectTo({
-                            url: '/pages/measure/reservation?id=' + data.orderId + "&status=待收货"
+                            url: '/pages/measure/reservation?id=' + data.orderId + "&status=待预约"
                         })
                     } else {
                         wx.redirectTo({

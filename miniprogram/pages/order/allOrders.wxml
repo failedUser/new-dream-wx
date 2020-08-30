@@ -62,7 +62,7 @@
 						<view bindtap='bindPay' data-id='{{orderIndex}}'>去支付</view>
 					</view>
 				</block>
-				<block wx:if="{{order.products[0].refund_Status !=='退款中'}}">
+				<block wx:if="{{currentTab !== '售后'}}">
 					<view class='order-bot'>
 						<view bindtap='express' data-expno='{{order.trafficeno}}' data-exptype='{{order.trafficenote}}' data-expname='{{order.trafficename}}'>查看物流</view>
 						<view bindtap='bindReceive' data-id='{{order.orderID}}'>确认收货</view>

@@ -17,30 +17,43 @@ Page({
         reservationInfo: {},
         multiArray: [],
         college: '',
-        collegeArray: ['苏','粥','大','学'],
+        collegeArray: [],
         part: '',
-        partArray: ['东', '南', '西', '北'],
+        partArray: [],
         multiIndex: [0, 0],
 
     },
     onSelectedCollege(e) {
         let info = this.data.info;
-        info['高校'] = e.detail.value
+        const value = e.detail.value
+        console.log(this.data.collegeArray, value);
+        info['高校'] = this.data.collegeArray[value]
         this.setData({
-            college: e.detail.value,
-            info
+            college: value,
+            info,
+            partArray: this.data.collegeInfo[this.data.collegeArray[value]],
+            part: ''
         })
     },
     onSelectedPart(e) {
         let info = this.data.info;
-        info['校区'] = e.detail.value
+        info['校区'] = this.partArray[e.detail.value]
         this.setData({
             part: e.detail.value,
             info
         })
     },
+    getCollegeInfo(e) {
+        app.request("https://newdreamer.cn:8080/api/collegeInfo/get").then(data => {
+            this.setData({
+                collegeInfo: data,
+                collegeArray: Object.keys(data)
+            })
+        });
+    },
     onLoad: function (options) {
         if (options.status == "待预约") {
+            this.getCollegeInfo()
             this.setData({
                 status: options.status,
                 orderID: options.id,
@@ -58,6 +71,7 @@ Page({
                 rid: options.id
             })
             this.getVolumerInfo()
+         
         }
     },
     getVolumerInfo: function () {
