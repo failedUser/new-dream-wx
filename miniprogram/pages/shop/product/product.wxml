@@ -12,10 +12,13 @@
 		<view class='goods-info'>
 			<view class='goods-info0'>
 				<text class='goods-name'>{{products[mainProduct].product_Name}}</text>
-					<auth-modal authes="{{authes}}" type="share">
-						<view class="ButtonCover share" slot="shareBtn">
-								<image class="icon-share" src="/images/icon/share.png"></image>
-								<text style="font-size:14px;color:#AAA;">分享</text>
+					<auth-modal authes="{{authes}}" type="button" bind:onClick="onShareBtnClick" >
+						<view  slot="shareBtn">
+								<view  class="ButtonCover share">
+									<image class="icon-share" src="/images/icon/share.png"></image>
+									<text style="font-size:14px;color:#AAA;">分享</text>
+								</view>
+								<view  class="shareInfo"  wx:if="{{Distributor_Wechat_Name}}">本商品由{{Distributor_Wechat_Name}}分享</view>
 						</view>
 					</auth-modal>
 				<!-- <block wx:if="{{phone==''}}">
@@ -205,5 +208,7 @@
 			<text class='act-buy' bindtap='bindChooseSpec' data-buynow="2">立即购买</text>
 		</view>
 	</view>
-
+<view bindtap="onCanvasBackClick" class="product-share-modal {{showShareCanvas ? 'product-share-modal--visible' : ''}}">
+	 <canvas type="2d" id="shareProduct" ></canvas>
+</view>
 </view>

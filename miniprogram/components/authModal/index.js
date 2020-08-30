@@ -22,12 +22,17 @@ options: {
     },
     observers: {
       visible(value) {
+        let currentPage = getCurrentPages().pop();
+        const tabbarPgae = ['pages/index/index', 'pages/shop/category/classify', 'pages/measure/index', 'pages/my/cart', 'pages/my/my'];
+        if (tabbarPgae.indexOf(currentPage.route) < 0) {
+          return ;
+        }
         value
         ? wx.hideTabBar({  animation: true, })
         : wx.showTabBar({ animation: true })
       },
       authes() {
-        if (this.properties.type === 'share') {
+        if (this.properties.type) {
             this.initShareBtn();
             return;
         }
@@ -45,6 +50,9 @@ options: {
           resolveAuth
         })
       },
+      onClick() {
+        this.triggerEvent('onClick')
+      },
       startAuth() {
         let { needUserInfo, needPhoneNumebr } = this.data;
 
@@ -54,15 +62,15 @@ options: {
         }
         let type = authes.pop();
         if (type === 'userInfo') {
-          if (needUserInfo) {
-            this.setData({
-              authType: 'userInfo',
-              currentType: 'userInfo',
-              title: '新梦想家希望获取你的头像，昵称等用户信息',
-              visible: true,
-              resolveAuth: authes
-  ,          })
-              return ;
+          if (needUserInfo) { // 暂时屏蔽用户信息授权
+  //           this.setData({
+  //             authType: 'userInfo',
+  //             currentType: 'userInfo',
+  //             title: '新梦想家希望获取你的头像，昵称等用户信息',
+  //             visible: true,
+  //             resolveAuth: authes
+  // ,          })
+  //             return ;
           }
           if (authes.length === 0) { return ; }
           type = authes.pop();

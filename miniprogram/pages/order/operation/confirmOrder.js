@@ -21,9 +21,13 @@ Page({
         AddressAccess: true
     },
     onLoad: function (options) {
+        const products = JSON.parse(options.products);
+        const menu = ['量身定制', '高级定制'];
+        const isDIY = products.find(product => menu.indexOf(product.measureID) >= 0); // 判断是不是定制
         this.setData({
             products: JSON.parse(options.products),
             from: options.from,
+            isDIY: !!isDIY
         })
         if (options.from == "cart") {
             this.setData({
@@ -140,9 +144,17 @@ Page({
                 signType: 'MD5',
                 paySign: data.paySign,
                 success: (res) => {
-                    wx.redirectTo({
-                        url: '/pages/order/allOrders?currentTab=待发货',
-                    })
+                    console.log(res, data);
+                    if (this.data.isDIY) {
+                        wx.redirectTo({
+                            url: '/pages/measure/reservation?id=' + data.orderId + "&status=待收货"
+                        })
+                    } else {
+                        wx.redirectTo({
+                            url: '/pages/order/allOrders?currentTab=待发货',
+                        })
+                    }
+                    
                 },
                 fail: (e) => {
                     wx.redirectTo({

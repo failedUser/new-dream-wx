@@ -10,12 +10,34 @@ Page({
             "手机": "",
             "高校": "",
             "校区": "",
+            "宿舍": '',
             "量体时间": ""
         },
         VolumerInfo: {},
         reservationInfo: {},
         multiArray: [],
+        college: '',
+        collegeArray: ['苏','粥','大','学'],
+        part: '',
+        partArray: ['东', '南', '西', '北'],
         multiIndex: [0, 0],
+
+    },
+    onSelectedCollege(e) {
+        let info = this.data.info;
+        info['高校'] = e.detail.value
+        this.setData({
+            college: e.detail.value,
+            info
+        })
+    },
+    onSelectedPart(e) {
+        let info = this.data.info;
+        info['校区'] = e.detail.value
+        this.setData({
+            part: e.detail.value,
+            info
+        })
     },
     onLoad: function (options) {
         if (options.status == "待预约") {

@@ -9,9 +9,27 @@
 			</picker>
 			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
 		</view>
-		<view class="info row jc-c ai-c" wx:for="{{info}}" wx:for-index="para" wx:key="para" hidden="{{para=='性别'||para=='量体时间'}}">
+		<view class="info row jc-c ai-c" wx:for="{{info}}" wx:for-index="para" wx:key="para" hidden="{{para=='性别'||para=='量体时间'||para=='高校'||para=='校区'}}">
 			<view class="bold">{{para}}</view>
 			<input type="text" value="{{item}}" bindinput="change" data-type="info" data-key="{{para}}"></input>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info noBorder row jc-c ai-c">
+			<view class="bold">高校</view>
+			<picker mode="selector" bindchange="onSelectedCollege" value="{{college}}" range="{{collegeArray}}">
+				<view class="picker">
+					{{collegeArray[college] || ''}}
+				</view>
+			</picker>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info noBorder row jc-c ai-c">
+			<view class="bold">校区</view>
+			<picker  bindchange="onSelectedPart" value="{{part}}" range="{{partArray}}">
+				<view class="picker">
+					{{partArray[part]}}
+				</view>
+			</picker>
 			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
 		</view>
 		<view class="info noBorder row jc-c ai-c">

@@ -526,3 +526,23 @@
 .icon-shoucangxing2 {
     color: var(--color) !important;
 }
+
+
+.product-share-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: visibility 0.2s linear,opacity 0.2s linear ;
+}
+.product-share-modal--visible {
+    visibility: visible;
+    opacity: 1;
+}

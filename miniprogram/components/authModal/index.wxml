@@ -9,7 +9,10 @@
       </view>
   </view>
 </view>
-<view wx:if="{{type === 'share'}}">
-  	<button wx:if="{{showShareBtn}}" open-type="share"><slot name="shareBtn"> </slot></button>
+<view wx:if="{{type}}">
+  <view bindtap="onClick" wx:if="{{showShareBtn}}">
+    <button wx:if="{{type === 'share'}}" open-type="share"><slot name="shareBtn"> </slot></button>
+    <button wx:else><slot name="shareBtn"> </slot></button>
+  </view>
     <button wx:else bindtap="startAuth"><slot name="shareBtn"> </slot></button>
 </view>

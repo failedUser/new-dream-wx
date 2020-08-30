@@ -38,7 +38,7 @@ Page({
         app.request("https://newdreamer.cn:8080/api/Classification/get").then(data => {
             this.setData({
                 categories: data,
-                products: data[this.data.currentCategory] == undefined ? [] : data[this.data.currentCategory].products
+                products: data[this.data.currentCategory] == undefined ? [] : this.getProductsByGender(data[this.data.currentCategory].products, this.data.gender)
             })
         });
     },
@@ -46,7 +46,7 @@ Page({
         var currentCategory = e.currentTarget.dataset.tab
         this.setData({
             currentCategory: currentCategory,
-            products: this.data.categories[currentCategory]['products']
+            products:  this.getProductsByGender(this.data.categories[currentCategory]['products'], this.data.gender)
         })
     },
     bindCategorySelecter: function () {
@@ -54,13 +54,16 @@ Page({
             showCategorySelecter: !this.data.showCategorySelecter
         })
     },
+    getProductsByGender (list ,gender) {
+        return list.filter(item => {
+            return item.gender == gender
+        })
+    },
     switchGender: function () {
         let gender = this.data.gender == "女" ? "男" : "女"
         this.setData({
             gender: gender,
-            products: this.data.categories[this.data.currentCategory]['products'].filter(item => {
-                return item.gender == gender
-            })
+            products: this.getProductsByGender(this.data.categories[this.data.currentCategory]['products'], gender)
         })
     },
     //点击排序类别

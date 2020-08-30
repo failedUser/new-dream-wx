@@ -16,7 +16,6 @@ Page({
         console.log('授权成功了');
     },
     onLoad: function (options) {
-        console.log('----options---', options);
     },
 
     request: function () {
@@ -35,8 +34,23 @@ Page({
                 "id": 4,
                 "text": "配饰"
             }]
+            const { manModules, womenModules } = data;
+            const list = [manModules.suits, manModules.shirt, manModules.accessories, womenModules.suits, womenModules.shirt, womenModules.accessories].filter(item => {
+                return item && item.products
+            }).map(item => {
+                
+                item.products = item.products.filter(i => i).map(pro => {
+                    pro.image = pro.images ? JSON.parse(pro.images)[0] || '' : '';
+                    return pro;
+                })
+                return item;
+            })
+
             this.setData({
-                index: index
+                index: index,
+                photos: data.photos ? JSON.parse(data.photos) : [],
+                notice: data.notice ? JSON.parse(data.notice) : [],
+                modules: list
             })
         });
     },

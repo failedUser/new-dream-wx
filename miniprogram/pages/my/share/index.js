@@ -23,7 +23,7 @@ Page({
         this.getOrderList()
     },
     getOrderList: function () {
-        app.request("https://newdreamer.cn:8080/api/volume/getOrderInfos", {
+        app.request("https://newdreamer.cn:8080/api/distributor/getOrderInfos", {
             timeStart: this.data.timeStart,
             timeEnd: this.data.timeEnd,
             name: this.data.name,

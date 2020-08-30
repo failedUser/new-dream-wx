@@ -50,7 +50,7 @@ Page({
             })
             return
         }
-        app.request("https://newdreamer.cn:8080/api/distributor/withDraw", {
+        app.request("https://newdreamer.cn:8080/api/distribution/withDraw", {
             withDrawAmount: this.data.count
         }).then(data => {
             this.getInfo()
