@@ -2,9 +2,9 @@
 <view class='container'>
 	<scroll-view scroll-y="true" style="height:100%;" bindScroll="bindScrollListen" enable-back-to-top>
 		<view class='goods-gallery'>
-			<swiper indicator-dots autoplay circular interval="3000" duration="500" style='height:975rpx;' bindchange="bindSwiper">
+			<swiper indicator-dots autoplay circular interval="3000" duration="500" style='height:750rpx;' bindchange="bindSwiper">
 				<swiper-item wx:for="{{products[mainProduct].image}}" wx:key="key" wx:for-item="img">
-					<image src='{{products[mainProduct].barcode==undefined?"":("https://cdn.newdreamer.cn/products/"+products[mainProduct].barcode+"/%E4%B8%BB%E5%9B%BE/"+img+".jpg")}}' class='goods-gallery-img' lazy-load='true' mode="aspectFill" />
+					<image src='{{img}}' class='goods-gallery-img' lazy-load='true' mode="aspectFill" />
 				</swiper-item>
 			</swiper>
 			<text class="swiperCount">{{currentImage}}/{{products[mainProduct].image.length}}</text>
@@ -91,7 +91,7 @@
 			<view class='main'>
 				<view class='main-mid'>
 					<view wx:if="{{tabID==0}}">
-						<image src='{{products[mainProduct].barcode==undefined?"":("https://cdn.newdreamer.cn/products/"+products[mainProduct].barcode+"/%E8%AF%A6%E6%83%85%E5%9B%BE/1.jpg")}}' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' />
+						<image src='{{item}}' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' wx:for="{{products[mainProduct].detailImages}}"/>
 					</view>
 					<view class="goods-comment" wx:elif="{{tabID==1}}">
 						<!--
@@ -131,7 +131,7 @@
 	<view class="spec-wrap {{showSpec==0?'hidden':''}}">
 		<view class='goods-house-wrap'>
 			<view class='goods-house'>
-				<image src='{{products[mainProduct].barcode==undefined?"":("https://cdn.newdreamer.cn/products/"+products[mainProduct].barcode+"/%E4%B8%BB%E5%9B%BE/"+products[selectProduct].image[0]+".jpg")}}' class='goods-img' mode="aspectFill"></image>
+				<image src='{{products[mainProduct].image[0]}}' class='goods-img' mode="aspectFill"></image>
 				<view class='goods-house1'>
 					<text class='goods-price'>￥{{Distributor_Wechat_Id!=''||scene!=''?((products[selectProduct].price-products[selectProduct].distributor_Deduction)+' (分销优惠)'):products[selectProduct].price}}</text>
 					<view class='goods-house2'>

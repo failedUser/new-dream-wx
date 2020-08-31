@@ -17,6 +17,7 @@ Page({
             orderID: this.data.orderInfo.order_Id
         }).then(data => {
             for (var j in data.itemInfos) {
+                data.itemInfos[j].image = data.itemInfos[j].image ? JSON.parse(data.itemInfos[j].image) || '' : ''
                 if (data.itemInfos[j].crafts == "成衣商品") {
                     data.itemInfos[j].needMeasure = 0
                 } else {

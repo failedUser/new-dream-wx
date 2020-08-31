@@ -51,7 +51,7 @@
 		<view class='order-mid column' bindtap='bindOrderDetails' data-id='{{order.order_Id}}'>
 			<view class="row jc-sb ai-c" style="width:100%;">
 				<view class="t gold b">奖励金额</view>
-				<view class="t gold b">￥0.00</view>
+				<view class="t gold b">￥{{rewards[orderIndex]}}</view>
 			</view>
 		</view>
 	</view>

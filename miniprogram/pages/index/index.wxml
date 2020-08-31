@@ -33,10 +33,10 @@
 		</view>
 	</view>
 	<view class='all-wrap'>
-		<view class='all' wx:for="{{modules}}" wx:for-item="module" wx:key="bs">
+		<view class='all' wx:for="{{modules}}" wx:for-item="module" wx:key="bs" wx:if="{{module.title!=''}}">
 			<view class="row jc-sb">
 				<view class='all-title'>{{module.title}}</view>
-				<view class='weui-cell__ft weui-cell__ft_in-access'>更多</view>
+				<view class='weui-cell__ft weui-cell__ft_in-access' bindtap="bindClassifyIconTap" data-id="{{module.id}}">更多</view>
 			</view>
 			<scroll-view class='all-list row jc-fs ai-c' scroll-x>
 				<navigator class='all-single' url='/pages/shop/product/product?barcode={{product.barcode}}' wx:for="{{module.products}}" wx:key="b" wx:for-item="product">

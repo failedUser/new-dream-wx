@@ -16,17 +16,17 @@
 			</view>
 			<view class='order' wx:for="{{orderList}}" wx:key="order" wx:for-index="orderIndex" wx:for-item="order" hidden="{{orderList.length===0?true:false}}" wx:if="{{order.products.length>0}}">
 				<view class='order-top row jc-sb ai-c' style="border:0;padding-bottom:0;">
-				<view>
-					<text class='order-date'>订单号：{{order.orderID}}</text>
-					<text class="copy" bindtap="setClipboardData" data-data="订单号：{{order.orderID}}">复制</text>
+					<view>
+						<text class='order-date'>订单号：{{order.orderID}}</text>
+						<text class="copy" bindtap="setClipboardData" data-data="订单号：{{order.orderID}}">复制</text>
 					</view>
 					<view class='order-date' style="color:red;">{{currentTab=='售后'?order.products[0].refund_Status:order.status}}</view>
 				</view>
 				<view class='order-top' style="padding-top:15rpx;">
 					<text class='order-date'>支付时间：{{order.pay_Time}}</text>
 				</view>
-				<view class='order-mid' bindtap='bindOrderDetails' data-id='{{order.orderID}}' wx:for="{{order.products}}" wx:key="ps" wx:for-item="product">
-					<image src='{{product.barcode_Main==undefined?"":("https://cdn.newdreamer.cn/products/"+product.barcode_Main+"/%E4%B8%BB%E5%9B%BE/0.jpg")}}'></image>
+				<view class='order-mid' bindtap='bindOrderDetails' data-oid='{{order.orderID}}' wx:for="{{order.products}}" wx:key="ps" wx:for-item="product">
+					<image src='{{product.image[0]}}'></image>
 					<view class='order-info'>
 						<view class='order-info-top'>
 							<view class='product-name'>{{product.product_Name}}</view>
@@ -46,25 +46,25 @@
 						</view>
 						<view class='order-info-bot'>
 							<text class="product-desb" style="color:Red;" wx:if="{{currentTab=='售后'}}"></text>
-							<navigator class='product-custom' url="/pages/measure/custom?id={{product.item_Id}}" wx:else hidden="{{currentTab=='待支付'||product.size!='高级定制'}}">个性化定制</navigator>
-							<navigator class="btn" url='operation/comment?product={{utils.JSONstringify(product)}}' wx:if="{{product.item_Status=='待评价'&&currentTab!='售后'}}">去评价</navigator>
+							<navigator class='product-custom' data-id="识别点击" url="/pages/measure/custom?id={{product.item_Id}}" wx:else hidden="{{currentTab=='待支付'||product.size!='高级定制'}}">个性化定制</navigator>
+							<navigator class="btn" data-id="识别点击" url='operation/comment?product={{utils.JSONstringify(product)}}' wx:if="{{product.item_Status=='待评价'&&currentTab!='售后'}}">去评价</navigator>
 						</view>
 					</view>
 				</view>
 				<view class='order-info' style="justify-content:flex-end;">
 					<view class='product-sum'>
-						<text space="nbsp" style="text-align:right;">总计￥{{order.pricePay}}，优惠￥0，实付款：￥{{order.pricePay}}</text>
+						<text space="nbsp" style="text-align:right;">总计￥{{order.pricePay}}，实付款：￥{{order.pricePay}}</text>
 					</view>
 				</view>
 				<block wx:if="{{order.status=='待支付'}}">
 					<view class='order-bot'>
-						<view bindtap='bindCancel' data-id='{{order.orderID}}' data-tid="{{order.id}}">取消订单</view>
+						<view bindtap='bindCancel' data-id='{{order.orderID}}' data-tid="{{order.id}}" style="border:none;color:white;background:#c00;">取消订单</view>
 						<view bindtap='bindPay' data-id='{{orderIndex}}'>去支付</view>
 					</view>
 				</block>
-				<block wx:if="{{currentTab !== '售后'}}">
+				<block wx:if="{{order.status=='待收货'&&currentTab !== '售后'}}">
 					<view class='order-bot'>
-						<view bindtap='express' data-expno='{{order.trafficeno}}' data-exptype='{{order.trafficenote}}' data-expname='{{order.trafficename}}'>查看物流</view>
+						<view bindtap="setClipboardData" data-data="{{order.deliverID}}" style="border:solid 1px #888;color:#555;">查看物流</view>
 						<view bindtap='bindReceive' data-id='{{order.orderID}}'>确认收货</view>
 					</view>
 				</block>

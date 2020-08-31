@@ -57,7 +57,7 @@
             <view class='goods-list-wrap'>
                 <view class='goods-list'>
                     <navigator url='/pages/shop/product/product?barcode={{product.barcode}}' class='goods' wx:for="{{products}}" wx:key="ps" wx:for-item="product">
-                        <image src='https://cdn.newdreamer.cn/products/{{product.barcode}}/%E4%B8%BB%E5%9B%BE/{{utils.split(product.image," ")[0]}}.jpg' class='goods-img' mode="aspectFill"></image>
+                        <image src='{{product.firstImage}}' class='goods-img' mode="aspectFill"></image>
                         <view class='goods-info'>
                             <text class='goods-name'>{{product.product_Name}}</text>
                             <text class='goods-desb'></text>

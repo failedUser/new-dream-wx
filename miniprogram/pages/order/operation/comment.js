@@ -5,23 +5,23 @@ Page({
         product: {},
         commentList: [{
                 commentKey: "尺寸",
-                commentType: "face",
-                commentTips: ["很小", "偏小", "合身", "偏大", "很大"],
+                commentType: "star",
+                commentTips: ["不如人意", "有待提高", "描述相符", "有点满意", "十分满意"],
                 defaultValue: 0
             }, {
                 commentKey: "面料",
                 commentType: "star",
-                commentTips: ["什么玩意", "不如人意", "平平无奇", "OJBK", "卧槽牛逼"],
+                commentTips: ["不如人意", "有待提高", "描述相符", "有点满意", "十分满意"],
                 defaultValue: 0
             }, {
                 commentKey: "做工",
                 commentType: "star",
-                commentTips: ["什么玩意", "不如人意", "平平无奇", "OJBK", "卧槽牛逼"],
+                commentTips: ["不如人意", "有待提高", "描述相符", "有点满意", "十分满意"],
                 defaultValue: 0
             }, {
                 commentKey: "物流",
                 commentType: "star",
-                commentTips: ["什么玩意", "不如人意", "平平无奇", "OJBK", "卧槽牛逼"],
+                commentTips: ["不如人意", "有待提高", "描述相符", "有点满意", "十分满意"],
                 defaultValue: 0
             }, {
                 commentKey: "文字评价",

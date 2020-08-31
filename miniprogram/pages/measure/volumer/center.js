@@ -9,6 +9,8 @@ Page({
                 new: true
             })
         }
+    },
+    onShow: function () {
         this.getInfo()
     },
     getInfo: function (status) {

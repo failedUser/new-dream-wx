@@ -20,7 +20,7 @@
 		<navigator class="dataTag blue" url="../measure?allowModified=true&rid={{data.reservation_Id}}&load=0" wx:elif="{{data.reservation_Status=='已接单'}}">
 			<text>开始量体</text>
 		</navigator>
-		<navigator class="dataTag gold" url="../measure?allowModified=true&rid={{data.volume_Id}}" wx:elif="{{data.reservation_Status=='已量体'}}">
+		<navigator class="dataTag gold" url="../measure?allowModified=true&rid={{data.reservation_Id}}" wx:elif="{{data.reservation_Status=='已量体'}}">
 			<text>量体数据</text>
 		</navigator>
 	</view>

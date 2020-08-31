@@ -22,6 +22,7 @@ Page({
             for (var i in orderList) {
                 orderList[i].needMeasure = 0
                 for (var j in orderList[i].products) {
+                    orderList[i].products[j].image = orderList[i].products[j].image ? JSON.parse(orderList[i].products[j].image) || '' : ''
                     if (orderList[i].products[j].crafts != "成衣商品") {
                         orderList[i].needMeasure = 1
                         orderList[i].reservation_Id = orderList[i].products[j].reservation_Id
@@ -68,9 +69,9 @@ Page({
     },
     bindOrderDetails: function (e) {
         console.log("bindOrderDetails", e)
-        if (e.target.dataset.status) return
+        if (e.target.dataset.id) return
         wx.navigateTo({
-            url: 'order?id=' + e.currentTarget.dataset.id
+            url: 'order?id=' + e.currentTarget.dataset.oid
         })
     },
     //预约量体

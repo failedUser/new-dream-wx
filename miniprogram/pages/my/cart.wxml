@@ -11,7 +11,7 @@
             <image wx:if="{{product.ischeck=='0'}}" src='/images/uncheck1.png' class='uncheck2' data-check='{{product.ischeck}}' data-id='{{product.id}}' bindtap='bindCheckbox' data-index="{{index}}"></image> -->
 						<view class='goods-info'>
 							<navigator url="/pages/shop/product/product?barcode={{product.barcode_Main}}" hover-class="none">
-								<image src='{{product.barcode_Main==undefined?"":("https://cdn.newdreamer.cn/products/"+product.barcode_Main+"/%E4%B8%BB%E5%9B%BE/0.jpg")}}' class='goods-img'></image>
+								<image src='{{product.image}}' class='goods-img'></image>
 							</navigator>
 							<view class='goods-info1'>
 								<view class="goods-title">

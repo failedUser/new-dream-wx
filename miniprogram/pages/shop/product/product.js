@@ -36,11 +36,9 @@ Page({
         this.setData({
             barcode: options.barcode
         })
-        if (options.dwi != undefined) {
-            this.setData({
-                Distributor_Wechat_Id: options.dwi,
-                Distributor_Wechat_Name: options.dwn
-            })
+        if (options.scene) {
+            app.globalData.scene = options.scene
+            this.data.scene = options.scene
         }
         this.getProduct(options.barcode)
         //this.getProductComment(options.barcode)
@@ -78,7 +76,7 @@ Page({
         })
     },
 
-    getFilePath () {
+    getFilePath() {
         return new Promise(res => {
             wx.downloadFile({
                 url: 'https://wechat-miniapp-newdreamer.oss-cn-shanghai.aliyuncs.com/product/2020-08-26/208ed126d34943079cd8582f0c4d4062-操作手册.png',
@@ -87,7 +85,7 @@ Page({
                         res(file.tempFilePath);
                     }
                 }
-              })
+            })
         })
     },
     onShareBtnClick() {
@@ -97,27 +95,27 @@ Page({
             this.showShareImage().then(data => {
                 const query = wx.createSelectorQuery()
                 query.select('#shareProduct')
-                .fields({ node: true, size: true })
-                .exec((res) => {
+                    .fields({ node: true, size: true })
+                    .exec((res) => {
 
-                    const userInfo = {
-                        avatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKK2p5NCgnbYgLjjEBPmiabkYWr2ythBhAvobnO1aqY19cVXTExmt932E0Z0rvX5xKuiaBsdVoDmkpw/132",
-                        city: "Zhongwei",
-                        country: "China",
-                        gender: 1,
-                        language: "zh_CN",
-                        nickName: "你好",
-                        province: "Ningxia",
-                    }
-                    const canvas = res[0].node
+                        const userInfo = {
+                            avatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKK2p5NCgnbYgLjjEBPmiabkYWr2ythBhAvobnO1aqY19cVXTExmt932E0Z0rvX5xKuiaBsdVoDmkpw/132",
+                            city: "Zhongwei",
+                            country: "China",
+                            gender: 1,
+                            language: "zh_CN",
+                            nickName: "你好",
+                            province: "Ningxia",
+                        }
+                        const canvas = res[0].node
                         const ctx = canvas.getContext('2d')
                         const dpr = wx.getSystemInfoSync().pixelRatio
                         canvas.width = res[0].width * dpr
                         canvas.height = res[0].height * dpr
                         ctx.scale(dpr, dpr)
                         // 背景
-                        ctx.fillStyle="#FFFFFF";
-                        ctx.fillRect(0,0,canvas.width,canvas.height);
+                        ctx.fillStyle = "#FFFFFF";
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
                         // 昵称
                         ctx.font = '18px "Fira Sans", sans-serif';
                         ctx.fillText(userInfo.nickName, 80, 45);
@@ -137,20 +135,20 @@ Page({
                         }
                         img.src = userInfo.avatarUrl;
 
-                       
+
                         // const img = canvas.createImage()
                         // img.onload = () => {
                         //     ctx.drawImage( img, 0, 0, 100, 100)
                         // }
                         // img.src = data;
-                    
-                })
+
+                    })
                 // this.getWxPathByBase64(data).then(url => {
                 //     console.log(url);
                 //     ctx.drawImage('https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKK2p5NCgnbYgLjjEBPmiabkYWr2ythBhAvobnO1aqY19cVXTExmt932E0Z0rvX5xKuiaBsdVoDmkpw/132', 0, 0, 100, 100);
                 //     ctx.draw();
                 // })
-                
+
                 // const query = wx.createSelectorQuery()
                 // query.select('#')
                 // .fields({ node: true, size: true })
@@ -162,12 +160,12 @@ Page({
                 //     canvas.width = res[0].width * dpr
                 //     canvas.height = res[0].height * dpr
                 //     ctx.scale(dpr, dpr)
-                   
+
                 //     ctx.draw();
                 // })
             })
-           
-          
+
+
         })
         console.log('授权之后的点击');
     },
@@ -205,10 +203,11 @@ Page({
             }
             for (let i in products) {
                 if (barcode == products[i]["barcode"]) mainProduct = i
-                products[i].image = products[i].image.split(" ")
                 products[i].size = products[i].size.split(" ")
                 if (products[i].price < price.min) price.min = products[i].price
                 if (products[i].price > price.max) price.max = products[i].price
+                products[i].image = products[i].image ? JSON.parse(products[i].image) || '' : ''
+                products[i].detailImages = products[i].detailImages ? JSON.parse(products[i].detailImages) || '' : ''
             }
             this.setData({
                 sales: data.sale_count,
@@ -397,7 +396,7 @@ Page({
             "barcode": this.data.products[this.data.selectProduct].barcode,
             "barcode_Main": this.data.products[this.data.mainProduct].barcode,
             "product_Name": this.data.products[this.data.selectProduct].product_Name,
-            "image": this.data.products[this.data.selectProduct].image[0],
+            "image": this.data.products[this.data.mainProduct].image[0],
             "price": this.data.products[this.data.selectProduct].price,
             "count": this.data.count,
             "measureID": this.data.selectSize,
@@ -488,11 +487,11 @@ Page({
         }
     },
 
-    shareUrl: function (){
+    shareUrl: function () {
         const { EncodeID, openId, userInfo = {} } = app.globalData;
-        return `pages/shop/product/product?barcode=${this.data.barcode}&dwi=${EncodeID}&dwn=${userInfo && userInfo.nickName}`
+        return `pages/shop/product/product?barcode=${this.data.barcode}&scene=s_${app.globalData.openId}`
     },
-    
+
     onShareAppMessage: function (res) {
         return {
             path: this.shareUrl()

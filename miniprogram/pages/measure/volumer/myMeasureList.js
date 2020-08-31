@@ -11,10 +11,6 @@ Page({
         wx.setNavigationBarTitle({
             title: options.title
         })
-        this.getMeasureList(this.data.status)
-        if (this.data.status == "派单中") {
-            this.getMeasureList("已接单")
-        }
     },
     onShow: function () {
         this.data.measureList = []

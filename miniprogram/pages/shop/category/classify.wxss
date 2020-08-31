@@ -175,6 +175,7 @@
     flex-shrink: 0;
     width: 100%;
     width: 320rpx;
+    height: 320rpx;
     margin-bottom: 0.5rem;
     border-radius: 25rpx 25rpx 0 0;
 }

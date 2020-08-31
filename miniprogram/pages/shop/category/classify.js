@@ -36,6 +36,11 @@ Page({
     },
     request: function () {
         app.request("https://newdreamer.cn:8080/api/Classification/get").then(data => {
+            for (let c of data) {
+                for (let p of c.products) {
+                    p.firstImage = p.image ? JSON.parse(p.image)[0] : ''
+                }
+            }
             this.setData({
                 categories: data,
                 products: data[this.data.currentCategory] == undefined ? [] : this.getProductsByGender(data[this.data.currentCategory].products, this.data.gender)
@@ -46,7 +51,7 @@ Page({
         var currentCategory = e.currentTarget.dataset.tab
         this.setData({
             currentCategory: currentCategory,
-            products:  this.getProductsByGender(this.data.categories[currentCategory]['products'], this.data.gender)
+            products: this.getProductsByGender(this.data.categories[currentCategory]['products'], this.data.gender)
         })
     },
     bindCategorySelecter: function () {
@@ -54,7 +59,7 @@ Page({
             showCategorySelecter: !this.data.showCategorySelecter
         })
     },
-    getProductsByGender (list ,gender) {
+    getProductsByGender(list, gender) {
         return list.filter(item => {
             return item.gender == gender
         })

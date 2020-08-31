@@ -2,6 +2,7 @@ const app = getApp()
 Page({
     data: {
         orderList: [],
+        rewards: [],
         timeStart: "",
         timeEnd: "",
         name: "",
@@ -30,7 +31,8 @@ Page({
             offset: this.data.offset
         }).then(orderList => {
             this.setData({
-                orderList: this.data.orderList.concat(orderList)
+                orderList: this.data.orderList.concat(orderList.orders),
+                rewards: this.data.rewards.concat(orderList.rewards)
             })
         });
     },

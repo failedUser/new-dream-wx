@@ -28,11 +28,11 @@ Page({
                 "id": 1,
                 "text": "衬衫"
             }, {
-                "id": 2,
-                "text": "裤子"
-            }, {
                 "id": 4,
                 "text": "配饰"
+            }, {
+                "id": 2,
+                "text": "裤子"
             }]
             const { manModules, womenModules } = data;
             const list = [manModules.suits, manModules.shirt, manModules.accessories, womenModules.suits, womenModules.shirt, womenModules.accessories].filter(item => {
