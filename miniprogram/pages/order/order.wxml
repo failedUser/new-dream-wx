@@ -43,7 +43,12 @@
 					<block wx:else>
 						<navigator class='product-custom' url="/pages/measure/custom?id={{product.item_Id}}{{isSelf?'':'&allowModified=0'}}" wx:if="{{product.crafts=='高级定制'}}">个性化定制</navigator>
 						<view wx:else></view>
-						<text class="order-btn" bindtap='refund' data-id='{{product.item_Id}}' hidden="{{!isSelf}}">申请退款</text>
+						<text 
+							class="order-btn" 
+							bindtap='refund' 
+							data-id='{{product.item_Id}}' 
+							hidden="{{!isSelf||product.item_Status=='已驳回'||product.item_Status==='已完成'||product.item_Status==='退款中'||product.item_Status=='待评价'||product.item_Status=='已退款'}}"
+						>申请退款</text>
 					</block>
 				</view>
 			</view>

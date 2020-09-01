@@ -22,6 +22,7 @@ Page({
     },
     onLoad: function (options) {
         const products = JSON.parse(options.products);
+        console.log(products);
         const menu = ['量身定制', '高级定制'];
         const isDIY = products.find(product => menu.indexOf(product.measureID) >= 0); // 判断是不是定制
         this.setData({

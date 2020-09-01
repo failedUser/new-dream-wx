@@ -6,6 +6,7 @@ Page({
         isSelf: true
     },
     onLoad: function (options) {
+        console.log(options);
         this.setData({
             "orderInfo.order_Id": options.id,
             isSelf: options.isSelf != 0
@@ -29,6 +30,10 @@ Page({
                     } else if (data.itemInfos[j].item_Status == "待量体") {
                         data.itemInfos[j].needMeasure = 4
                     } else if (data.itemInfos[j].item_Status == "已量体") {
+                        data.itemInfos[j].needMeasure = 5
+                    } else if (data.itemInfos[j].item_Status == "待评价") {
+                        data.itemInfos[j].needMeasure = 5
+                    } else if (data.itemInfos[j].item_Status == "已完成") {
                         data.itemInfos[j].needMeasure = 5
                     }
                 }

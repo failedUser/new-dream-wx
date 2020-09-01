@@ -38,7 +38,7 @@
             </view>
 
             <view class='goods-info' wx:for="{{products}}" wx:key="id" wx:for-item="product">
-                <image src='https://cdn.newdreamer.cn/products/{{product.barcode_Main}}/%E4%B8%BB%E5%9B%BE/0.jpg' class='goods-img'></image>
+                <image src='{{product.image}}' class='goods-img'></image>
                 <view class='goods-info1'>
                     <view class='goods-info1-top'>
                         <text class='goods-name'>{{product.product_Name}}</text>

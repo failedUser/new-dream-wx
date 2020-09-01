@@ -47,7 +47,7 @@
 						<view class='order-info-bot'>
 							<text class="product-desb" style="color:Red;" wx:if="{{currentTab=='售后'}}"></text>
 							<navigator class='product-custom' data-id="识别点击" url="/pages/measure/custom?id={{product.item_Id}}" wx:else hidden="{{currentTab=='待支付'||product.size!='高级定制'}}">个性化定制</navigator>
-							<navigator class="btn" data-id="识别点击" url='operation/comment?product={{utils.JSONstringify(product)}}' wx:if="{{product.item_Status=='待评价'&&currentTab!='售后'}}">去评价</navigator>
+							<navigator class="product-evaluation-btn" data-id="识别点击" url='operation/comment?product={{utils.JSONstringify(product)}}' wx:if="{{product.item_Status=='待评价'&&currentTab!='售后'}}">去评价</navigator>
 						</view>
 					</view>
 				</view>

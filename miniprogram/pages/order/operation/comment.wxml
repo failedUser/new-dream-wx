@@ -1,7 +1,7 @@
 <wxs module="utils" src="../../../utils/utils.wxs"></wxs>
 <form bindsubmit="submit">
     <view class="product-wrap">
-        <image class="product-image" src='{{product.barcode_Main==undefined?"":("https://cdn.newdreamer.cn/products/"+product.barcode_Main+"/%E4%B8%BB%E5%9B%BE/0.jpg")}}' />
+        <image class="product-image" src='{{product.image[0]}}' />
         <view class="product-info">
             <view class="row">
                 <text class="product_Name">{{product.product_Name}}</text>

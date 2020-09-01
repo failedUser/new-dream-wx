@@ -42,6 +42,7 @@ Page({
     },
     onLoad: function (options) {
         var product = JSON.parse(options.product)
+        console.log(product);
         this.setData({
             orderItemID: product.orderItemID,
             product: product

@@ -20,7 +20,6 @@ Page({
         }).then(orderList => {
             var hasOrder = orderList.length > 0
             for (var i in orderList) {
-                // orderList[i].products[j].needMeasure = 0
                 for (var j in orderList[i].products) {
                     orderList[i].products[j].image = orderList[i].products[j].image ? JSON.parse(orderList[i].products[j].image) || '' : ''
                     if (orderList[i].products[j].crafts != "成衣商品") {
@@ -36,8 +35,10 @@ Page({
                             orderList[i].products[j].needMeasure = 5
                         } else if (orderList[i].products[j].item_Status == "待评价") {
                             orderList[i].products[j].needMeasure = 5
+                        } else if (orderList[i].products[j].item_Status == "已完成") {
+                            orderList[i].products[j].needMeasure = 5
                         }
-                        break
+                        // break
                     }
                 }
             }
