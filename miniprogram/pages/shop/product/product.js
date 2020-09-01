@@ -56,7 +56,7 @@ Page({
         const main = this.data.products[this.data.mainProduct];
         const shareModal = {
             path: this.shareUrl(),
-            scene: `sc_${app.globalData.openId}`,
+            scene: `s_${app.globalData.openId}`,
             image: main.image[0],
             price: price.min==price.max?price.max:(price.min+"-"+price.max),
             title: main.product_Name
