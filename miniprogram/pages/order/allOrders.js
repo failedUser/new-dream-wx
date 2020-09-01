@@ -20,27 +20,28 @@ Page({
         }).then(orderList => {
             var hasOrder = orderList.length > 0
             for (var i in orderList) {
-                orderList[i].needMeasure = 0
+                // orderList[i].products[j].needMeasure = 0
                 for (var j in orderList[i].products) {
                     orderList[i].products[j].image = orderList[i].products[j].image ? JSON.parse(orderList[i].products[j].image) || '' : ''
                     if (orderList[i].products[j].crafts != "成衣商品") {
-                        orderList[i].needMeasure = 1
+                        orderList[i].products[j].needMeasure = 1
                         orderList[i].reservation_Id = orderList[i].products[j].reservation_Id
                         if (orderList[i].products[j].item_Status == "待预约") {
-                            orderList[i].needMeasure = 2
+                            orderList[i].products[j].needMeasure = 2
                         } else if (orderList[i].products[j].item_Status == "预约中") {
-                            orderList[i].needMeasure = 3
+                            orderList[i].products[j].needMeasure = 3
                         } else if (orderList[i].products[j].item_Status == "待量体") {
-                            orderList[i].needMeasure = 4
+                            orderList[i].products[j].needMeasure = 4
                         } else if (orderList[i].products[j].item_Status == "已量体") {
-                            orderList[i].needMeasure = 5
+                            orderList[i].products[j].needMeasure = 5
                         } else if (orderList[i].products[j].item_Status == "待评价") {
-                            orderList[i].needMeasure = 5
+                            orderList[i].products[j].needMeasure = 5
                         }
                         break
                     }
                 }
             }
+            console.log(orderList);
             this.setData({
                 hasOrder: hasOrder,
                 orderList: orderList

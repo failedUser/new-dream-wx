@@ -68,7 +68,7 @@
 		<view class="sub-title">时间</view>
 		<view class="content">{{reservationInfo.time}}</view>
 		<view class="sub-title">地点</view>
-		<view class="content">{{reservationInfo.adress}}</view>
+		<view class="content">{{reservationInfo.address}}</view>
 		<view class="sub-title">联系方式</view>
 		<view class="content">{{reservationInfo.phone}}</view>
 	</view>

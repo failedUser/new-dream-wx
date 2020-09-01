@@ -220,6 +220,7 @@ Page({
     },
     //选择子产品
     choseProduct: function (e) {
+        console.log(this.data.products);
         this.setData({
             selectProduct: e.currentTarget.dataset.pid
         })

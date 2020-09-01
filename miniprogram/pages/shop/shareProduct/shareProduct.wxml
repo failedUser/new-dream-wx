@@ -5,7 +5,7 @@
           <open-data class='share-content-avatar' type="userAvatarUrl"></open-data>
         <view class="share-content-name">
           <open-data class='share-content-nickName' type="userNickName"></open-data>
-          <text class="share-content-text">为您挑选了一件西服</text>
+          <text class="share-content-text">为您挑选了一件商品</text>
         </view>
       </view>
      <view class="share-product-info">

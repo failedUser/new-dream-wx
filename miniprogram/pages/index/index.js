@@ -32,7 +32,7 @@ Page({
                 "text": "配饰"
             }, {
                 "id": 2,
-                "text": "裤子"
+                "text": "其他"
             }]
             const { manModules, womenModules } = data;
             const list = [manModules.suits, manModules.shirt, manModules.accessories, womenModules.suits, womenModules.shirt, womenModules.accessories].filter(item => {

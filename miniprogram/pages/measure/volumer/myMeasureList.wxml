@@ -10,7 +10,7 @@
 	</view>
 	<view class="data-wrap">
 		<view class="data full">时间：{{data.time}}</view>
-		<view class="data full">地点：{{data.adress}}</view>
+		<view class="data full">地点：{{data.address}}</view>
 		<view class="data full">状态：{{data.reservation_Status}}</view>
 	</view>
 	<view class="row jc-fe ai-c" style="padding-top:15rpx;border-top:solid 1px #ccc;">

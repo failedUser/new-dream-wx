@@ -19,7 +19,7 @@
 	</view>
 	<view class="data-wrap" wx:else>
 		<view class="data"><text class="title">量体时间</text><text>：{{data.time}}</text></view>
-		<view class="data"><text class="title">量体地址</text><text>：{{data.adress}}</text></view>
+		<view class="data"><text class="title">量体地址</text><text>：{{data.address}}</text></view>
 		<view class="data" wx:if="{{data.reservation_Status!='预约中'}}"><text class="title">量体师</text><text>：{{measureData.volumers[i].name}}</text></view>
 	</view>
 	<view class="row jc-fe ai-c">
