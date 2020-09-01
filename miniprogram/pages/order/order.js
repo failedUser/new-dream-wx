@@ -42,6 +42,11 @@ Page({
             url: '/pages/measure/reservation?id=' + e.currentTarget.dataset.id + "&status=" + e.currentTarget.dataset.status
         })
     },
+    moveToMyMeasture() {
+        wx.switchTab({
+          url: '/pages/measure/index',
+        })
+    },      
     lookMeasureData: function (e) {
         wx.navigateTo({
             url: '/pages/measure/measure?rid=' + e.currentTarget.dataset.id,

@@ -51,123 +51,21 @@ Page({
             })
         })
     },
-    onCanvasBackClick(e) {
-        this.setData({
-            showShareCanvas: false
-        })
-    },
-    getWxPathByBase64(baseUrl) {
-        return new Promise((res, rej) => {
-            const fs = wx.getFileSystemManager();
-            var number = Math.random();
-            let filePath = wx.env.USER_DATA_PATH + '/pic' + number + '.png'
-            fs.writeFile({
-                filePath,
-                data: baseUrl,
-                encoding: 'base64',
-                success(e) {
-                    if (e.errMsg === 'writeFile:ok') {
-                        res(filePath);
-                    } else {
-                        rej('分享失败');
-                    }
-                }
-            })
-        })
-    },
-
-    getFilePath() {
-        return new Promise(res => {
-            wx.downloadFile({
-                url: 'https://wechat-miniapp-newdreamer.oss-cn-shanghai.aliyuncs.com/product/2020-08-26/208ed126d34943079cd8582f0c4d4062-操作手册.png',
-                success(file) {
-                    if (file.statusCode == 200) {
-                        res(file.tempFilePath);
-                    }
-                }
-            })
-        })
-    },
     onShareBtnClick() {
-        this.setData({
-            showShareCanvas: true
-        }, () => {
-            this.showShareImage().then(data => {
-                const query = wx.createSelectorQuery()
-                query.select('#shareProduct')
-                    .fields({ node: true, size: true })
-                    .exec((res) => {
-
-                        const userInfo = {
-                            avatarUrl: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKK2p5NCgnbYgLjjEBPmiabkYWr2ythBhAvobnO1aqY19cVXTExmt932E0Z0rvX5xKuiaBsdVoDmkpw/132",
-                            city: "Zhongwei",
-                            country: "China",
-                            gender: 1,
-                            language: "zh_CN",
-                            nickName: "你好",
-                            province: "Ningxia",
-                        }
-                        const canvas = res[0].node
-                        const ctx = canvas.getContext('2d')
-                        const dpr = wx.getSystemInfoSync().pixelRatio
-                        canvas.width = res[0].width * dpr
-                        canvas.height = res[0].height * dpr
-                        ctx.scale(dpr, dpr)
-                        // 背景
-                        ctx.fillStyle = "#FFFFFF";
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        // 昵称
-                        ctx.font = '18px "Fira Sans", sans-serif';
-                        ctx.fillText(userInfo.nickName, 80, 45);
-                        // 头像
-                        // ctx.arc(45, 45, 25, Math.PI * 2, false);
-                        // ctx.clip();
-                        this.getFilePath().then(produ => {
-                            const img2 = canvas.createImage();
-                            img2.onload = () => {
-                                ctx.drawImage(img2, 20, 80, 260, 500)
-                            }
-                            img2.src = produ;
-                        })
-                        const img = canvas.createImage();
-                        img.onload = () => {
-                            ctx.drawImage(img, 20, 20, 50, 50)
-                        }
-                        img.src = userInfo.avatarUrl;
-
-
-                        // const img = canvas.createImage()
-                        // img.onload = () => {
-                        //     ctx.drawImage( img, 0, 0, 100, 100)
-                        // }
-                        // img.src = data;
-
-                    })
-                // this.getWxPathByBase64(data).then(url => {
-                //     console.log(url);
-                //     ctx.drawImage('https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKK2p5NCgnbYgLjjEBPmiabkYWr2ythBhAvobnO1aqY19cVXTExmt932E0Z0rvX5xKuiaBsdVoDmkpw/132', 0, 0, 100, 100);
-                //     ctx.draw();
-                // })
-
-                // const query = wx.createSelectorQuery()
-                // query.select('#')
-                // .fields({ node: true, size: true })
-                // .exec((res) => {
-                //     console.log(res);
-                //     const canvas = res[0].node
-                //     const ctx = canvas.getContext('2d')
-                //     const dpr = wx.getSystemInfoSync().pixelRatio
-                //     canvas.width = res[0].width * dpr
-                //     canvas.height = res[0].height * dpr
-                //     ctx.scale(dpr, dpr)
-
-                //     ctx.draw();
-                // })
-            })
-
-
+        const price = this.data.price;
+        const main = this.data.products[this.data.mainProduct];
+        const shareModal = {
+            path: this.shareUrl(),
+            scene: `sc_${app.globalData.openId}`,
+            image: main.image[0],
+            price: price.min==price.max?price.max:(price.min+"-"+price.max),
+            title: main.product_Name
+        }
+        console.log(shareModal);
+        app.globalData.shareModal = shareModal;
+        wx.navigateTo({
+          url: '/pages/shop/shareProduct/shareProduct',
         })
-        console.log('授权之后的点击');
     },
     onShow: function () {
         this.getCart()
@@ -330,7 +228,8 @@ Page({
     choseSize: function (e) {
         this.setData({
             selectSize: e.currentTarget.dataset.did,
-            selectSizeName: e.currentTarget.dataset.name
+            selectSizeName: e.currentTarget.dataset.name,
+            image: ''
         })
     },
     //跳转
@@ -466,15 +365,6 @@ Page({
         }
     },
 
-    showShareImage: function () {
-        return app.request('https://newdreamer.cn:8080/api/QRcode/get', {
-            path: this.shareUrl(),
-            scene: `sc_${app.globalData.openId}`,
-            width: 100
-        }).then(data => {
-            return 'data:image/png;base64,' + data
-        })
-    },
 
     getPhoneNumber: function (e) {
         if (e.detail.errMsg == "getPhoneNumber:ok") {

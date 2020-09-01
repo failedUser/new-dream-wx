@@ -12,7 +12,7 @@
 		<view class='goods-info'>
 			<view class='goods-info0'>
 				<text class='goods-name'>{{products[mainProduct].product_Name}}</text>
-					<auth-modal authes="{{authes}}" type="button" bind:onClick="onShareBtnClick" >
+					<auth-modal authes="{{authes}}" type="button" bind:onClick="onShareBtnClick" bind:authSuccess="onShareBtnClick" >
 						<view  slot="shareBtn">
 								<view  class="ButtonCover share">
 									<image class="icon-share" src="/images/icon/share.png"></image>
@@ -208,7 +208,5 @@
 			<text class='act-buy' bindtap='bindChooseSpec' data-buynow="2">立即购买</text>
 		</view>
 	</view>
-<view bindtap="onCanvasBackClick" class="product-share-modal {{showShareCanvas ? 'product-share-modal--visible' : ''}}">
-	 <canvas type="2d" id="shareProduct" ></canvas>
-</view>
+
 </view>

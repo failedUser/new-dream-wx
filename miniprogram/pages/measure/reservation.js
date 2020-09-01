@@ -21,6 +21,7 @@ Page({
         part: '',
         partArray: [],
         multiIndex: [0, 0],
+        room: ''
 
     },
     onSelectedCollege(e) {
@@ -35,9 +36,19 @@ Page({
             part: ''
         })
     },
+    onChangeRoom(e) {
+        let value = e.detail.value;
+        let info = this.data.info;
+        info['宿舍'] = value;
+        this.setData({
+            info,
+            room: value
+        })
+    },
     onSelectedPart(e) {
         let info = this.data.info;
-        info['校区'] = this.partArray[e.detail.value]
+        info['校区'] = this.data.partArray[e.detail.value]
+        console.log(this.data.partArray);
         this.setData({
             part: e.detail.value,
             info

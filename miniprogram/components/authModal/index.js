@@ -1,3 +1,4 @@
+const app = getApp();
 Component({
 
 options: {
@@ -95,8 +96,8 @@ options: {
         return new Promise((res,rej) => {
           this.setData({
             resolveAuth: this.properties.authes.reverse(),
-            needUserInfo: true,
-            needPhoneNumebr: true
+            needUserInfo: false,
+            needPhoneNumebr: !app.globalData.phone
           }, res);
         })
       },
@@ -109,6 +110,7 @@ options: {
         } else {
           this.getAuthInfoFromRequest().then(() => {
             const {needUserInfo, needPhoneNumebr} = this.data;
+            console.log()
             let status = true;
            authes.forEach(auth => {
              if (!status) {
@@ -161,8 +163,12 @@ options: {
         if (e.detail.errMsg !== 'getPhoneNumber:ok') {
           this.cancel();
         } else {
-          this.checkAuth();
-          this.startAuth();
+          app.request("https://newdreamer.cn:8080/api/phone/set", e.detail).then(phone => {
+                app.globalData.phone = phone
+                this.checkAuth();
+                this.startAuth();
+            });
+          
         }
         
       },

@@ -11,15 +11,17 @@
                         </view>
                     </view>
                 </scroll-view>
-                <!--
-                <view class="classify-arrow" bindtap="bindCategorySelecter">
+                
+                <!-- <view class="classify-arrow" bindtap="bindCategorySelecter">
                     <text class="arrow-down"></text>
                 </view>
 			    -->
                 <view class="classify-arrow" bindtap="switchGender">
                     <image src="/images/icon/male.png" style="width:40rpx;height:40rpx;" wx:if="{{gender=='男'}}"></image>
                     <image src="/images/icon/female.png" style="width:40rpx;height:40rpx;" wx:else></image>
+                    
                 </view>
+                <text bindtap="switchGender" class="arrow-down"></text>
             </view>
             <!--
             <view class='classify-header'>

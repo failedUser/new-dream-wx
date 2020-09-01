@@ -30,6 +30,9 @@
     padding: 25rpx 10rpx;
     border-bottom: solid 1px #ddd;
 }
+.border-bottom {
+    border-bottom: solid 1px #ddd;
+}
 
 .info-wrap .info.noBorder {
     border-bottom: none;
