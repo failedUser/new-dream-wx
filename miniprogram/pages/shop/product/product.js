@@ -110,11 +110,11 @@ Page({
                 products[i].size = products[i].size.split(" ")
                 if (products[i].price < price.min) {
                     price.min = products[i].price
-                    price.minShare = products[i].price - (products[i].distributor_Deduction || 0)
+                    price.minShare = products[i].price - (products[i].singleDistributionDeducation || 0)
                 }
                 if (products[i].price > price.max) {
                     price.max = products[i].price
-                    price.maxShare = products[i].price - (products[i].distributor_Deduction || 0)
+                    price.maxShare = products[i].price - (products[i].singleDistributionDeducation || 0)
                 } 
                 products[i].image = products[i].image ? JSON.parse(products[i].image) || '' : ''
                 products[i].detailImages = products[i].detailImages ? JSON.parse(products[i].detailImages) || '' : ''

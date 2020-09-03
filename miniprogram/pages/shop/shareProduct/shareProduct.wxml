@@ -13,8 +13,8 @@
       <view class="share-content-price">
         <!-- <text class="share-content-shareText">原价!!!: </text> -->
       <text class="content-price-prefix">¥</text>{{shareModal.price}}</view>
-      <!-- <view class="share-content-price"><text class="share-content-shareText">好友分享价!!!</text> -->
-      <!-- <text class="content-price-prefix">¥</text>{{shareModal.sharePrice}}</view> -->
+      <!-- <view class="share-content-price"><text class="share-content-shareText">好友分享价!!!</text>
+      <text class="content-price-prefix">¥</text>{{shareModal.sharePrice}}</view> -->
       <view class="content-qrcode">
         <view class="share-title">{{shareModal.title}}
         <!-- <view style="color:red">专属大学生的西装！！！！</view> -->
