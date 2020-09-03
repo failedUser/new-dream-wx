@@ -24,8 +24,17 @@ Page({
         wx.getStorage({
             key: "currentCategory",
             success(res) {
+                let _data = res.data;
+                let currentCategory = _data;
+                let gender = '男';
+                console.log(_data);
+                if (_data > 2) {
+                    currentCategory = _data - 3;
+                    gender = '女';
+                }
                 that.setData({
-                    currentCategory: res.data
+                    currentCategory: currentCategory,
+                    gender
                 })
                 wx.removeStorage({
                     key: "currentCategory"

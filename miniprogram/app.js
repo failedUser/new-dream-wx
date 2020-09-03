@@ -61,6 +61,8 @@ App({
                             sc_code: res.code
                         }, false).then(data => {
                             this.globalData.EncodeID = data.EncodeID
+                            this.globalData.memberId = data.memberId
+                            
                             this.globalData.openId = data.openId
                             this.globalData.sessionKey = data.sessionKey
                             this.globalData.phone = data.phone == undefined ? "" : data.phone

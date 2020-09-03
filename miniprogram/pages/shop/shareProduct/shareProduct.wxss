@@ -38,6 +38,10 @@
   font-size: 24rpx;
   color: #9D9D9D;
 }
+.share-content-shareText {
+  font-size: 24rpx;
+  margin-left: 20px;
+}
 .share-product-info {
   background: #fff;
   margin-top: 10px;
@@ -55,6 +59,7 @@ box-shadow: 0rem 0.2rem 0.6rem 0rem #E9E9E9;
   color: #FF2244;
   font-size: 48rpx;
   font-weight: bold;
+  margin-left: 20px;
 
 }
 .content-price-prefix {

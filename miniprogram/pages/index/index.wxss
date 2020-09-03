@@ -36,6 +36,9 @@ Page {
     line-height: 28rpx;
     color: #555;
 }
+.notice-text--0 {
+    color: #e33535;
+}
 
 /* 下拉框 */
 .dropdown {

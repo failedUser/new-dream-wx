@@ -33,14 +33,16 @@ Page({
         showShareCanvas: false
     },
     onLoad: function (options) {
+        const barcode = options.b || options.barcode;
         this.setData({
-            barcode: options.barcode
+            barcode: barcode
         })
-        if (options.scene) {
-            app.globalData.scene = options.scene
-            this.data.scene = options.scene
+        let scene = options.s || options.scene;
+        if (scene) {
+            app.globalData.scene = scene
+            this.data.scene = scene;
         }
-        this.getProduct(options.barcode)
+        this.getProduct(barcode)
         //this.getProductComment(options.barcode)
         const query = wx.createSelectorQuery()
         query.select('#nav').boundingClientRect()
@@ -51,14 +53,16 @@ Page({
             })
         })
     },
+
     onShareBtnClick() {
         const price = this.data.price;
         const main = this.data.products[this.data.mainProduct];
         const shareModal = {
-            path: this.shareUrl(),
-            scene: `s_${app.globalData.openId}`,
+            path: '/pages/shop/product/product',
+            scene: `b=${this.data.barcode}&s=s_${app.globalData.memberId}`, // b代表barcode， s是scene
             image: main.image[0],
-            price: price.min==price.max?price.max:(price.min+"-"+price.max),
+            price: price.max,
+            sharePrice: price.maxShare,
             title: main.product_Name
         }
         console.log(shareModal);
@@ -97,13 +101,21 @@ Page({
             let mainProduct = 0
             let price = {
                 "min": 99999,
-                "max": 0
+                "max": 0,
+                "minShare": 0,
+                "maxShare": 0
             }
             for (let i in products) {
                 if (barcode == products[i]["barcode"]) mainProduct = i
                 products[i].size = products[i].size.split(" ")
-                if (products[i].price < price.min) price.min = products[i].price
-                if (products[i].price > price.max) price.max = products[i].price
+                if (products[i].price < price.min) {
+                    price.min = products[i].price
+                    price.minShare = products[i].price - (products[i].distributor_Deduction || 0)
+                }
+                if (products[i].price > price.max) {
+                    price.max = products[i].price
+                    price.maxShare = products[i].price - (products[i].distributor_Deduction || 0)
+                } 
                 products[i].image = products[i].image ? JSON.parse(products[i].image) || '' : ''
                 products[i].detailImages = products[i].detailImages ? JSON.parse(products[i].detailImages) || '' : ''
             }
@@ -220,7 +232,6 @@ Page({
     },
     //选择子产品
     choseProduct: function (e) {
-        console.log(this.data.products);
         this.setData({
             selectProduct: e.currentTarget.dataset.pid
         })
@@ -380,7 +391,7 @@ Page({
 
     shareUrl: function () {
         const { EncodeID, openId, userInfo = {} } = app.globalData;
-        return `pages/shop/product/product?barcode=${this.data.barcode}&scene=s_${app.globalData.openId}`
+        return `/pages/shop/product/product?b=${this.data.barcode}&s=s_${app.globalData.memberID}`
     },
 
     onShareAppMessage: function (res) {

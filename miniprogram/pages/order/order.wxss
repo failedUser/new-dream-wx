@@ -76,12 +76,13 @@
     background-color: #fff;
 }
 
-.order-btn {
-    font-size: 24rpx;
-    border: 1px solid #ccc;
+ 
+.order-info-bot .order-btn,  .order-btn{
+    font-size: 20rpx;
+    border: 1px solid #d9d9d9;
     color: #bbb;
-    line-height: 40rpx;
-    padding: 3rpx 15rpx;
+    line-height: 35rpx;
+    padding: 3rpx 10rpx;
     border-radius: 10rpx;
 }
 
