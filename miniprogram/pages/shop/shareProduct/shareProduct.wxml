@@ -1,28 +1,43 @@
 
 <view class="share-product">
     <view class="share-content">
+      <image mode="aspectFit"  class="content-header-image" src="../../../images/studentImage.png" />
       <view class="share-content-header">
-          <open-data class='share-content-avatar' type="userAvatarUrl"></open-data>
+          
         <view class="share-content-name">
-          <open-data class='share-content-nickName' type="userNickName"></open-data>
-          <text class="share-content-text">为您挑选了一件商品</text>
+          //<open-data class='share-content-avatar' type="userAvatarUrl"></open-data><open-data class='share-content-nickName' type="userNickName"></open-data> 给你分享了一件好物//
         </view>
+        <!-- <view class="share-content-name">
+          // 给你分享了一件好物 //
+        </view> -->
       </view>
      <view class="share-product-info">
       <image class="share-content-image" src="{{shareModal.image}}"  mode="aspectFill" />
-      <view class="share-content-price">
-        <!-- <text class="share-content-shareText">原价!!!: </text> -->
-      <text class="content-price-prefix">¥</text>{{shareModal.price}}</view>
-      <!-- <view class="share-content-price"><text class="share-content-shareText">好友分享价!!!</text>
-      <text class="content-price-prefix">¥</text>{{shareModal.sharePrice}}</view> -->
+     <div class="price-container">
+      <div>
+          <view class="share-content-price">
+            <text>原价: </text>
+             <text class="content-market-price">
+          <text class="content-price-prefix">¥</text>{{shareModal.price}}
+          <text class="market-price-delLine"></text>
+          <text class="market-price-delLine market-price-delLine-2 "></text>
+        </text></view>
+        <view class="share-content-price--share">
+          <text class="share-content-shareText">分享价:</text>
+          <!-- <text class="content-price-prefix">¥</text>9999.9!</view> -->
+        <text class="content-price-prefix">¥</text>{{shareModal.sharePrice}}!</view>
+        <view class="share-content-tip">不用出门!</view>
+        <view class="share-content-tip">免费上门量体!</view>
+        <view class="share-content-tip">为同学你量身定制!</view>
+      </div>
       <view class="content-qrcode">
-        <view class="share-title">{{shareModal.title}}
-        <!-- <view style="color:red">专属大学生的西装！！！！</view> -->
-        </view>
         <image class="share-qrcode" src="{{qrcode}}" />
+        <text>长按扫码进入</text>
      </view>
+     </div>
+   
      </view>
     </view>
 
-    <view>快截图分享给你的朋友</view>
+    <view class="tips">快截图分享给你的朋友</view>
 </view>
