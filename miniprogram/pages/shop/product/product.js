@@ -11,6 +11,7 @@ Page({
             "min": 0,
             "max": 0
         },
+        shareFromSelf: false,
         mainProduct: 0,
         selectProduct: 0,
         selectSize: -1,
@@ -30,14 +31,16 @@ Page({
         scene: app.globalData.share,
         phone: "",
         authes: ['userInfo', 'phoneNumber'],
-        showShareCanvas: false
+        showShareCanvas: false,
+        shareDialogVisible: false
     },
     onLoad: function (options) {
         const barcode = options.b || options.barcode;
         this.setData({
             barcode: barcode
         })
-        let scene = options.s || options.scene;
+        let scene = decodeURIComponent(options.s || options.scene || '');
+        console.log(scene);
         if (scene) {
             app.globalData.scene = scene
             this.data.scene = scene;
@@ -54,6 +57,12 @@ Page({
         })
     },
 
+    toShare () {
+        this.setData({
+            shareDialogVisible: true
+        })
+    },
+
     onShareBtnClick() {
         const price = this.data.price;
         const main = this.data.products[this.data.mainProduct];
@@ -65,10 +74,12 @@ Page({
             sharePrice: price.maxShare,
             title: main.product_Name
         }
-        console.log(shareModal);
         app.globalData.shareModal = shareModal;
         wx.navigateTo({
           url: '/pages/shop/shareProduct/shareProduct',
+        })
+        this.setData({
+            shareDialogVisible: false
         })
     },
     onShow: function () {
@@ -96,7 +107,10 @@ Page({
     },
     //获取商品
     getProduct: function (barcode) {
-        app.request("https://newdreamer.cn:8080/api/productInfo/get", { Barcode: barcode, scene: this.data.scene }).then(data => {
+        app.request("https://newdreamer.cn:8080/api/productInfo/get", { 
+            Barcode: barcode, 
+            scene: app.globalData.scene || false
+         }).then(data => {
             let products = data.products
             let mainProduct = 0
             let price = {
@@ -124,7 +138,8 @@ Page({
                 mainProduct: mainProduct,
                 products: products,
                 price: price,
-                phone: app.globalData.phone
+                phone: app.globalData.phone,
+                shareFromSelf: data.shareFromSelf || false
             })
             this.getProductComment(products[mainProduct].barcode)
             if (this.data.Distributor_Wechat_Name == app.globalData.userInfo && app.globalData.userInfo.nickName) {
@@ -164,7 +179,7 @@ Page({
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             data: {
-                memberID: app.globalData.memberID,
+                memberId: app.globalData.memberId,
                 barcode: that.data.products[that.data.mainProduct].barcode
             },
             success: function (res) {
@@ -377,7 +392,11 @@ Page({
         }
     },
 
-
+    closeShareDialog() {
+        this.setData({
+            shareDialogVisible: false
+        })
+    },
     getPhoneNumber: function (e) {
         if (e.detail.errMsg == "getPhoneNumber:ok") {
             app.request("https://newdreamer.cn:8080/api/phone/set", e.detail).then(phone => {
@@ -390,13 +409,13 @@ Page({
     },
 
     shareUrl: function () {
-        const { EncodeID, openId, userInfo = {} } = app.globalData;
-        return `/pages/shop/product/product?b=${this.data.barcode}&s=s_${app.globalData.memberID}`
+        return `/pages/shop/product/product?barcode=${this.data.barcode}&scene=${encodeURIComponent(`b=${this.data.barcode}&s=s_${app.globalData.memberId}`)}`
     },
 
     onShareAppMessage: function (res) {
         return {
-            path: this.shareUrl()
+            path: this.shareUrl(),
+            imageUrl: this.data.products[this.data.mainProduct].image[0]
         }
     }
 })

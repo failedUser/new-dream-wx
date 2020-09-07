@@ -549,3 +549,32 @@
     visibility: visible;
     opacity: 1;
 }
+
+.share-dialog-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.share-dialog-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 40%;
+}
+
+.share-dialog-item .share-dialog-image {
+    width: 80rpx;
+    height: 80rpx;
+}
+.share-dialog-item .share-dialog-text {
+    font-size: 28rpx;
+    /* font-weight: bold; */
+    margin-top: 20rpx;
+
+}
+.share-dialog-footer {
+ margin-bottom: -40px;
+}

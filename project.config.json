@@ -36,14 +36,6 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
     "plugin": {
       "current": -1,
       "list": []
@@ -52,6 +44,14 @@
       "list": []
     },
     "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
       "current": -1,
       "list": []
     },
@@ -84,6 +84,13 @@
           "name": "pages/shop/shareProduct/shareProduct",
           "pathName": "pages/shop/shareProduct/shareProduct",
           "query": "",
+          "scene": null
+        },
+        {
+          "id": 4,
+          "name": "pages/shop/product/product",
+          "pathName": "pages/shop/product/product",
+          "query": "barcode=ND1M621AT&scene=b%3DND1M621AT%26s%3Ds_3",
           "scene": null
         }
       ]

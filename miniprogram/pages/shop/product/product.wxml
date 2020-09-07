@@ -12,7 +12,7 @@
 		<view class='goods-info'>
 			<view class='goods-info0'>
 				<text class='goods-name'>{{products[mainProduct].product_Name}}</text>
-					<auth-modal authes="{{authes}}" type="button" bind:onClick="onShareBtnClick" bind:authSuccess="onShareBtnClick" >
+					<auth-modal authes="{{authes}}" type="button" bind:onClick="toShare" bind:authSuccess="toShare" >
 						<view  slot="shareBtn">
 								<view  class="ButtonCover share">
 									<image class="icon-share" src="/images/icon/share.png"></image>
@@ -133,7 +133,7 @@
 			<view class='goods-house'>
 				<image src='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}' class='goods-img' mode="aspectFill"></image>
 				<view class='goods-house1'>
-					<text class='goods-price'>￥{{Distributor_Wechat_Id!=''||scene!=''?((products[selectProduct].price-products[selectProduct].distributor_Deduction)+' (分销优惠)'):products[selectProduct].price}}</text>
+					<text class='goods-price'>￥{{((Distributor_Wechat_Id!=''||scene!='') && !shareFromSelf)?((products[selectProduct].price-products[selectProduct].distributor_Deduction)+' (分销优惠)'):products[selectProduct].price}}</text>
 					<view class='goods-house2'>
 						<text></text>
 						<text>已选：{{products[selectProduct]["product_Name"]}}{{products[selectProduct]["mark"]=="定制"?"(定制)":""}}</text>
@@ -210,3 +210,18 @@
 	</view>
 
 </view>
+
+<mp-halfScreenDialog show="{{shareDialogVisible}}" >
+	<view slot="desc" class="share-dialog-content">
+		<button open-type="share" bindtap="closeShareDialog" class="share-dialog-item">
+		<image class="share-dialog-image" src="../../../images/weixin.png" />
+		<text class="share-dialog-text">微信好友</text>
+	</button>
+	<view bindtap="onShareBtnClick" bin class="share-dialog-item">
+		<image class="share-dialog-image" src="../../../images/saveImage.png" />
+		<text class="share-dialog-text">保存图片</text>
+	</view>
+	</view>
+	<view slot="title" class="share-dialog-title">分享好物	</view>
+	<view slot="footer" class="share-dialog-footer"></view>
+</mp-halfScreenDialog>

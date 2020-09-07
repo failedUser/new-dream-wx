@@ -1,6 +1,7 @@
 {
 	"navigationBarTitleText": "产品详情",
 	"usingComponents": {
-		"auth-modal": "../../../components/authModal"
-}
+		"auth-modal": "../../../components/authModal",
+		"mp-halfScreenDialog": "/miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog"
+	}
 }
