@@ -28,17 +28,17 @@ Page({
                 "id": 1,
                 "text": "衬衫"
             }, {
-                "id": 4,
+                "id": 3,
                 "text": "配饰"
             }, {
                 "id": 2,
                 "text": "其他"
             }]
             const { manModules, womenModules } = data;
-            const list = [manModules.suits, manModules.shirt, manModules.accessories, womenModules.suits, womenModules.shirt, womenModules.accessories].filter(item => {
-                return item && item.products
-            }).map(item => {
-                
+            const list = [manModules.suits, manModules.shirt, manModules.accessories, womenModules.suits, womenModules.shirt, womenModules.accessories].map(item => {
+                if (!item || !item.products) {
+                    return {};
+                }
                 item.products = item.products.filter(i => i).map(pro => {
                     pro.image = pro.images ? JSON.parse(pro.images)[0] || '' : '';
                     return pro;
@@ -65,11 +65,25 @@ Page({
             url: url,
         })
     },
-    bindClassifyIconTap: function (e) {
-        var currentCategory = e.currentTarget.dataset.id
+    bindClassifyIconTapWidthIndex(e) {
+        var currentCategory = e.currentTarget.dataset.id;
         wx.setStorage({
             key: "currentCategory",
             data: currentCategory,
+            success: function () {
+                wx.switchTab({
+                    url: '/pages/shop/category/classify',
+                })
+            }
+        })
+    },
+    bindClassifyIconTap: function (e) {
+        var currentCategory = e.currentTarget.dataset.id;
+        const gender = currentCategory > 2 ? '女' : '男';
+        wx.setStorageSync('currentGender', gender);
+        wx.setStorage({
+            key: "currentCategory",
+            data: currentCategory > 2 ? currentCategory - 3 : currentCategory,
             success: function () {
                 wx.switchTab({
                     url: '/pages/shop/category/classify',

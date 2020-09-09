@@ -33,7 +33,7 @@ Page {
 .notice-text {
     padding-left: 20rpx;
     font-size: 28rpx;
-    line-height: 28rpx;
+    line-height: 32rpx;
     color: #555;
 }
 .notice-text--0 {
@@ -115,7 +115,7 @@ Page {
     display: block;
     width: 250rpx;
     height: 250rpx;
-    border-radius: 15rpx 15rpx 0 0;
+    border-radius: 10rpx 10rpx 0 0;
 }
 
 .all-name {

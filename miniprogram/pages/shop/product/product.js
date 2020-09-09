@@ -32,7 +32,9 @@ Page({
         phone: "",
         authes: ['userInfo', 'phoneNumber'],
         showShareCanvas: false,
-        shareDialogVisible: false
+        shareDialogVisible: false,
+        galleryImgs: null,
+        galleryCurrent: 0
     },
     onLoad: function (options) {
         const barcode = options.b || options.barcode;
@@ -208,6 +210,13 @@ Page({
                 wx.hideNavigationBarLoading() //完成停止加载
                 wx.stopPullDownRefresh() //停止下拉刷新
             }
+        })
+    },
+    showGallery(e) {
+        const image = e.currentTarget.dataset.url;
+        this.setData({
+            galleryImgs: [image],
+            galleryCurrent: 0
         })
     },
     //点击购物车

@@ -26,12 +26,13 @@ Page({
             success(res) {
                 let _data = res.data;
                 let currentCategory = _data;
-                let gender = '男';
+                let gender = wx.getStorageSync('currentGender') || '男';
+                console.log(gender, currentCategory);
                 console.log(_data);
-                if (_data > 2) {
-                    currentCategory = _data - 3;
-                    gender = '女';
-                }
+                // if (_data > 2) {
+                //     // currentCategory = _data - 3;
+                //     gender = '女';
+                // }
                 that.setData({
                     currentCategory: currentCategory,
                     gender
@@ -50,6 +51,7 @@ Page({
                     p.firstImage = p.image ? JSON.parse(p.image)[0] : ''
                 }
             }
+            console.log
             this.setData({
                 categories: data,
                 products: data[this.data.currentCategory] == undefined ? [] : this.getProductsByGender(data[this.data.currentCategory].products, this.data.gender)
@@ -75,6 +77,7 @@ Page({
     },
     switchGender: function () {
         let gender = this.data.gender == "女" ? "男" : "女"
+        wx.setStorageSync('currentGender', gender);
         this.setData({
             gender: gender,
             products: this.getProductsByGender(this.data.categories[this.data.currentCategory]['products'], gender)

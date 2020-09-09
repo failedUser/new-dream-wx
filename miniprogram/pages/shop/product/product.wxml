@@ -131,7 +131,7 @@
 	<view class="spec-wrap {{showSpec==0?'hidden':''}}">
 		<view class='goods-house-wrap'>
 			<view class='goods-house'>
-				<image src='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}' class='goods-img' mode="aspectFill"></image>
+				<image bindtap="showGallery" data-url='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}'  src='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}' class='goods-img' mode="aspectFill"></image>
 				<view class='goods-house1'>
 					<text class='goods-price'>￥{{((Distributor_Wechat_Id!=''||scene!='') && !shareFromSelf)?((products[selectProduct].price-products[selectProduct].distributor_Deduction)+' (分销优惠)'):products[selectProduct].price}}</text>
 					<view class='goods-house2'>
@@ -225,3 +225,5 @@
 	<view slot="title" class="share-dialog-title">分享好物	</view>
 	<view slot="footer" class="share-dialog-footer"></view>
 </mp-halfScreenDialog>
+
+<mp-gallery show="{{galleryImgs && galleryImgs.length > 0}}"  showDelete="{{false}}" current="{{galleryCurrent}}" img-urls="{{galleryImgs}}" />

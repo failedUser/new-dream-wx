@@ -10,7 +10,7 @@
 	<view class='notice row jc-sb ai-c' hidden='{{notice.length==0}}'>
 		<view class='row jc-fs ai-c'>
 			<image src="/images/utils/lb.png" style="width:32rpx;height:32rpx;"></image>
-			<swiper style='width:450rpx;height:32rpx;' interval="3000" duration="1000" autoplay circular vertical>
+			<swiper style='width:600rpx;height:32rpx;' interval="3000" duration="1000" autoplay circular vertical>
 				<swiper-item class='notice-text' wx:for="{{notice}}" wx:key="n" wx:for-index="index" wx:for-item="notice">
 					<text  class='notice-text notice-text--{{index}}'>{{notice}}</text>
 				</swiper-item>
@@ -27,7 +27,7 @@
 		</view> -->
 	</view>
 	<view class="classify-wrap row jc-se">
-		<view class="classify column" wx:for="{{index.classify}}" wx:for-item="class" wx:key="cs" bindtap="bindClassifyIconTap" data-id="{{class.id}}">
+		<view class="classify column" wx:for="{{index.classify}}" wx:for-item="class" wx:key="cs" bindtap="bindClassifyIconTapWidthIndex" data-id="{{class.id}}">
 			<image src="https://cdn.newdreamer.cn/category/{{class.text}}.png" mode="aspectFit"></image>
 			<text>{{class.text}}</text>
 		</view>
