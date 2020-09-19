@@ -133,7 +133,11 @@
 			<view class='goods-house'>
 				<image bindtap="showGallery" data-url='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}'  src='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}' class='goods-img' mode="aspectFill"></image>
 				<view class='goods-house1'>
-					<text class='goods-price'>￥{{((Distributor_Wechat_Id!=''||scene!='') && !shareFromSelf)?((products[selectProduct].price-products[selectProduct].distributor_Deduction)+' (分销优惠)'):products[selectProduct].price}}</text>
+					<view class='goods-price'>
+						<text class='goods-result-price'>￥{{((Distributor_Wechat_Id!=''||scene!='') && !shareFromSelf)?((products[selectProduct].price-products[selectProduct].distributor_Deduction)+' (分销优惠)'):products[selectProduct].price}}</text>
+						<text wx:if="{{(Distributor_Wechat_Id!=''||scene!='') && !shareFromSelf}}" class="goods-price-real">原价{{products[selectProduct].price}}</text>
+					</view>
+					
 					<view class='goods-house2'>
 						<text></text>
 						<text>已选：{{products[selectProduct]["product_Name"]}}{{products[selectProduct]["mark"]=="定制"?"(定制)":""}}</text>

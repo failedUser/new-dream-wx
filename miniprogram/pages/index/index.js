@@ -3,7 +3,10 @@ Page({
     data: {
         index: {},
         gender: "男",
-        authes: ['userInfo']
+        authes: ['userInfo'],
+        collegePartList: [],
+        showDialog: false,
+        oneButton: [{text: '确定'}],
     },
 
     onShow: function (options) {
@@ -16,6 +19,26 @@ Page({
         console.log('授权成功了');
     },
     onLoad: function (options) {
+        const scene = options.scene;
+        if (scene) { app.globalData.scene = scene }
+        app.request("https://newdreamer.cn:8080/api/collegeInfo/get").then(data => {
+            const list = Object.keys(data).reduce((result, college) => {
+                let part = data[college];
+                part.forEach(p => {
+                    result.push(`${college}:${p}`);
+                })
+                return result;
+            },[])
+            this.setData({
+                collegePartList: list,
+                showDialog: true
+            })
+        });
+    },
+    tapDialogButton() {
+        this.setData({
+            showDialog: false
+        })
     },
 
     request: function () {

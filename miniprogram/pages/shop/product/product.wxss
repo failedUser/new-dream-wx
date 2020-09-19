@@ -75,7 +75,7 @@
 
 .goods-price text {
     font-weight: bold;
-    font-size: 36rpx;
+    /* font-size: 36rpx; */
 }
 
 .goods-sales {
@@ -378,6 +378,16 @@
     display: block;
     width: 100%;
     align-self: flex-start;
+}
+.goods-result-price {
+    font-size: 28rpx;
+}
+.goods-price-real {
+    font-size: 28rpx;
+    text-decoration: line-through;
+    color: #757575;
+    margin-left: 20rpx;
+    
 }
 
 .goods-house2 {

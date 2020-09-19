@@ -113,6 +113,7 @@ Page({
             Barcode: barcode, 
             scene: app.globalData.scene || false
          }).then(data => {
+            console.log('----获取到到商品详情----', data);
             let products = data.products
             let mainProduct = 0
             let price = {

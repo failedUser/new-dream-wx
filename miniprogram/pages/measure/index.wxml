@@ -34,7 +34,7 @@
 		</view>
 	</view>
 </view>
-<view hidden="{{measureData.reservation_infos.length>0}}">
+<view hidden="{{!measureData || measureData.reservation_infos.length>0}}">
 	<image src='https://cdn.newdreamer.cn/index/volume%20reservation/vo_lres_1.png' mode="widthFix" style="width:100%;margin:0;" />
 	<view class="row jc-c ai-c" style="position:fixed;bottom:25rpx;width:100vw;">
 		<navigator class='goShopping' style="width:400rpx;" open-type="switchTab" url="/pages/shop/category/classify">预约量体·选购商品</navigator>

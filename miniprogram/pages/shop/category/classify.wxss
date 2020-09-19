@@ -36,10 +36,13 @@
     width: 90%;
     background-color: #fff;
 }
-
+.classify-header-tabbar {
+    display: flex;
+}
 .classify-scroll .scroll-tab-list {
     display: inline-block;
-    min-width: 5rem;
+    /* min-width: 5rem; */
+    flex: 1;
     padding: 0 10rpx;
     text-align: center;
     line-height: 90rpx;
@@ -158,17 +161,23 @@
 .goods-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-direction: row;
 }
 
+.goods-list-item {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
 .goods {
     width: 320rpx;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     margin-bottom: 20rpx;
-    border-radius: 25rpx;
+    border-radius: 20rpx 0 25rpx 25rpx;
 }
 
 .goods-img {
@@ -177,7 +186,7 @@
     width: 320rpx;
     height: 320rpx;
     margin-bottom: 0.5rem;
-    border-radius: 25rpx 25rpx 0 0;
+    border-radius: 20rpx 0 0 0;
 }
 
 .goods-info {

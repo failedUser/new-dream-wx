@@ -49,3 +49,10 @@
 	</view>
 	<auth-modal authes="{{authes}}"  bind:authError="onAuthError" bind:authSuccess="onAuthSuccess" ></auth-modal>
 </view>
+
+<mp-dialog title="新梦想家西服友情提示" show="{{showDialog}}" bindbuttontap="tapDialogButton" buttons="{{oneButton}}">
+	<view class="collegePart-title">1. <text style="color: #cca362">"量身定制"</text>系列商品的<text style="color: red">上门量体服务</text>目前仅支持以下校区哦～</view>
+			 <view class="collegePart" wx:for="{{collegePartList}}"  wx:for-item="collegePart" wx:key='collegePart'>{{collegePart}}</view>
+			 
+			 <view class="collegePart-subtitle">2.成衣商品包括衬衫，配饰等，将直接发货不受限制</view>
+    </mp-dialog>

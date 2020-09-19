@@ -60,6 +60,7 @@ Page({
     },
     navTap: function (e) {
         var currentCategory = e.currentTarget.dataset.tab
+        console.log('---currentCategory--', currentCategory);
         this.setData({
             currentCategory: currentCategory,
             products: this.getProductsByGender(this.data.categories[currentCategory]['products'], this.data.gender)
@@ -72,7 +73,7 @@ Page({
     },
     getProductsByGender(list, gender) {
         return list.filter(item => {
-            return item.gender == gender
+            return !item.gender || item.gender == gender
         })
     },
     switchGender: function () {

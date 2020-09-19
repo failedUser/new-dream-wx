@@ -52,7 +52,8 @@
 			<text>确定预约</text>
 		</view>
 	</view>
-	<image src='https://cdn.newdreamer.cn/index/volume%20reservation/cof_sucessful_1.jpg' mode="widthFix" style="width:100%;margin-top:50rpx;" />
+	<image src='https://wechat-miniapp-newdreamer.oss-cn-shanghai.aliyuncs.com/index/volume%20reservation/cof_sucessful_1.png' mode="widthFix" style="width:100%;margin-top:50rpx;" />
+
 </view>
 <!--量体师信息-->
 <view class="resv" wx:else>

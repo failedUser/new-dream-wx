@@ -4,7 +4,7 @@
         <view class="classify-box" id="classifyBox">
             <view class='classify-header'>
                 <scroll-view class="classify-scroll" scroll-x scroll-into-view="category{{currentCategory}}">
-                    <view style="min-width:{{categories.length*4}}rem;">
+                    <view class="classify-header-tabbar">
                         <view id="category0"></view>
                         <view class="scroll-tab-list {{currentCategory==tabID?'on':''}}" id="category{{tabID+1}}" data-tab="{{tabID}}" bindtap="navTap" wx:for="{{categories}}" wx:for-item="category" wx:for-index="tabID" wx:key="cs">
                             <text>{{category.categoryName}}</text>
@@ -58,7 +58,8 @@
         <scroll-view wx:else scroll-y class="classify-content" enable-back-to-top>
             <view class='goods-list-wrap'>
                 <view class='goods-list'>
-                    <navigator url='/pages/shop/product/product?barcode={{product.barcode}}' class='goods' wx:for="{{products}}" wx:key="ps" wx:for-item="product">
+                    <view class="goods-list-item" wx:for="{{products}}" wx:key="ps" wx:for-item="product">
+                        <navigator url='/pages/shop/product/product?barcode={{product.barcode}}' class='goods' >
                         <image src='{{product.firstImage}}' class='goods-img' mode="aspectFill"></image>
                         <view class='goods-info'>
                             <text class='goods-name'>{{product.product_Name}}</text>
@@ -70,6 +71,7 @@
                             </view>
                         </view>
                     </navigator>
+                    </view>
                 </view>
             </view>
         </scroll-view>

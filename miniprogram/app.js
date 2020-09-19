@@ -6,7 +6,8 @@ App({
         userInfo: null,
         phone: "",
         debug: false,
-        share: false
+        share: false,
+        colleges: []
     },
     onLaunch: function (data) {
         this.checkVersion().then(

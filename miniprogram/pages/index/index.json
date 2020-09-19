@@ -1,5 +1,6 @@
 {
     "usingComponents": {
-        "auth-modal": "../../components/authModal"
+        "auth-modal": "../../components/authModal",
+        "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog"
     }
 }

@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
     data: {
-        measureData: []
+        measureData: null
     },
     onShow: function (options) {
         this.getMeasureData()
@@ -11,7 +11,11 @@ Page({
             this.setData({
                 measureData: data
             })
-        });
+        }).catch(e => {
+            this.setData({
+                measureData: []
+            })
+        })
     },
     //预约量体
     reserveMeasure: function (e) {
