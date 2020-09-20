@@ -4,8 +4,13 @@ Page({
         selectedProducts: [],
         cart: [], //购物车信息
         total: 0.00, //价格总计
+       
     },
     onShow: function () {
+        this.setData({
+            shareFromSelf: getApp().globalData.shareFromSelf,
+            scene: getApp().globalData.scene || ''
+        })
         this.getCart();
     },
     //获取购物车信息
@@ -133,7 +138,8 @@ Page({
             if (cart[i] == undefined) continue
             i = selectedProducts[i]
             let price = cart[i]["price"]
-            if (cart[i].Distributor_Wechat_Id != '' || cart[i].scene != '') {
+
+            if ((cart[i].Distributor_Wechat_Id != '' || app.globalData.scene) && !app.globalData.shareFromSelf) {
                 price -= cart[i].Distributor_Deduction
             }
             total += cart[i]["count"] * price;

@@ -134,7 +134,7 @@
 				<image bindtap="showGallery" data-url='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}'  src='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}' class='goods-img' mode="aspectFill"></image>
 				<view class='goods-house1'>
 					<view class='goods-price'>
-						<text class='goods-result-price'>￥{{((Distributor_Wechat_Id!=''||scene!='') && !shareFromSelf)?((products[selectProduct].price-products[selectProduct].distributor_Deduction)+' (分销优惠)'):products[selectProduct].price}}</text>
+						<text class='goods-result-price'>￥{{((Distributor_Wechat_Id!=''||scene!='') && !shareFromSelf)?((products[selectProduct].distributorPrice)+' (福利优惠)'): products[selectProduct].price}}</text>
 						<text wx:if="{{(Distributor_Wechat_Id!=''||scene!='') && !shareFromSelf}}" class="goods-price-real">原价{{products[selectProduct].price}}</text>
 					</view>
 					

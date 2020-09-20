@@ -21,12 +21,17 @@ Page({
         AddressAccess: true
     },
     onLoad: function (options) {
+        console.log(options);
         const products = JSON.parse(options.products);
         console.log(products);
         const menu = ['量身定制', '高级定制'];
         const isDIY = products.find(product => menu.indexOf(product.measureID) >= 0); // 判断是不是定制
+        products.map(p => {
+            p.scene = app.globalData.scene || false;
+            return p;
+        })
         this.setData({
-            products: JSON.parse(options.products),
+            products:products ,
             from: options.from,
             isDIY: !!isDIY
         })
@@ -59,8 +64,8 @@ Page({
             for (var i in products) {
                 let price = parseFloat(products[i].price)
                 let p0 = price
-                if (products[i].Distributor_Wechat_Id != '' || products[i].scene != '') {
-                    let dd = parseFloat(products[i].Distributor_Deduction)
+                if ((products[i].Distributor_Wechat_Id != '' || app.globalData.scene) && !app.globalData.shareFromSelf) {
+                    let dd = parseFloat(products[i].Distributor_Deduction || 0)
                     console.log(p0, dd)
                     p0 -= dd
                     console.log(p0, dd)
@@ -76,6 +81,8 @@ Page({
                 products: products
             })
         }
+
+        
         if (summary.price <= 0) {
             this.setData({
                 tip: "最少支付0.01元"
@@ -86,8 +93,9 @@ Page({
                 tip: ""
             })
         }
+        summary.price = parseFloat( Number(summary.price).toFixed(2));
         this.setData({
-            summary: summary
+            summary: {...summary}
         })
     },
     //修改订单留言
@@ -130,7 +138,7 @@ Page({
         })
         let from = this.data.from
         app.request("https://newdreamer.cn:8080/api/pay/get", {
-            price: this.data.summary.price * 100,
+            price: parseFloat(Number(this.data.summary.price * 100).toFixed(2)),
             order: {
                 products: this.data.products,
                 address: this.data.address,

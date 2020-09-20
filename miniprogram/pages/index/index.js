@@ -20,7 +20,11 @@ Page({
     },
     onLoad: function (options) {
         const scene = options.scene;
-        if (scene) { app.globalData.scene = scene }
+        console.log(scene);
+        if (scene) { 
+            app.globalData.scene = scene || ''; 
+            app.globalData.shareFromSelf = false;
+        }
         app.request("https://newdreamer.cn:8080/api/collegeInfo/get").then(data => {
             const list = Object.keys(data).reduce((result, college) => {
                 let part = data[college];

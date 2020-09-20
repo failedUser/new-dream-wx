@@ -3,7 +3,8 @@ Page({
     data: {
         orderInfo: {},
         itemInfos: [],
-        isSelf: true
+        isSelf: true,
+        distritutor_Discount: 0
     },
     onLoad: function (options) {
         console.log(options);
@@ -17,7 +18,9 @@ Page({
         app.request("https://newdreamer.cn:8080/api/items/get", {
             orderID: this.data.orderInfo.order_Id
         }).then(data => {
+            let distritutor_Discount = 0;
             for (var j in data.itemInfos) {
+                distritutor_Discount += parseFloat(data.itemInfos[j].distributor_Deduction) || 0
                 data.itemInfos[j].image = data.itemInfos[j].image ? JSON.parse(data.itemInfos[j].image) || '' : ''
                 if (data.itemInfos[j].crafts == "成衣商品") {
                     data.itemInfos[j].needMeasure = 0
@@ -38,7 +41,9 @@ Page({
                     }
                 }
             }
-            this.setData(data)
+            distritutor_Discount = parseFloat(Number(distritutor_Discount).toFixed(2))
+            console.log('---distritutor_Discount--', distritutor_Discount);
+            this.setData({...data, distritutor_Discount})
         });
     },
     //预约量体

@@ -18,7 +18,7 @@
 									<navigator url="/pages/shop/product/product?barcode={{product.barcode}}" hover-class="none">
 										<view class='goods-name'>
 											<text>{{product.product_Name}}</text>
-											<text style="color:red" wx:if="{{product.Distributor_Wechat_Id!=''||product.scene!=''}}"> (分享赚)</text>
+											<text style="color:red" wx:if="{{(product.Distributor_Wechat_Id!=''|| scene!='') && !shareFromSelf}}"> (分享赚)</text>
 										</view>
 										<text class='goods-size'>尺寸：{{product.measureName}}</text>
 									</navigator>
@@ -28,7 +28,7 @@
 									</view>
 								</view>
 								<view class='goods-info2'>
-									<text wx:if="{{product.Distributor_Wechat_Id==''&&product.scene==''}}">{{product.price}}</text>
+									<text wx:if="{{product.Distributor_Wechat_Id==''&& scene==''}}">{{product.price}}</text>
 									<text style="color:red;" wx:else>￥{{product.price-product.Distributor_Deduction}} <text style="color:#aaa;text-decoration:line-through;font-size: 22rpx;">{{product.price}}</text></text>
 									<view class='amount-wrap'>
 										<text class="{{product.count<=1?'disabled':''}}" data-index="{{index}}" data-delta='-1' bindtap='onProductCountChange'>-</text>

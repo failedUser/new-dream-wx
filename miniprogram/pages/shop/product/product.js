@@ -28,7 +28,7 @@ Page({
         sales: "无",
         Distributor_Wechat_Id: "",
         Distributor_Wechat_Name: "",
-        scene: app.globalData.share,
+        scene: getApp().globalData.scene || '',
         phone: "",
         authes: ['userInfo', 'phoneNumber'],
         showShareCanvas: false,
@@ -38,14 +38,23 @@ Page({
     },
     onLoad: function (options) {
         const barcode = options.b || options.barcode;
+        if (this.data.Distributor_Wechat_Name == app.globalData.userInfo && app.globalData.userInfo.nickName) {
+            this.setData({
+                Distributor_Wechat_Id: "",
+                Distributor_Wechat_Name: ""
+            })
+        }
         this.setData({
-            barcode: barcode
+            barcode: barcode,
+            scene: getApp().globalData.scene || ''
         })
         let scene = decodeURIComponent(options.s || options.scene || '');
         console.log(scene);
         if (scene) {
-            app.globalData.scene = scene
-            this.data.scene = scene;
+            app.globalData.scene = scene  || ''
+            this.setData({
+                scene: scene
+            })
         }
         this.getProduct(barcode)
         //this.getProductComment(options.barcode)
@@ -113,7 +122,6 @@ Page({
             Barcode: barcode, 
             scene: app.globalData.scene || false
          }).then(data => {
-            console.log('----获取到到商品详情----', data);
             let products = data.products
             let mainProduct = 0
             let price = {
@@ -127,15 +135,17 @@ Page({
                 products[i].size = products[i].size.split(" ")
                 if (products[i].price < price.min) {
                     price.min = products[i].price
-                    price.minShare = products[i].price - (products[i].singleDistributionDeducation || 0)
+                    price.minShare = parseFloat(Number(products[i].price - (products[i].singleDistributionDeducation || 0)).toFixed(2))
                 }
                 if (products[i].price > price.max) {
                     price.max = products[i].price
-                    price.maxShare = products[i].price - (products[i].singleDistributionDeducation || 0)
-                } 
+                    price.maxShare = parseFloat(Number(products[i].price - (products[i].singleDistributionDeducation || 0)).toFixed(2))
+                }
+                products[i].distributorPrice = parseFloat(Number(products[i].price - (products[i].distributor_Deduction || 0)).toFixed(2));
                 products[i].image = products[i].image ? JSON.parse(products[i].image) || '' : ''
                 products[i].detailImages = products[i].detailImages ? JSON.parse(products[i].detailImages) || '' : ''
             }
+            app.globalData.shareFromSelf = data.shareFromSelf || false;
             this.setData({
                 sales: data.sale_count,
                 mainProduct: mainProduct,
@@ -145,12 +155,6 @@ Page({
                 shareFromSelf: data.shareFromSelf || false
             })
             this.getProductComment(products[mainProduct].barcode)
-            if (this.data.Distributor_Wechat_Name == app.globalData.userInfo && app.globalData.userInfo.nickName) {
-                this.setData({
-                    Distributor_Wechat_Id: "",
-                    Distributor_Wechat_Name: ""
-                })
-            }
         });
     },
     //获取商品评价
@@ -340,7 +344,6 @@ Page({
             "Distributor_Deduction": this.data.products[this.data.selectProduct].distributor_Deduction,
             "Distributor_Wechat_Id": this.data.Distributor_Wechat_Id,
             "Distributor_Wechat_Name": this.data.Distributor_Wechat_Name,
-            "scene": this.data.scene
         }
 
         if (this.data.showSpec == 1) {

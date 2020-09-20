@@ -61,8 +61,8 @@
 		<text>￥{{orderInfo.total_Original_Price}}</text>
 	</view>
 	<view class="row jc-sb ai-c">
-		<text>分销优惠</text>
-		<text>-￥{{orderInfo.distritutor_Discount==null?0:orderInfo.distritutor_Discount}}</text>
+		<text>福利优惠</text>
+		<text>-￥{{distritutor_Discount}}</text>
 	</view>
 	<view class="row jc-sb ai-c bold">
 		<text>实付款</text>
