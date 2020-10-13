@@ -69,7 +69,7 @@ Page({
                 status: options.status,
                 orderID: options.id,
                 multiArray: [
-                    getDay(3),
+                    getDay(5),
                     getAllTime_Short("9:00", "21:00")
                 ]
             })
