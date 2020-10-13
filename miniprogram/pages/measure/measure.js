@@ -10,7 +10,8 @@ Page({
             "电话": "",
             "量体地址": "",
             "身高": "",
-            "体重": ""
+            "体重": "",
+            "喜好": ""
         },
         paras: {
             "胸围": "",
@@ -35,6 +36,7 @@ Page({
             "后背": "",
             "领围": "",
             "胸高": "",
+            "数据备注": ""
         },
         shape: {
             "肩型": {
@@ -54,7 +56,8 @@ Page({
             "臀部": {
                 "翘臀": false,
                 "平臀": false
-            }
+            },
+            "体型备注": ""
         },
         more: {
             "体型备注": "",
@@ -95,6 +98,14 @@ Page({
             }
             this.setData(bodyShapeData)
         });
+    },
+    onChangeShaopMark(e) {
+        const value = e.detail.value;
+        const _shape = this.data.shape;
+        _shape['体型备注'] = value;
+        this.setData({
+            shap: _shape
+        })
     },
     change: function (e) {
         this.setData({
@@ -157,6 +168,10 @@ Page({
         let shapes = this.data.shape
         for (let shape in shapes) {
             data[shape] = []
+            if (shape === '体型备注') {
+                data[shape] = shapes[shape];
+                continue ;
+            }
             for (let key in shapes[shape]) {
                 if (shapes[shape][key]) data[shape].push(key)
             }

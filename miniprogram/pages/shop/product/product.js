@@ -34,7 +34,8 @@ Page({
         showShareCanvas: false,
         shareDialogVisible: false,
         galleryImgs: null,
-        galleryCurrent: 0
+        galleryCurrent: 0,
+        showName: ''
     },
     onLoad: function (options) {
         const barcode = options.b || options.barcode;
@@ -152,6 +153,7 @@ Page({
                 products: products,
                 price: price,
                 phone: app.globalData.phone,
+                showName: data.showName,
                 shareFromSelf: data.shareFromSelf || false
             })
             this.getProductComment(products[mainProduct].barcode)

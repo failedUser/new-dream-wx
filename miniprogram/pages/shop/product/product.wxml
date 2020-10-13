@@ -11,7 +11,7 @@
 		</view>
 		<view class='goods-info'>
 			<view class='goods-info0'>
-				<text class='goods-name'>{{products[mainProduct].product_Name}}</text>
+				<text class='goods-name'>{{showName}}</text>
 					<auth-modal authes="{{authes}}" type="button" bind:onClick="toShare" bind:authSuccess="toShare" >
 						<view  slot="shareBtn">
 								<view  class="ButtonCover share">

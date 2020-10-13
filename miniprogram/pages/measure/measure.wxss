@@ -71,8 +71,15 @@
     }
 }
 
+.para-wrap {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 .para-wrap .para {
     padding: 10rpx 0 20rpx;
+    max-width: 50%;
 }
 
 .para-wrap .para.bt {
@@ -83,7 +90,7 @@
 }
 
 .para-wrap .para view {
-    width: 120rpx;
+    width: 140rpx;
     height: 50rpx;
     padding-left: 5rpx;
     text-align: justify;
@@ -108,7 +115,7 @@
 }
 
 .shape-wrap .shape .title {
-    width: 120rpx;
+    width: 140rpx;
     height: 50rpx;
     padding: 20rpx;
     text-align: justify;

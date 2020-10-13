@@ -92,6 +92,34 @@
           "pathName": "pages/shop/product/product",
           "query": "barcode=ND1M621AT&scene=b%3DND1M621AT%26s%3Ds_95",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/measure/reservation",
+          "pathName": "pages/measure/reservation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/measure/index",
+          "pathName": "pages/measure/measure",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/measure/measure",
+          "pathName": "pages/measure/measure",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/measure/measure",
+          "pathName": "pages/measure/measure",
+          "query": "allowModified=true",
+          "scene": null
         }
       ]
     }

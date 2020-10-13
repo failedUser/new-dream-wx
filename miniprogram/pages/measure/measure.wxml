@@ -12,7 +12,7 @@
 			<input type="text" value="{{item}}" bindinput="change" data-type="info" data-key="{{para}}" disabled="{{!allowModified}}"></input>
 		</view>
 	</view>
-	<view class="para-wrap row jc-c ai-fs" hidden="{{tab!='1'}}">
+	<view class="para-wrap" hidden="{{tab!='1'}}">
 		<view class="para fw2 row jc-c ai-c" wx:for="{{paras}}" wx:for-index="para" wx:key="para">
 			<view bindtap="preview" data-name="{{para}}">{{para}}</view>
 			<input type="digit" value="{{item}}" bindinput="change" data-type="paras" data-key="{{para}}" disabled="{{!allowModified}}"></input>
@@ -21,7 +21,9 @@
 	<view class="shape-wrap column jc-fs ai-fs" hidden="{{tab!='2'}}">
 		<view class="shape row jc-fs ai-c" wx:for="{{shape}}" wx:for-index="para" wx:for-item="shape" wx:key="para">
 			<view class="title">{{para}}</view>
-			<view class="btn0 {{item?'active':''}} row jc-c ai-c" bindtap="{{allowModified?'choose':''}}" data-type="{{para}}" data-key="{{index}}" wx:for="{{shape}}" wx:key="index"><text>{{index}}</text></view>
+
+			<view wx:if="{{para!=='体型备注'}}" class="btn0 {{item?'active':''}} row jc-c ai-c" bindtap="{{allowModified?'choose':''}}" data-type="{{para}}" data-key="{{index}}" wx:for="{{shape}}" wx:key="index"><text>{{index}}</text></view>
+			<input  value="{{shape}}" wx:if="{{para ==='体型备注'}}"  bindinput="onChangeShaopMark" ></input>
 		</view>
 	</view>
 </view>
