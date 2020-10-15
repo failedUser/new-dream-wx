@@ -89,8 +89,12 @@ Page({
                 } else if (bodyShapeData.paras[item] != undefined) {
                     bodyShapeData.paras[item] = data[item]
                 } else if (bodyShapeData.shape[item] != undefined) {
-                    for (let i of data[item].split(" ")) {
-                        if (i != "") bodyShapeData.shape[item][i] = true
+                    if (item === '体型备注') {
+                        bodyShapeData.shape['体型备注'] = data['体型备注'];
+                    } else if (data[item]) {
+                        for (let i of data[item].split(" ")) {
+                            if (i != "") bodyShapeData.shape[item][i] = true
+                        }
                     }
                 } else if (bodyShapeData.more[item] != undefined) {
                     bodyShapeData.more[item] = data[item]

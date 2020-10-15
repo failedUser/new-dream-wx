@@ -17,6 +17,8 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -25,10 +27,9 @@
     "useIsolateContext": true,
     "useCompilerModule": false,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
     "packNpmManually": false,
-    "packNpmRelationList": []
+    "packNpmRelationList": [],
+    "minifyWXSS": true
   },
   "appid": "wx483972e4a6372a20",
   "projectname": "%E6%96%B0%E6%A2%A6%E6%83%B3%E5%AE%B6%E5%95%86%E5%9C%BA",
@@ -37,26 +38,15 @@
   "simulatorPluginLibVersion": {},
   "condition": {
     "plugin": {
-      "current": -1,
       "list": []
     },
     "game": {
       "list": []
     },
     "gamePlugin": {
-      "current": -1,
-      "list": []
-    },
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
       "list": []
     },
     "miniprogram": {
-      "current": 0,
       "list": [
         {
           "id": 0,
@@ -108,10 +98,9 @@
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/measure/measure",
           "pathName": "pages/measure/measure",
-          "query": "",
+          "query": "allowModified=true&rid=92",
           "scene": null
         },
         {
