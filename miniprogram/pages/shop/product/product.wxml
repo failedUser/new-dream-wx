@@ -91,7 +91,7 @@
 			<view class='main'>
 				<view class='main-mid'>
 					<view wx:if="{{tabID==0}}">
-						<image src='{{item}}' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' wx:for="{{products[mainProduct].detailImages}}"/>
+						<image src='{{item}}' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' wx:key="index" wx:for="{{products[mainProduct].detailImages}}"/>
 					</view>
 					<view class="goods-comment" wx:elif="{{tabID==1}}">
 						<!--
@@ -196,7 +196,16 @@
 	<view class='goodsDetails-footer'>
 		<view class='footer-l'>
 			<view>
-				<button class='consult' open-type='contact' session-from="新梦想家商场（微信小程序）" show-message-card>
+				<button 
+					wx:if="{{!!shareUrl}}"
+					class='consult' 
+					open-type='contact' 
+					session-from="新梦想家商场（微信小程序）" 
+					show-message-card="{{true}}"
+					send-message-title="{{showName}}"
+					send-message-path="{{shareUrl}}"
+					send-message-img="{{products[mainProduct].image[0]}}"
+				>
 					<image src="https://cdn.newdreamer.cn/icon/order/售后.png" style="margin-bottom:2px;"></image>
 				</button>
 			</view>

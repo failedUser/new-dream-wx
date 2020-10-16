@@ -35,9 +35,11 @@ Page({
         shareDialogVisible: false,
         galleryImgs: null,
         galleryCurrent: 0,
-        showName: ''
+        showName: '',
+        shareUrl: ''
     },
     onLoad: function (options) {
+        console.log('---optins---', options);
         const barcode = options.b || options.barcode;
         if (this.data.Distributor_Wechat_Name == app.globalData.userInfo && app.globalData.userInfo.nickName) {
             this.setData({
@@ -57,6 +59,9 @@ Page({
                 scene: scene
             })
         }
+        this.setData({
+            shareUrl: `/pages/shop/product/product?barcode=${barcode}&scene=${encodeURIComponent(`b=${barcode}&s=s_${app.globalData.memberId}`)}`
+        })
         this.getProduct(barcode)
         //this.getProductComment(options.barcode)
         const query = wx.createSelectorQuery()
