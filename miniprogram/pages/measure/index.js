@@ -25,7 +25,7 @@ Page({
     },
     lookMeasureData: function (e) {
         wx.navigateTo({
-            url: '/pages/measure/measure?rid=' + e.currentTarget.dataset.id,
+            url: '/pages/measure/measure?index=' + e.currentTarget.dataset.index,
         })
     },
     cancelReservation: function (e) {

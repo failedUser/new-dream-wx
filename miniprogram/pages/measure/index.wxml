@@ -26,7 +26,7 @@
 		<view class="dataTag cancel" bindtap="cancelReservation" data-id="{{data.reservation_Id}}" wx:if="{{data.reservation_Status=='预约中'}}">
 			<text>取消预约</text>
 		</view>
-		<view class="dataTag" bindtap="lookMeasureData" data-id="{{data.reservation_Id}}" data-status="{{data.reservation_Status}}" wx:if="{{data.reservation_Status=='已量体'}}">
+		<view class="dataTag" bindtap="lookMeasureData" data-index="{{i}}" data-id="{{data.reservation_Id}}" data-status="{{data.reservation_Status}}" wx:if="{{data.reservation_Status=='已量体'}}">
 			<text>查看数据</text>
 		</view>
 		<view class="dataTag default" bindtap="call" data-phone="{{measureData.volumers[i].phone}}" wx:if="{{data.reservation_Status=='已接单'}}">

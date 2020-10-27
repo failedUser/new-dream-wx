@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
     data: {
-        rid: -1,
+        index: 0,
         allowModified: false,
         tab: 0,
         info: {
@@ -11,7 +11,8 @@ Page({
             "量体地址": "",
             "身高": "",
             "体重": "",
-            "喜好": ""
+            "喜好": "",
+            "预计使用时间": ''
         },
         paras: {
             "胸围": "",
@@ -71,35 +72,44 @@ Page({
         }
     },
     onLoad: function (options) {
+        const index = parseInt(options.index || 0);
         this.setData({
             allowModified: options.allowModified == undefined ? false : options.allowModified,
-            rid: options.rid == undefined ? -1 : options.rid
+            index: index
         })
-        if (options.load != "0") { this.getVolumerInfo() }
+        if (options.load != "0") { this.getVolumerInfo(index) }
     },
-    getVolumerInfo: function () {
-        if (this.data.rid == -1) return
-        app.request("https://newdreamer.cn:8080/api/volume/getVolumeInfo", {
-            ReservationId: this.data.rid
-        }).then(data => {
+    getVolumerInfo: function (index) {
+        app.request("https://newdreamer.cn:8080/api/volumer/getVolumeInfo",).then(data => {
+            console.log(data);
+            if (!data || data.length === 0 || !data[index]) {
+                this.setData({
+                    allowModified: false
+                })
+                return null;
+            }
+            const _info = data[index];
             let bodyShapeData = { info: this.data.info, paras: this.data.paras, shape: this.data.shape, more: this.data.more }
-            for (let item in data) {
+            console.log('---_info---', _info);
+            for (let item in _info) {
+                console.log(item);
                 if (bodyShapeData.info[item] != undefined) {
-                    bodyShapeData.info[item] = data[item]
+                    bodyShapeData.info[item] = _info[item]
                 } else if (bodyShapeData.paras[item] != undefined) {
-                    bodyShapeData.paras[item] = data[item]
+                    bodyShapeData.paras[item] = _info[item]
                 } else if (bodyShapeData.shape[item] != undefined) {
                     if (item === '体型备注') {
-                        bodyShapeData.shape['体型备注'] = data['体型备注'];
-                    } else if (data[item]) {
-                        for (let i of data[item].split(" ")) {
+                        bodyShapeData.shape['体型备注'] = _info['体型备注'];
+                    } else if (_info[item]) {
+                        for (let i of _info[item].split(" ")) {
                             if (i != "") bodyShapeData.shape[item][i] = true
                         }
                     }
                 } else if (bodyShapeData.more[item] != undefined) {
-                    bodyShapeData.more[item] = data[item]
+                    bodyShapeData.more[item] = _info[item]
                 }
             }
+            console.log('---bodyShapeData--', bodyShapeData);
             this.setData(bodyShapeData)
         });
     },

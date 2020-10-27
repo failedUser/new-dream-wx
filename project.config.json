@@ -100,14 +100,13 @@
         {
           "name": "pages/measure/measure",
           "pathName": "pages/measure/measure",
-          "query": "allowModified=true&rid=92",
+          "query": "allowModified=true&index =0",
           "scene": null
         },
         {
-          "id": -1,
           "name": "pages/measure/measure",
           "pathName": "pages/measure/measure",
-          "query": "allowModified=true",
+          "query": "",
           "scene": null
         }
       ]
