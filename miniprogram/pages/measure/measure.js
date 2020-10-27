@@ -80,6 +80,9 @@ Page({
         if (options.load != "0") { this.getVolumerInfo(index) }
     },
     getVolumerInfo: function (index) {
+        if (index === -1) {
+            return ;
+        }
         app.request("https://newdreamer.cn:8080/api/volumer/getVolumeInfo",).then(data => {
             console.log(data);
             if (!data || data.length === 0 || !data[index]) {

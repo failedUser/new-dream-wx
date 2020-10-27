@@ -32,7 +32,7 @@
 		<text class="des">预约查询</text>
 		<text class='count down' wx:if="{{new}}"></text>
 	</navigator>
-	<navigator class="block column jc-fs ai-fs" url="../measure?allowModified=true&rid=-1&load=0" style="background: url(https://cdn.newdreamer.cn/assets/bg/2.png) 100%">
+	<navigator class="block column jc-fs ai-fs" url="../measure?allowModified=true&index=-1&load=0" style="background: url(https://cdn.newdreamer.cn/assets/bg/2.png) 100%">
 		<text class="des">开始量体</text>
 	</navigator>
 	<navigator class="block column jc-fs ai-fs" url="myMeasureList?status=已量体&title=量体数据" style="background: url(https://cdn.newdreamer.cn/assets/bg/3.png) 100%">

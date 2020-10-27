@@ -20,9 +20,7 @@ Page({
         }
     },
     getMeasureList: function (status) {
-        app.request("https://newdreamer.cn:8080/api/volume/getReservations", {
-            status: status
-        }).then(measureList => {
+        app.request("https://newdreamer.cn:8080/api/volumer/getVolumeInfo").then(measureList => {
             this.setData({
                 measureList: this.data.measureList.concat(measureList)
             })

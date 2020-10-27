@@ -9,18 +9,18 @@
 		</view>
 	</view>
 	<view class="data-wrap">
-		<view class="data full">时间：{{data.time}}</view>
-		<view class="data full">地点：{{data.address}}</view>
-		<view class="data full">状态：{{data.reservation_Status}}</view>
+		<view class="data full">时间：{{data['时间']}}</view>
+		<view class="data full">地点：{{data['地点']}}</view>
+		<view class="data full">状态：{{data['状态']}}</view>
 	</view>
 	<view class="row jc-fe ai-c" style="padding-top:15rpx;border-top:solid 1px #ccc;">
 		<view class="dataTag red" bindtap="acceptOrder" data-id="{{data.reservation_Id}}" wx:if="{{data.reservation_Status=='派单中'}}">
 			<text>确认接单</text>
 		</view>
-		<navigator class="dataTag blue" url="../measure?allowModified=true&rid={{data.reservation_Id}}&load=0" wx:elif="{{data.reservation_Status=='已接单'}}">
+		<navigator class="dataTag blue" url="../measure?allowModified=true&index={{i}}&load=0" wx:elif="{{data.reservation_Status=='已接单'}}">
 			<text>开始量体</text>
 		</navigator>
-		<navigator class="dataTag gold" url="../measure?allowModified=true&rid={{data.reservation_Id}}" wx:elif="{{data.reservation_Status=='已量体'}}">
+		<navigator class="dataTag gold" url="../measure?allowModified=true&index={{i}}" wx:elif="{{data.reservation_Status=='已量体'}}">
 			<text>量体数据</text>
 		</navigator>
 	</view>
