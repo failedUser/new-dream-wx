@@ -100,7 +100,7 @@
         {
           "name": "pages/measure/measure",
           "pathName": "pages/measure/measure",
-          "query": "allowModified=true&rid=92",
+          "query": "rid=92",
           "scene": null
         },
         {

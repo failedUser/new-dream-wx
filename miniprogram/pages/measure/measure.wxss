@@ -25,8 +25,13 @@
 }
 
 .info-wrap .info {
+    display: flex;
+    flex-wrap: nowrap;
     width: 600rpx;
     padding: 25rpx 10rpx;
+}
+.info-wrap .info view {
+    flex-shrink: 0;
 }
 
 .info-wrap .info.noBorder {
