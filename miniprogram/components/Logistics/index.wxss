@@ -1,0 +1,124 @@
+/* components/Logistics.wxss */
+
+
+.logistics-btn {
+  display: inline-block;
+  border: 1px solid #aaa;
+  border-radius: 10rpx;
+  padding: 0 20rpx;
+  color: #aaa;
+  font-size: 24rpx;
+}
+
+.logistics-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000;
+}
+.logistics-modal-content {
+  width: 90%;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  background: #fff;
+}
+
+.logistics-content__title {
+  font-size: 20rpx;
+  color: #aaa;
+}
+.logistics-content__list {
+  margin-top: 20rpx;
+}
+
+.logistics-list-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.logistics-list-dateAndTime {
+  width: 70rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.logistics-list-date {
+  font-size: 22rpx;
+}
+.logistics-list-time {
+  font-size: 18rpx;
+  color: #aaa;
+}
+.logistics-list-step {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 40rpx;
+  margin-left: 10rpx;
+  min-height: 80rpx;
+}
+.logistics-step--success {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 100%;
+  color: #fff;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 40rpx;
+  background: var(--colorBlue);
+}
+
+.logistics-step--pending {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 100%;
+  background: #aaa;
+}
+
+
+.logistics-step-line {
+  width: 1px;
+  background: #aaa;
+  flex: 1;  
+  height: 100%;
+}
+
+.logistics-info {
+  margin-left: 20rpx;
+}
+
+.logistics-info__text {
+  color: #333;
+  font-size: 24rpx;
+}
+
+
+.logistics-list-item--first {
+  min-height: 110rpx
+}
+
+.logistics-list-item--first .logistics-list-step {
+  min-height: 110rpx;
+}
+
+.logistics-list-item--other .logistics-list-dateAndTime,.logistics-list-item--other .logistics-info{
+  margin-top: -15rpx;
+}
+
+.logistics-content-icon {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 10rpx;
+}

@@ -1,3 +1,6 @@
 {
-	"navigationBarTitleText": "全部订单"
+	"navigationBarTitleText": "全部订单",
+	"usingComponents": {
+		"Logistics": "../../components/Logistics"
+	}
 }

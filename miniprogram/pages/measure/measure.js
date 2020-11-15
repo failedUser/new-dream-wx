@@ -12,7 +12,8 @@ Page({
             "身高": "",
             "体重": "",
             "喜好": "",
-            "预计使用时间": ''
+            "预计使用时间": '',
+            "喜好": ''
         },
         paras: {
             "胸围": "",
@@ -116,6 +117,7 @@ Page({
         this.setData({
             [e.currentTarget.dataset.type + "." + e.currentTarget.dataset.key]: e.currentTarget.dataset.range == undefined ? e.detail.value : e.currentTarget.dataset.range[e.detail.value]
         })
+        console.log('this.data', this.data);
     },
     choose: function (e) {
         this.setData({

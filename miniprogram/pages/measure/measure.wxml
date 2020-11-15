@@ -14,7 +14,7 @@
 		<view class="info row jc-sb ai-c">
 			<view class="bold">喜好</view>
 			<picker bindchange="change" data-type="info" data-key="喜好" data-range="{{['修身','舒适', '宽松']}}" value="{{info['喜好']}}" range="{{['修身','舒适', '宽松']}}" disabled="{{!allowModified}}">
-				<view>{{info['喜好'] || allowModified ? '请选择喜好' : '暂无'}}</view>
+				<view>{{info['喜好'] || (allowModified ? '请选择喜好' : '暂无')}}</view>
 			</picker>
 		</view>
 	</view>

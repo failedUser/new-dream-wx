@@ -1,0 +1,24 @@
+<view bindtap="changeVisible" class="logistics-btn">{{text}}</view>
+
+
+<view class="logistics-modal" bindtap="changeVisible" wx:if="{{visible}}">
+  <view catchtouchstart="onstart" class="logistics-modal-content">
+    <view catchtouchstart="copy" class="logistics-content__title">顺丰: {{mailNo}} <image class="logistics-content-icon" src="../../images/copy.png" /></view>
+    <view class="logistics-content__list">
+      <view class="logistics-list-item logistics-list-item--{{index === 0 ? 'first' : 'other'}}" wx:for="{{logInfo}}" wx:for-item="log" wx:for-index="index" wx:key='index'>
+        <view class="logistics-list-dateAndTime">
+           <view class="logistics-list-date">{{log.date}}</view>
+           <view class="logistics-list-time">{{log.time}}</view>
+        </view>
+        <view class="logistics-list-step">
+            <view class="logistics-step--success" wx:if="{{log.success}}">收</view>
+            <view class="logistics-step--pending" wx:else></view>
+            <view wx:if="{{index < (logInfo.length - 1)}}" class="logistics-step-line"></view>
+        </view>
+        <view class="logistics-info">
+          <view class="logistics-info__text">{{log.remark}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

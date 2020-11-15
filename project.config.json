@@ -109,6 +109,12 @@
           "pathName": "pages/measure/measure",
           "query": "allowModified=true",
           "scene": null
+        },
+        {
+          "name": "量体师 ---我的订单",
+          "pathName": "pages/measure/volumer/myOrderList",
+          "query": "rid=11218",
+          "scene": null
         }
       ]
     }

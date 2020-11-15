@@ -64,7 +64,8 @@
 						<view class="t gold b">￥{{volumerRewardInfos[orderIndex].actual_Reward}}</view>
 					</view>
 				</view>
-				<view class='order-info' style="justify-content:flex-end;">
+				<view class='order-info' style="justify-content:space-between;align-items:center;padding-left: 40rpx">
+					<Logistics text="查看物流 " shipmentId="{{order.shipmentId}}"></Logistics>
 					<view class='product-sum'>
 						<text space="nbsp" style="text-align:right;">总计￥{{order.total_Original_Price}}，优惠￥0，实付款：￥{{order.total_Received_Amount}}</text>
 					</view>

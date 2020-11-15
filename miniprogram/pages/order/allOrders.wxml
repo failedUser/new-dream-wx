@@ -64,7 +64,8 @@
 				</block>
 				<block wx:if="{{order.status=='待收货'&&currentTab !== '售后'}}">
 					<view class='order-bot'>
-						<view bindtap="setClipboardData" data-data="{{order.deliverID}}" style="border:solid 1px #888;color:#555;">顺丰单号</view>
+						<Logistics class="orderInfo-shipment" text="查看物流 " shipmentId="{{order.deliverID}}"></Logistics>
+						<!-- <view bindtap="setClipboardData" data-data="{{order.deliverID}}" style="border:solid 1px #888;color:#555;">顺丰单号</view> -->
 						<view bindtap='bindReceive' data-id='{{order.orderID}}'>确认收货</view>
 					</view>
 				</block>

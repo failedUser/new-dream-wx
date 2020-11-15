@@ -18,6 +18,7 @@ Page({
         app.request("https://newdreamer.cn:8080/api/items/get", {
             orderID: this.data.orderInfo.order_Id
         }).then(data => {
+            // data.orderInfo.shipment_Id =  'SF1032683095520';
             let distritutor_Discount = 0;
             for (var j in data.itemInfos) {
                 distritutor_Discount += parseFloat(data.itemInfos[j].distributor_Deduction) || 0

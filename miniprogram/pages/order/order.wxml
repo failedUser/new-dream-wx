@@ -12,7 +12,8 @@
 	<view wx:if="{{orderInfo.shipment_Id}}">
 		<text>运单编号：</text>
 		<text>{{orderInfo.shipment_Id}}</text>
-		<text class="copy" bindtap="setClipboardData" data-data="{{orderInfo.shipment_Id}}">复制</text>
+		<Logistics class="orderInfo-shipment" text="查看物流 " shipmentId="{{orderInfo.shipment_Id}}"></Logistics>
+		<!-- <text class="copy" bindtap="setClipboardData" data-data="{{orderInfo.shipment_Id}}">复制</text> -->
 	</view>
 </view>
 <view class='order-list'>
