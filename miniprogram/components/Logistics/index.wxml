@@ -1,4 +1,4 @@
-<view bindtap="changeVisible" class="logistics-btn">{{text}}</view>
+<view bindtap="changeVisible" class="{{ cleanDefault ? '' : 'logistics-btn'}}">{{text}}</view>
 
 
 <view class="logistics-modal" bindtap="changeVisible" wx:if="{{visible}}">

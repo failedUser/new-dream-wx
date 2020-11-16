@@ -10,6 +10,10 @@ Component({
       type: String,
       value: '查看物流'
     },
+    cleanDefault: {
+      type: Boolean,
+      value: false
+    },
     shipmentId: {
       type: String,
       value: ''
@@ -22,36 +26,6 @@ Component({
    */
   data: {
     visible: false
-  },
-  observers: {
-    shipmentId(value) {
-      if (!value) return;
-      getApp().request("https://newdreamer.cn:8080/api/getDeliveryDetails", {
-        shipmentId: value,
-    }).then(data => {
-      try {
-          let info = JSON.parse(data).json[0];
-          info.routeResponseRouteList = info.routeResponseRouteList.map(item => {
-            let s = item.acceptTime.split(' ');
-            item.date = s[0].split('-').slice(1).join('-');
-            item.time = s[1].split(':').slice(0, 2).join(':');
-            if (item.remark === '派送成功') {
-              item.success = true;
-            }
-            return item;
-          })
-          console.log(info.routeResponseRouteList);
-          this.setData({
-            mailNo: info.mailNo,
-            logInfo: info.routeResponseRouteList.reverse()
-          })
-      } catch (error) {
-        wx.showToast({
-          title: '查询物流失败',
-        })
-      }
-    });
-    }
   },
   /**
    * 组件的方法列表
@@ -68,12 +42,66 @@ Component({
       })
     },
     changeVisible() {
-      if (!this.data.logInfo) {
-        return ;
-      }
-      this.setData({
-        visible: !this.data.visible
-      })
+        if (!this.properties.shipmentId) {
+            wx.showToast({
+            title: '运单号不存在',
+            })
+            return ;
+        }
+        if (!this.data.visible) {
+            getApp().request("https://newdreamer.cn:8080/api/getDeliveryDetails", {
+                shipmentId: this.properties.shipmentId,
+            }).then(data => {
+            try {
+                let info = JSON.parse(data).json[0];
+                console.log(info);
+                if (!info.routeResponseRouteList || !info.mailNo) {
+                    wx.setClipboardData({
+                        data: this.properties.shipmentId,
+                        success() {
+                            wx.showToast({
+                                title: '暂无无快递信息，已复制运单号，可至顺丰小程序查询运单信息',
+                                icon: 'none',
+                                duration: 2000
+                            })
+                        }
+                    })
+                    return ;
+                }
+                info.routeResponseRouteList = info.routeResponseRouteList.map(item => {
+                    let s = item.acceptTime.split(' ');
+                    item.date = s[0].split('-').slice(1).join('-');
+                    item.time = s[1].split(':').slice(0, 2).join(':');
+                    if (item.remark === '派送成功') {
+                    item.success = true;
+                    }
+                    return item;
+                })
+                
+                this.setData({
+                    mailNo: info.mailNo,
+                    logInfo: info.routeResponseRouteList.reverse(),
+                    visible: true
+                })
+            } catch (error) {
+                wx.setClipboardData({
+                    data: this.data.mailNo,
+                    success() {
+                        wx.showToast({
+                            title: '暂无无快递信息，已复制运单号，可至顺丰小程序查询运单信息',
+                            icon: 'none',
+                            duration: 2000
+                        })
+                    }
+                })
+                
+            }
+        });
+    } else {
+        this.setData({
+            visible: !this.data.visible
+        })
     }
-  }
+    }
+}
 })

@@ -120,6 +120,21 @@ Page {
     color: var(--colorBlue);
     border-bottom: 5rpx solid var(--colorGold);
 }
+.order-button {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 0.5rem;
+}
+.order-button .order-button-item{
+    font-size: 28rpx;
+    height: 50rpx;
+    border-radius: 15rpx;
+    border: 1px solid var(--colorGold);
+    color: var(--colorGold);
+    line-height: 50rpx;
+    padding: 0 30rpx;
+    margin-right: 0.5rem;
+}
 
 .swiper-box {
     display: block;
