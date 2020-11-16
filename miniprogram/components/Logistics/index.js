@@ -44,7 +44,7 @@ Component({
     changeVisible() {
         if (!this.properties.shipmentId) {
             wx.showToast({
-            title: '运单号不存在',
+              title: '运单号不存在',
             })
             return ;
         }
@@ -85,7 +85,7 @@ Component({
                 })
             } catch (error) {
                 wx.setClipboardData({
-                    data: this.data.mailNo,
+                    data: this.properties.shipmentId,
                     success() {
                         wx.showToast({
                             title: '暂无无快递信息，已复制运单号，可至顺丰小程序查询运单信息',
