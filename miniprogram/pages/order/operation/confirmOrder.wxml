@@ -1,91 +1,100 @@
 <view class='main'>
-    <view class='main-mid'>
-        <view>
-            <view class='confirm-header' bindtap="chooseAddress" wx:if="{{AddressAccess}}">
-                <view class='personal-info'>
-                    <view class='personal-wrap'>
-                        <view class='personal-name'>收货人：
-                            <text>{{address.userName}}</text>
-                        </view>
-                        <view class='personal-phone'>{{address.telNumber}}</view>
-                    </view>
-                    <view class='personal-address'>{{address.provinceName}} {{address.cityName}} {{address.countyName}} {{address.detailInfo}}</view>
-                </view>
-                <view>
-                    <view class='arrow'>
-                        <image src='/images/utils/arrow-right.png'></image>
-                    </view>
-                </view>
-            </view>
-            <button class="AddressButtonCover" open-type="openSetting" wx:else>
-                <view class='confirm-header'>
-                    <view class='personal-info' style="align-content:center;">
-                        <view class='personal-wrap'>
-                            <view class='personal-name'>
-                                <text>我们需要您的授权以访问您的收货地址</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view>
-                        <view class='arrow'>
-                            <image src='/images/utils/arrow-right.png'></image>
-                        </view>
-                    </view>
-                </view>
-            </button>
-            <view class='border-img-wrap'>
-                <image src='/images/utils/border.png' class='border-img'></image>
-            </view>
-
-            <view class='goods-info' wx:for="{{products}}" wx:key="id" wx:for-item="product">
-                <image src='{{product.image}}' class='goods-img'></image>
-                <view class='goods-info1'>
-                    <view class='goods-info1-top'>
-                        <text class='goods-name'>{{product.product_Name}}</text>
-                        <text class='goods-price'>￥{{product.price}}</text>
-                    </view>
-                    <view class='goods-info-bot'>
-                        <text class='goods-spec'>尺寸：{{product.measureName}}</text>
-                        <text class='goods-amount'>x{{product.count}}</text>
-                    </view>
-                </view>
-            </view>
-
-            <view class='message-box'>
-                <text class='message-tit'>留言</text>
-                <input type='text' class='message-text' bindblur='onRemarkChange' value='{{remark}}' placeholder="点击输入留言" />
-            </view>
-
-            <view class='goods-total'>
-                <text class='total-amount'>共计{{summary.allCount}}件商品</text>
-                <text class='total-money'>合计:￥{{summary.allPrice}}</text>
-            </view>
-
-            <view class='total-list'>
-                <view>
-                    <text>商品金额</text>
-                    <text>￥{{summary.allPrice}}</text>
-                </view>
-                <view>
-                    <text>折扣</text>
-                    <text>-￥{{summary.discount}}</text>
-                </view>
-                <view>
-                    <text>实际支付{{tip==''?'':('（'+tip+'）')}}</text>
-                    <text class='payMoney'>￥{{summary.price}}</text>
-                </view>
-            </view>
-            <view class='confirm-footer'>
-                <view class='confirm-footer-l'>
-                    <view class='footer-total'>
-                        总计:
-                        <text>￥{{summary.price}}</text>
-                    </view>
-                </view>
-                <view class='confirm-footer-r' bindtap='orderAdd'>
-                    去结算
-                </view>
-            </view>
-        </view>
-    </view>
+	<view class='main-mid'>
+		<view>
+			<view class='confirm-header' bindtap="chooseAddress" wx:if="{{AddressAccess}}">
+				<view class='personal-info'>
+					<view class='personal-wrap'>
+						<view class='personal-name'>
+							收货人：
+							<text>{{address.userName}}</text>
+						</view>
+						<view class='personal-phone'>{{address.telNumber}}</view>
+					</view>
+					<view class='personal-address'>
+						{{address.provinceName}} {{address.cityName}} {{address.countyName}} {{address.detailInfo}}
+					</view>
+				</view>
+				<view>
+					<view class='arrow'>
+						<image src='/images/utils/arrow-right.png' />
+					</view>
+				</view>
+			</view>
+			<button class="AddressButtonCover" open-type="openSetting" wx:else>
+				<view class='confirm-header'>
+					<view class='personal-info' style="align-content:center;">
+						<view class='personal-wrap'>
+							<view class='personal-name'>
+								<text>我们需要您的授权以访问您的收货地址</text>
+							</view>
+						</view>
+					</view>
+					<view>
+						<view class='arrow'>
+							<image src='/images/utils/arrow-right.png' />
+						</view>
+					</view>
+				</view>
+			</button>
+			<view class='border-img-wrap'>
+				<image src='/images/utils/border.png' class='border-img' />
+			</view>
+			<view
+			 class='goods-info'
+			 wx:for="{{products}}"
+			 wx:key="id"
+			 wx:for-item="product"
+			>
+				<image src='{{product.image}}' class='goods-img' />
+				<view class='goods-info1'>
+					<view class='goods-info1-top'>
+						<text class='goods-name'>{{product.product_Name}}</text>
+						<text class='goods-price'>￥{{product.price}}</text>
+					</view>
+					<view class='goods-info-bot'>
+						<text class='goods-spec'>尺寸：{{product.measureName}}</text>
+						<text class='goods-amount'>x{{product.count}}</text>
+					</view>
+				</view>
+			</view>
+			<view class='message-box'>
+				<text class='message-tit'>备注</text>
+				<input
+				 type='text'
+				 class='message-text'
+				 bindblur='onRemarkChange'
+				 value='{{remark}}'
+				 placeholder="点击输入商品备注及衣服使用时间"
+				/>
+			</view>
+			<view class='goods-total'>
+				<text class='total-amount'>共计{{summary.allCount}}件商品</text>
+				<text class='total-money'>合计:￥{{summary.allPrice}}</text>
+			</view>
+			<view class='total-list'>
+				<view>
+					<text>商品金额</text>
+					<text>￥{{summary.allPrice}}</text>
+				</view>
+				<view>
+					<text>折扣</text>
+					<text>-￥{{summary.discount}}</text>
+				</view>
+				<view>
+					<text>实际支付{{tip==''?'':('（'+tip+'）')}}</text>
+					<text class='payMoney'>￥{{summary.price}}</text>
+				</view>
+			</view>
+			<view class='confirm-footer'>
+				<view class='confirm-footer-l'>
+					<view class='footer-total'>
+						总计:
+						<text>￥{{summary.price}}</text>
+					</view>
+				</view>
+				<view class='confirm-footer-r' bindtap='orderAdd'>去结算</view>
+			</view>
+		</view>
+	</view>
 </view>
+
