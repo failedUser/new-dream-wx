@@ -21,7 +21,8 @@
     "pages/measure/volumer/withdraw",
     "pages/my/share/index",
     "pages/my/share/withdraw",
-    "pages/shop/shareProduct/shareProduct"
+    "pages/shop/shareProduct/shareProduct",
+    "pages/measure/volumer/reservationList"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1F4E79",

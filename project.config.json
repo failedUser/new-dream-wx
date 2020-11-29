@@ -24,14 +24,14 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": false,
     "userConfirmedUseCompilerModuleSwitch": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "bundle": false
+    "minifyWXSS": true
   },
   "appid": "wx483972e4a6372a20",
   "projectname": "%E6%96%B0%E6%A2%A6%E6%83%B3%E5%AE%B6%E5%95%86%E5%9C%BA",
@@ -116,6 +116,11 @@
           "name": "量体师 ---我的订单",
           "pathName": "pages/measure/volumer/myOrderList",
           "query": "rid=11218",
+          "scene": null
+        },
+        {
+          "name": "量体师-量体数据",
+          "pathName": "pages/measure/volumer/myMeasureList",
           "scene": null
         }
       ]

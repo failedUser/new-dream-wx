@@ -10,8 +10,7 @@
 						</view>
 						<view class='personal-phone'>{{address.telNumber}}</view>
 					</view>
-					<view class='personal-address'>
-						{{address.provinceName}} {{address.cityName}} {{address.countyName}} {{address.detailInfo}}
+					<view class='personal-address'>{{address.provinceName}} {{address.cityName}} {{address.countyName}} {{address.detailInfo}}
 					</view>
 				</view>
 				<view>

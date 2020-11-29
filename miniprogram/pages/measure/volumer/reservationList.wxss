@@ -1,0 +1,111 @@
+.measureData-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 650rpx;
+    padding: 25rpx;
+    margin: 25rpx auto 50rpx;
+    border-radius: 25rpx;
+    background-color: #fff;
+    box-shadow: 5px 5px 5px #ccc5;
+}
+
+.measureData-wrap .title-wrap {
+    display: flex;
+    flex-direction: row;
+    margin: 25rpx 10rpx;
+    justify-content: space-between;
+}
+
+.measureData-wrap .title-wrap .title {
+    width: auto;
+    max-width: 16rem;
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.dataTag {
+    width: 60px;
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+    padding: 2px 10px 2px 10px;
+    margin: 0 0 0 15px;
+    border-radius: 10px;
+    border: 1px solid #aaa;
+}
+
+.dataTag.gold {
+    color: #fff;
+    background: var(--colorGold);
+    border: 1px solid var(--colorGold);
+}
+
+.dataTag.blue {
+    color: #fff;
+    background: var(--colorBlue);
+    border: 1px solid var(--colorBlue);
+}
+
+.dataTag.red {
+    color: #fff;
+    background: red;
+    border: 1px solid red;
+}
+
+.measureData-wrap .data-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 0.5rem;
+}
+
+.measureData-wrap .data-wrap .data.full {
+    width: 650rpx;
+}
+
+.measureData-wrap .data-wrap .data {
+    width: 300rpx;
+    height: 25px;
+    color: #888;
+    font-size: 13px;
+    margin: 10rpx;
+}
+
+.addMeasureData {
+    width: 8rem;
+    height: 3rem;
+    margin: 1rem auto;
+    background: var(--colorBlue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+}
+
+.addMeasureData text {
+    font-size: 16px;
+    text-align: center;
+    color: #FFF;
+}
+
+.noMeasureData {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.noMeasureDataImg {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+.noMeasureDataText {
+    font-size: 28rpx;
+    color: #555;
+    display: block;
+    text-align: center;
+    margin-top: 40rpx;
+}

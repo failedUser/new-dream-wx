@@ -124,7 +124,7 @@ App({
     request: function (url, data = {}, forceReg = true, method = "GET") {
         data = Object.assign(data, {
             _t: Math.random(),
-            EncodeID: this.globalData.EncodeID,
+            EncodeID:  this.globalData.EncodeID,
             sessionKey: this.globalData.sessionKey
         })
         return new Promise((resolve, reject) => {

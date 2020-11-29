@@ -7,7 +7,7 @@ Page({
         this.getMeasureData()
     },
     getMeasureData: function () {
-        app.request("https://newdreamer.cn:8080/api/volume/getCustomerReservations").then(data => {
+        app.request("https://newdreamer.cn:8080/api/volume/getCustomerVolumeInfos").then(data => {
             this.setData({
                 measureData: data
             })
@@ -25,7 +25,7 @@ Page({
     },
     lookMeasureData: function (e) {
         wx.navigateTo({
-            url: '/pages/measure/measure?rid=' + e.currentTarget.dataset.id,
+            url: '/pages/measure/measure?vid=' + e.currentTarget.dataset.id,
         })
     },
     cancelReservation: function (e) {

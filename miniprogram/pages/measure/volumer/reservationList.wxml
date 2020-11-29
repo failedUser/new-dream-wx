@@ -1,0 +1,43 @@
+<view class="topBlue" />
+<view
+ class="measureData-wrap"
+ wx:for="{{measureList}}"
+ wx:for-item="data"
+ wx:for-index="i"
+ wx:key="i"
+>
+	<view class="title-wrap row jc-sb">
+		<view class="title">
+			<text>{{data.name}}</text>
+		</view>
+		<view>
+			<text style="color:#aaa;">{{data.phone}}</text>
+		</view>
+	</view>
+	<view class="data-wrap">
+		<view class="data full">时间：{{data.time}}</view>
+		<view class="data full">地点：{{data.address}}</view>
+		<view class="data full">状态：{{data.reservation_Status}}</view>
+	</view>
+	<view class="row jc-fe ai-c" style="padding-top:15rpx;border-top:solid 1px #ccc;">
+		<view
+		 class="dataTag red"
+		 bindtap="acceptOrder"
+		 data-id="{{data.reservation_Id}}"
+		 wx:if="{{data.reservation_Status=='派单中'}}"
+		>
+			<text>确认接单</text>
+		</view>
+		<navigator class="dataTag blue" url="../measure?allowModified=true&rid={{data.reservation_Id}}&load=0" wx:elif="{{data.reservation_Status=='已接单'}}">
+			<text>开始量体</text>
+		</navigator>
+		<navigator class="dataTag gold" url="../measure?allowModified=true&rid={{data.reservation_Id}}" wx:elif="{{data.reservation_Status=='已量体'}}">
+			<text>量体数据</text>
+		</navigator>
+	</view>
+</view>
+<view class='noOrder' hidden="{{measureList.length>0}}">
+	<image src='/images/utils/noOrder.png' class='noOrderImg' />
+	<text class='noOrderText'>{{status=='已量体'?'暂无量体数据':'暂无预约'}}</text>
+</view>
+

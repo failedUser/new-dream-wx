@@ -1,7 +1,7 @@
 const app = getApp()
 Page({
     data: {
-        rid: -1,
+        vid: -1,
         allowModified: false,
         tab: 0,
         info: {
@@ -73,17 +73,27 @@ Page({
         }
     },
     onLoad: function (options) {
+        console.log('---options---', options);
         this.setData({
             allowModified: options.allowModified == undefined ? false : options.allowModified,
-            rid: options.rid == undefined ? -1 : options.rid
+            vid: options.vid, // 目前vid进来一定是有值的
+            rid: options.rid == undefined ? -1 : options.rid,
         })
         if (options.load != "0") { this.getVolumerInfo() }
     },
     getVolumerInfo: function () {
-        if (this.data.rid == -1) return
-        app.request("https://newdreamer.cn:8080/api/volume/getVolumeInfo", {
-            ReservationId: this.data.rid
-        }).then(data => {
+        if ((!this.data.vid && this.data.rid === -1)) return;
+        let url = 'https://newdreamer.cn:8080/api/volume/getVolumeInfo';
+        let params = {
+            Reservation_Id: this.data.rid
+        }
+        if (this.data.vid) {
+            url = 'https://newdreamer.cn:8080/api/volumer/getVolumeDetailsByVid';
+            params = {
+                volume_Id: this.data.vid
+            }
+        }
+        app.request(url, params).then(data => {
             let bodyShapeData = { info: this.data.info, paras: this.data.paras, shape: this.data.shape, more: this.data.more }
             for (let item in data) {
                 if (bodyShapeData.info[item] != undefined) {
@@ -177,18 +187,27 @@ Page({
             data[shape] = []
             if (shape === '体型备注') {
                 data[shape] = shapes[shape];
-                continue ;
+                continue;
             }
             for (let key in shapes[shape]) {
                 if (shapes[shape][key]) data[shape].push(key)
             }
             data[shape] = data[shape].join(" ")
         }
-        app.request("https://newdreamer.cn:8080/api/sizeInfo/add", {
-            Reservation_Id: this.data.rid,
-            bodyShapeData: JSON.stringify(data)
-        }, true, "POST").then(data => {
-            wx.navigateBack()
-        });
+        if (!this.data.vid) {
+            app.request("https://newdreamer.cn:8080/api/sizeInfo/add", {
+                Reservation_Id: this.data.rid,
+                bodyShapeData: JSON.stringify(data)
+            }, true, "POST").then(data => {
+                wx.navigateBack()
+            });
+        } else {
+            app.request("https://newdreamer.cn:8080/api/sizeInfo/update", {
+                vid: this.data.vid,
+                bodyShapeData: JSON.stringify(data)
+            }, true, "POST").then(data => {
+                wx.navigateBack()
+            });
+        }
     }
 })

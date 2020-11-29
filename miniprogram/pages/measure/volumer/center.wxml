@@ -1,4 +1,4 @@
-<view class="topBlue"></view>
+<view class="topBlue" />
 <view class="container">
 	<view class="column jc-fs ai-fs">
 		<text class="num" style="font-weight:700;">{{monthProfit}}</text>
@@ -10,30 +10,33 @@
 		<view class="title-right">
 			<view class="row">
 				<text>{{withdrawableAvaliable}}</text>
-				<text class="arrow-right"></text>
-			</view>
-		</view>
-	</navigator>
+				<text class="arrow-right" />
+												</view>
+								</view>
+				</navigator>
 </view>
 <view class="container small">
-	<view class="row jc-sb ai-c">
-		<view class="column jc-fs ai-c">
-			<text class="num">{{sumOrder}}</text>
-			<text class="des">累计订单</text>
+				<view class="row jc-sb ai-c">
+								<view class="column jc-fs ai-c">
+												<text class="num">{{sumOrder}}
+</text>
+				<text class="des">累计订单</text>
+			</view>
+			<view class="column jc-fs ai-c">
+				<text class="num">{{sumProfit}}</text>
+				<text class="des">累计收益</text>
+			</view>
 		</view>
-		<view class="column jc-fs ai-c">
-			<text class="num">{{sumProfit}}</text>
-			<text class="des">累计收益</text>
-		</view>
-	</view>
 </view>
 <view class="row jc-se ai-c">
-	<navigator class="block column jc-fs ai-fs" url="myMeasureList?status=派单中&title=预约查询" style="background: url(https://cdn.newdreamer.cn/assets/bg/1.png) 100%">
+	<navigator class="block column jc-fs ai-fs" url="reservationList?status=派单中&title=预约查询" style="background: url(https://cdn.newdreamer.cn/assets/bg/1.png) 100%">
 		<text class="des">预约查询</text>
-		<text class='count down' wx:if="{{new}}"></text>
-	</navigator>
-	<navigator class="block column jc-fs ai-fs" url="../measure?allowModified=true&rid=-1&load=0" style="background: url(https://cdn.newdreamer.cn/assets/bg/2.png) 100%">
-		<text class="des">开始量体</text>
+		<text class='count down' wx:if="{{new}}" />
+
+				</navigator>
+				<navigator class="block column jc-fs ai-fs" url="../measure?allowModified=true&rid=-1&load=0" style="background: url(https://cdn.newdreamer.cn/assets/bg/2.png) 100%">
+								<text class="des">开始量体
+</text>
 	</navigator>
 	<navigator class="block column jc-fs ai-fs" url="myMeasureList?status=已量体&title=量体数据" style="background: url(https://cdn.newdreamer.cn/assets/bg/3.png) 100%">
 		<text class="des">量体数据</text>
@@ -42,3 +45,4 @@
 		<text class="des">我的订单</text>
 	</navigator>
 </view>
+

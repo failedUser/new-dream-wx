@@ -20,7 +20,7 @@ Page({
         }
     },
     getMeasureList: function (status) {
-        app.request("https://newdreamer.cn:8080/api/volume/getReservations", {
+        app.request("https://newdreamer.cn:8080/api/volumer/getVolumeInfo", {
             status: status
         }).then(measureList => {
             this.setData({
