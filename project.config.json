@@ -94,8 +94,7 @@
           "scene": null
         },
         {
-          "id": -1,
-          "name": "pages/measure/index",
+          "name": "量体数据",
           "pathName": "pages/measure/measure",
           "query": "",
           "scene": null
@@ -122,6 +121,19 @@
         {
           "name": "量体师-量体数据",
           "pathName": "pages/measure/volumer/myMeasureList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "预约",
+          "pathName": "pages/measure/reservation",
+          "query": "status=待预约",
+          "scene": null
+        },
+        {
+          "name": "预约上门",
+          "pathName": "pages/measure/index",
+          "query": "",
           "scene": null
         }
       ]

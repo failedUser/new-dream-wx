@@ -1,3 +1,6 @@
 {
-	"navigationBarTitleText": "量体数据"
+	"navigationBarTitleText": "量体数据",
+	"usingComponents": {
+		"reservation": "../../components/reservation"
+	}
 }

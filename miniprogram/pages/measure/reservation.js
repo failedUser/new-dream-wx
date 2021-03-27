@@ -63,6 +63,7 @@ Page({
         });
     },
     onLoad: function (options) {
+        console.log('---options', options);
         if (options.status == "待预约") {
             this.getCollegeInfo()
             this.setData({

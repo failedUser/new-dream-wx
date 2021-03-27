@@ -1,21 +1,43 @@
 const app = getApp()
 Page({
     data: {
-        measureData: null
+        measureData: null,
+        status: '',
+        sizeShow: [
+            {title: '身高', field: 'height'},
+            {title: '体重', field: 'weight'},
+            {title: '胸围', field: 'bust'},
+            {title: '中腰', field: 'middle_Waist'},
+            {title: '腰围', field: 'waistline'},
+            {title: '臀围', field: 'hips'},
+            {title: '量体师', field: 'volumer_Name'},
+
+        ]
     },
     onShow: function (options) {
         this.getMeasureData()
     },
     getMeasureData: function () {
         app.request("https://newdreamer.cn:8080/api/volume/getCustomerVolumeInfos").then(data => {
+            if (data && (data.reservations.length || data.sizeInfos.length) ) {
+                this.setData({
+                    measureData: [...data.reservations ||[], ...data.sizeInfos ||[]]
+                })
+                return ;
+            }
             this.setData({
-                measureData: data
+                status: '待预约'
             })
+            
         }).catch(e => {
             this.setData({
                 measureData: []
             })
         })
+    },
+    OnReservationSuccess() {
+        console.log('预约成功了');
+        this.getMeasureData()
     },
     //预约量体
     reserveMeasure: function (e) {

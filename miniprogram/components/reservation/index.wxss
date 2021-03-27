@@ -1,0 +1,159 @@
+@import "../../styles/wty.wxss";
+@import "../../styles/iconfont.wxss";
+@import "../../styles/weui.wxss";
+
+
+.next {
+  width: 300rpx;
+  height: 100rpx;
+  margin-top: 30rpx;
+  background-color: var(--colorBlue);
+  color: #fff;
+  font-size: 32rpx;
+  letter-spacing: 10rpx;
+  border-radius: 25rpx;
+}
+
+.next.grey {
+  background-color: #888;
+}
+.next.gold {
+  background-color: var(--colorGold);
+}
+
+.wrap {
+  width: 650rpx;
+  padding: 25rpx;
+  margin: 100rpx auto 50rpx;
+  background: #fff;
+  border-radius: 25rpx;
+}
+
+.info-wrap .info {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 600rpx;
+  padding: 25rpx 10rpx;
+}
+.info-wrap .info view {
+  flex-shrink: 0;
+}
+
+.info-wrap .info.noBorder {
+  border-bottom: none;
+}
+
+.info-wrap .info view {
+  height: 50rpx;
+  padding-left: 5rpx;
+  text-align: justify;
+  color: #666;
+  letter-spacing: 5rpx;
+}
+
+.info-wrap .info input,
+.info-wrap .info picker {
+  width: 450rpx;
+  height: 50rpx;
+  padding: 5rpx;
+  color: #666;
+  opacity: 0.8;
+  text-align: right;
+  letter-spacing: 10rpx;
+}
+
+.info-wrap .info picker view {
+  width: 100%;
+  text-align: right;
+}
+
+.info-wrap .info input:hover {
+  animation: focus 0.75s linear forwards alternate;
+}
+
+@keyframes focus {
+  from {
+      opacity: 0.8;
+  }
+
+  to {
+      opacity: 1;
+  }
+}
+
+.para-wrap {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.para-wrap .para {
+  padding: 10rpx 0 20rpx;
+  max-width: 50%;
+}
+
+.para-wrap .para.bt {
+  border-top: solid 1px #ddd;
+}
+.para-wrap .para.br {
+  border-right: solid 1px #ddd;
+}
+
+.para-wrap .para view {
+  width: 140rpx;
+  height: 50rpx;
+  padding-left: 5rpx;
+  text-align: justify;
+  color: #666;
+  letter-spacing: 5rpx;
+}
+
+.para-wrap .para input {
+  width: 150rpx;
+  height: 50rpx;
+  padding: 5rpx;
+  color: #aaa;
+  opacity: 0.8;
+  text-decoration: underline;
+  text-align: center;
+  letter-spacing: 10rpx;
+}
+
+.shape-wrap .shape {
+  width: 650rpx;
+  padding: 10rpx 0 50rpx;
+}
+
+.shape-wrap .shape .title {
+  width: 140rpx;
+  height: 50rpx;
+  padding: 20rpx;
+  text-align: justify;
+  color: #555;
+  letter-spacing: 5rpx;
+}
+
+.shape-wrap .shape .btn0 {
+  width: 120rpx;
+  height: 80rpx;
+  padding: 5rpx;
+  color: #555;
+  background: #fff;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  border: solid 1px #ddd;
+}
+
+.shape-wrap .shape .btn0.active {
+  color: #fff;
+  background: var(--colorGold);
+}
+
+.shape-wrap .shape .btn0 text {
+  width: 120rpx;
+  height: 28rpx;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 28rpx;
+  line-height: 28rpx;
+}

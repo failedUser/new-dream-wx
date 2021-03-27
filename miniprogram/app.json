@@ -49,7 +49,7 @@
       },
       {
         "pagePath": "pages/measure/index",
-        "text": "量体",
+        "text": "预约上门",
         "iconPath": "images/menu/menu3.png",
         "selectedIconPath": "images/menu/menu3-sel.png"
       },

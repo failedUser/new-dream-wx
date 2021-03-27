@@ -1,0 +1,57 @@
+<!--预约-->
+<view class="wrap">
+
+<view class="topBlue"></view>
+	<view class="info-wrap row jc-c ai-fs">
+		<view class="info row jc-c ai-c">
+			<view class="bold">性别</view>
+			<picker bindchange="change" data-type="info" data-key="性别" data-range="{{['男','女']}}" value="{{info['性别']}}" range="{{['男','女']}}">
+				<view>{{info['性别']}}</view>
+			</picker>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info row jc-c ai-c" wx:for="{{info}}" wx:for-index="para" wx:key="para" wx:if="{{para=='姓名'|| para=='手机'}}">
+			<view class="bold">{{para}}</view>
+			<input type="text" value="{{item}}" bindinput="change" data-type="info" data-key="{{para}}"></input>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info row jc-c ai-c">
+			<view class="bold">高校</view>
+			<picker mode="selector" bindchange="onSelectedCollege" value="{{college}}" range="{{collegeArray}}">
+				<view class="picker">
+					{{collegeArray[college] || ''}}
+				</view>
+			</picker>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info row jc-c ai-c">
+			<view class="bold">校区</view>
+			<picker  bindchange="onSelectedPart" value="{{part}}" range="{{partArray}}">
+				<view class="picker">
+					{{partArray[part]}}
+				</view>
+			</picker>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info row jc-c ai-c">
+			<view class="bold">宿舍</view>
+			<input type="text" value="{{room}}" bindinput="onChangeRoom" data-type="info" data-key="room"></input>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+		<view class="info row jc-c ai-c">
+			<view class="bold">时间</view>
+			<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+				<view class="picker">
+					{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}
+				</view>
+			</picker>
+			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
+		</view>
+	</view>
+	<view class="row jc-c ai-c" bindtap="next">
+		<view class="next row jc-c ai-c">
+			<text>确定预约</text>
+		</view>
+	</view>
+	<image src='https://wechat-miniapp-newdreamer.oss-cn-shanghai.aliyuncs.com/index/volume%20reservation/cof_sucessful_1.png' mode="widthFix" style="width:100%;margin-top:50rpx;" />
+</view>
