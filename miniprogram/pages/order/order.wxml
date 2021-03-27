@@ -62,7 +62,7 @@
 		<text>￥{{orderInfo.total_Original_Price}}</text>
 	</view>
 	<view class="row jc-sb ai-c">
-		<text>福利优惠</text>
+		<text>年底狂欢</text>
 		<text>-￥{{distritutor_Discount}}</text>
 	</view>
 	<view class="row jc-sb ai-c bold">

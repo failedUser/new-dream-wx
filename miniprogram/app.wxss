@@ -19,7 +19,7 @@
 
 Page {
     --bgcolor: #ff0d00;
-    --color: #ff8623;
+    --color: #d8532f;
     --bgblack: #000;
     --bggrey: #555;
     --colorBlue: #224e79;

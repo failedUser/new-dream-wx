@@ -63,8 +63,9 @@ Page({
             var products = this.data.products
             for (var i in products) {
                 let price = parseFloat(products[i].price)
-                let p0 = price
-                if ((products[i].Distributor_Wechat_Id != '' || app.globalData.scene) && !app.globalData.shareFromSelf) {
+                let p0 = price;
+                let Distributor_Deduction = parseFloat(products[i].Distributor_Deduction || 0);
+                if (Distributor_Deduction) {
                     let dd = parseFloat(products[i].Distributor_Deduction || 0)
                     console.log(p0, dd)
                     p0 -= dd

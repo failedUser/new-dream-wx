@@ -54,7 +54,7 @@ Page({
         let scene = decodeURIComponent(options.s || options.scene || '');
         console.log(scene);
         if (scene) {
-            app.globalData.scene = scene  || ''
+            app.globalData.scene = scene || ''
             this.setData({
                 scene: scene
             })
@@ -74,7 +74,7 @@ Page({
         })
     },
 
-    toShare () {
+    toShare() {
         this.setData({
             shareDialogVisible: true
         })
@@ -93,7 +93,7 @@ Page({
         }
         app.globalData.shareModal = shareModal;
         wx.navigateTo({
-          url: '/pages/shop/shareProduct/shareProduct',
+            url: '/pages/shop/shareProduct/shareProduct',
         })
         this.setData({
             shareDialogVisible: false
@@ -124,10 +124,10 @@ Page({
     },
     //获取商品
     getProduct: function (barcode) {
-        app.request("https://newdreamer.cn:8080/api/productInfo/get", { 
-            Barcode: barcode, 
+        app.request("https://newdreamer.cn:8080/api/productInfo/get", {
+            Barcode: barcode,
             scene: app.globalData.scene || false
-         }).then(data => {
+        }).then(data => {
             let products = data.products
             let mainProduct = 0
             let price = {
@@ -147,6 +147,7 @@ Page({
                     price.max = products[i].price
                     price.maxShare = parseFloat(Number(products[i].price - (products[i].singleDistributionDeducation || 0)).toFixed(2))
                 }
+                products[i].distributor_Deduction = Number(products[i].distributor_Deduction || 0);
                 products[i].distributorPrice = parseFloat(Number(products[i].price - (products[i].distributor_Deduction || 0)).toFixed(2));
                 products[i].image = products[i].image ? JSON.parse(products[i].image) || '' : ''
                 products[i].detailImages = products[i].detailImages ? JSON.parse(products[i].detailImages) || '' : ''
@@ -376,7 +377,7 @@ Page({
                 wx.showToast({
                     title: '已加入购物车',
                 })
-            }, err => {});
+            }, err => { });
         } else if (this.data.showSpec == 2) {
             wx.navigateTo({
                 url: '/pages/order/operation/confirmOrder?from=product&products=' + JSON.stringify([product])

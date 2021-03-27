@@ -71,6 +71,7 @@
 
 .goods-price {
     color: var(--color);
+    font-size: 32rpx;
 }
 
 .goods-price text {
@@ -380,7 +381,7 @@
     align-self: flex-start;
 }
 .goods-result-price {
-    font-size: 28rpx;
+    font-size: 32rpx;
 }
 .goods-price-real {
     font-size: 28rpx;

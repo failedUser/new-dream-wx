@@ -35,6 +35,7 @@ Page {
     font-size: 28rpx;
     line-height: 32rpx;
     color: #555;
+    font-weight: bold;
 }
 .notice-text--0 {
     color: #e33535;
@@ -82,6 +83,7 @@ Page {
 
 .classify-wrap .classify text {
     text-align: center;
+    font-weight: bold;
 }
 
 /* 推荐 */
