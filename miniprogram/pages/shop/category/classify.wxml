@@ -97,3 +97,9 @@
     </view>
 </view>
 <view class="mask" catchtap="bindCategorySelecter" hidden="{{!showCategorySelecter}}"></view>
+
+
+<navigator 
+		style="position: fixed; right:-15px;top:70%;width:60px;height:60px;font-size: 25rpx;color: #fff;border-radius: 100%;text-align:center; background:#234E78;padding:20rpx 40rpx 20rpx 20rpx;box-sizing: border-box;font-weight: fold;"
+		open-type="navigateTo" 
+		url="/pages/measure/reservation?status=待预约">预约上门</navigator>

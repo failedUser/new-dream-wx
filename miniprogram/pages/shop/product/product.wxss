@@ -412,7 +412,7 @@
 }
 
 .type-list text {
-    width: 220rpx;
+    min-width: 220rpx;
     height: 50rpx;
     border-radius: 50rpx;
     padding: 0 20rpx;
@@ -472,13 +472,13 @@
 }
 
 .spec-sure {
-    width: 100%;
-    height: 80rpx;
+    width: 40%;
+    height: 60rpx;
     text-align: center;
-    font-size: 36rpx;
+    font-size: 30rpx;
     color: #fff;
     background-color: var(--colorBlue);
-    line-height: 80rpx;
+    line-height: 60rpx;
     border-radius: 40rpx;
 }
 
@@ -488,6 +488,9 @@
 
 .act-spec-sure {
     padding: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .indexproperty {
@@ -588,4 +591,13 @@
 }
 .share-dialog-footer {
  margin-bottom: -40px;
+}
+
+
+.choose-sizeInfo {
+    background:#f8f8f8;
+    padding: 0;
+}
+.choose-sizeInfo .weui-half-screen-dialog__hd {
+    padding-left: 40rpx;
 }

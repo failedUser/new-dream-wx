@@ -36,10 +36,17 @@ Page({
         galleryImgs: null,
         galleryCurrent: 0,
         showName: '',
-        shareUrl: ''
+        shareUrl: '',
+        userSizeInfos: [],
+        selectedSizeInfo: null,
+        hasPhone: false
     },
     onLoad: function (options) {
-        console.log('---optins---', options);
+        setTimeout(() => {
+            this.setData({
+                hasPhone: getApp().globalData.phone
+            })
+        }, 500);
         const barcode = options.b || options.barcode;
         if (this.data.Distributor_Wechat_Name == app.globalData.userInfo && app.globalData.userInfo.nickName) {
             this.setData({
@@ -73,7 +80,18 @@ Page({
             })
         })
     },
-
+    onGetPhoneNumber: function (e) {
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+            app.request("https://newdreamer.cn:8080/api/phone/set", e.detail).then(phone => {
+                app.globalData.phone = phone
+                this.setData({
+                    phone: phone,
+                    hasPhone: true
+                })
+                this.bindChooseSpec(e);
+            });
+        }
+    },
     toShare() {
         this.setData({
             shareDialogVisible: true
@@ -273,11 +291,47 @@ Page({
             selectProduct: e.currentTarget.dataset.pid
         })
     },
+    getUserSizeInfos: function () {
+        app.request("https://newdreamer.cn:8080/api/volume/getCustomerVolumeInfos").then(data => {
+            if (data && (data.sizeInfos.length) ) {
+                this.setData({
+                    userSizeInfos: data.sizeInfos || []
+                })
+                return ;
+            }
+        }).catch(e => {
+            this.setData({
+                userSizeInfos: []
+            })
+        })
+    },
+    chooseSizeInfo(e) {
+        // console.log('info', e.currentTarget.dataset.info);
+        this.setData({
+            selectedSizeInfo: e.currentTarget.dataset.info,
+            userSizeInfos: [],
+        })
+    },
+    toReservation() {
+        wx.navigateTo({
+          url: '/pages/measure/reservation?status=待预约',
+        })
+    },
+    closeSizeInfoModal() {
+        this.setData({
+            userSizeInfos: [],
+            selectedSizeInfo: null
+        })
+    },
     //选择尺寸
     choseSize: function (e) {
+        const { name, did } = e.currentTarget.dataset;
+        if (name === '量身定制') {
+            this.getUserSizeInfos();
+        }
         this.setData({
-            selectSize: e.currentTarget.dataset.did,
-            selectSizeName: e.currentTarget.dataset.name,
+            selectSize: did,
+            selectSizeName: name,
             image: ''
         })
     },
@@ -351,7 +405,7 @@ Page({
             "measureName": this.data.selectSizeName,
             "Distributor_Deduction": this.data.products[this.data.selectProduct].distributor_Deduction,
             "Distributor_Wechat_Id": this.data.Distributor_Wechat_Id,
-            "Distributor_Wechat_Name": this.data.Distributor_Wechat_Name,
+            "Distributor_Wechat_Name": this.data.Distributor_Wechat_Name
         }
 
         if (this.data.showSpec == 1) {
@@ -379,8 +433,9 @@ Page({
                 })
             }, err => { });
         } else if (this.data.showSpec == 2) {
+            const vid = this.data.selectedSizeInfo && this.data.selectedSizeInfo.vid || '';
             wx.navigateTo({
-                url: '/pages/order/operation/confirmOrder?from=product&products=' + JSON.stringify([product])
+                url:`/pages/order/operation/confirmOrder?vid=${vid}&from=product&products=` + JSON.stringify([product])
             })
         }
 

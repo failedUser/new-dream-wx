@@ -11,7 +11,7 @@
 		</view>
 		<view class="info row jc-c ai-c" wx:for="{{info}}" wx:for-index="para" wx:key="para" hidden="{{para!='姓名'&&para!='手机'}}">
 			<view class="bold">{{para}}</view>
-			<input type="text" value="{{item}}" bindinput="change" data-type="info" data-key="{{para}}"></input>
+			<input type="{{para==='手机' ? 'number' : ''}}" maxlength="11" value="{{item}}" bindinput="change" data-type="info" data-key="{{para}}"></input>
 			<view class="weui-cell__ft weui-cell__ft_in-access" style="margin-right:20rpx;"></view>
 		</view>
 		<view class="info row jc-c ai-c">
@@ -48,8 +48,8 @@
 		</view>
 	</view>
 	<view class="row jc-c ai-c" bindtap="next">
-		<view class="next row jc-c ai-c">
-			<text>确定预约</text>
+		<view style="width:200px;height:80rpx;font-size:14px;letter-spacing:1px" class="next row jc-c ai-c">
+			<text>预约量体，免费上门</text>
 		</view>
 	</view>
 	<image src='https://wechat-miniapp-newdreamer.oss-cn-shanghai.aliyuncs.com/index/volume%20reservation/cof_sucessful_1.png' mode="widthFix" style="width:100%;margin-top:50rpx;" />

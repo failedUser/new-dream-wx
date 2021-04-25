@@ -63,7 +63,6 @@ Page({
         });
     },
     onLoad: function (options) {
-        console.log('---options', options);
         if (options.status == "待预约") {
             this.getCollegeInfo()
             this.setData({
@@ -117,6 +116,13 @@ Page({
                 })
                 return
             }
+        }
+        if (info['手机'].length !== 11) {
+            wx.showToast({
+                title: '请填写正确的手机号码',
+                icon: "none"
+            })
+            return ;
         }
         wx.showModal({
             title: "提示",

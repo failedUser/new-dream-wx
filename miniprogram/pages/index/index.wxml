@@ -55,4 +55,9 @@
 			 <view class="collegePart" wx:for="{{collegePartList}}"  wx:for-item="collegePart" wx:key='collegePart'>{{collegePart}}</view>
 			 
 			 <view class="collegePart-subtitle">2.成衣商品包括衬衫，配饰等，将直接发货不受限制</view>
-    </mp-dialog>
+		</mp-dialog>
+
+		<navigator 
+		style="position: fixed; right:-15px;top:70%;width:60px;height:60px;font-size: 25rpx;color: #fff;border-radius: 100%;text-align:center; background:#234E78;padding:20rpx 40rpx 20rpx 20rpx;box-sizing: border-box;font-weight: 900;"
+		open-type="navigateTo" 
+		url="/pages/measure/reservation?status=待预约">预约上门</navigator>

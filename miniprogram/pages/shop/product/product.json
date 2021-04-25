@@ -3,6 +3,7 @@
 	"usingComponents": {
 		"auth-modal": "../../../components/authModal",
 		"mp-halfScreenDialog": "/miniprogram_npm/weui-miniprogram/half-screen-dialog/half-screen-dialog",
-		"mp-gallery": "/miniprogram_npm/weui-miniprogram/gallery/gallery"
+		"mp-gallery": "/miniprogram_npm/weui-miniprogram/gallery/gallery",
+		"size-card": "../../../components/sizeCard"
 	}
 }

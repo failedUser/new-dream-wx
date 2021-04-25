@@ -1,0 +1,14 @@
+<view class="size-card" wx:if="{{!!data}}">
+  <view class="title-wrap">
+    <text>{{data.customer_name || data.name}}</text>
+      <text style="color:#ccc;">{{data.time}}</text>
+  </view>
+  <view  class="data-wrap-content">
+    <view class="data small data-wrap-content-item" wx:for="{{sizeShow}}" wx:for-item="sizeItem">
+      <text style="color:#000"
+        class="title">{{sizeItem.title}}</text>
+        <text>：{{data[sizeItem.field]}}</text>
+    </view>
+  </view>
+  <!-- <view class="data-wrap-content-line" ></view> -->
+</view>

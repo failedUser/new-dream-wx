@@ -36,10 +36,10 @@
 							<view class="row jc-fs ai-c">
 								<text style="margin-left:10px;">尺寸：</text>
 								<text wx:if="{{currentTab=='售后'}}">{{product.size}}</text>
-								<text class="btn" bindtap='reserveMeasure' data-id='{{order.orderID}}' data-status="待预约" wx:elif="{{product.needMeasure==2}}">预约量体</text>
-								<text class="btn" bindtap='lookMeasureData' data-id='{{order.reservation_Id}}' data-status="预约中" wx:elif="{{product.needMeasure==3}}">预约中</text>
-								<text class="btn" bindtap='lookMeasureData' data-id='{{order.reservation_Id}}' data-status="待量体" wx:elif="{{product.needMeasure==4}}">预约成功</text>
-								<text class="btn" bindtap='lookMeasureData' data-id='{{order.reservation_Id}}' data-status="已量体" wx:elif="{{product.needMeasure==5}}">量体数据</text>
+								<!-- <text class="btn" bindtap='reserveMeasure' data-id='{{order.orderID}}' data-status="待预约" wx:elif="{{product.needMeasure==2}}">预约量体</text> -->
+								<!-- <text class="btn" bindtap='lookMeasureData' data-id='{{order.reservation_Id}}' data-status="预约中" wx:elif="{{product.needMeasure==3}}">预约中</text> -->
+								<!-- <text class="btn" bindtap='lookMeasureData' data-id='{{order.reservation_Id}}' data-status="待量体" wx:elif="{{product.needMeasure==4}}">预约成功</text> -->
+								<!-- <text class="btn" bindtap='lookMeasureData' data-id='{{order.reservation_Id}}' data-status="已量体" wx:elif="{{product.needMeasure==5}}">量体数据</text> -->
 								<text wx:else>{{product.size}}</text>
 							</view>
 							<view class='product-price'>￥{{product.priceFinal}}</view>

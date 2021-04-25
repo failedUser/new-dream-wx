@@ -60,7 +60,7 @@ Component({
                         data: this.properties.shipmentId,
                         success() {
                             wx.showToast({
-                                title: '暂无无快递信息，已复制运单号，可至顺丰小程序查询运单信息',
+                                title: '已复制运单号，可至顺丰小程序查询运单信息',
                                 icon: 'none',
                                 duration: 2000
                             })
@@ -88,7 +88,7 @@ Component({
                     data: this.properties.shipmentId,
                     success() {
                         wx.showToast({
-                            title: '暂无无快递信息，已复制运单号，可至顺丰小程序查询运单信息',
+                            title: '已复制运单号，可至顺丰小程序查询运单信息',
                             icon: 'none',
                             duration: 2000
                         })

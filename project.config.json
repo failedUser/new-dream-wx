@@ -135,6 +135,24 @@
           "pathName": "pages/measure/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "购买商品",
+          "pathName": "pages/shop/product/product",
+          "query": "barcode=SND1M625T",
+          "scene": null
+        },
+        {
+          "name": "我的量体数据列表",
+          "pathName": "pages/measure/myMeasureList/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "开始量体",
+          "pathName": "pages/measure/measure",
+          "query": "allowModified=true&rid=111&load=0",
+          "scene": null
         }
       ]
     }

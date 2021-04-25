@@ -12,7 +12,7 @@
 	<view wx:if="{{orderInfo.shipment_Id}}">
 		<text>运单编号：</text>
 		<text>{{orderInfo.shipment_Id}}</text>
-		<Logistics class="orderInfo-shipment" text="查看物流 " shipmentId="{{orderInfo.shipment_Id}}"></Logistics>
+		<Logistics class="orderInfo-shipment" text="复制单号 " shipmentId="{{orderInfo.shipment_Id}}"></Logistics>
 		<!-- <text class="copy" bindtap="setClipboardData" data-data="{{orderInfo.shipment_Id}}">复制</text> -->
 	</view>
 </view>
@@ -29,27 +29,27 @@
 					<view class="row jc-fs ai-c">
 						<text style="margin-left:10px;">尺寸：</text>
 						<text wx:if="{{itemInfos[0].refund_Status!=''}}">{{product.size}}</text>
-						<text class="order-btn" bindtap='reserveMeasure' data-id='{{orderInfo.order_Id}}' data-status="待预约" wx:elif="{{product.needMeasure==2}}">预约量体</text>
-						<text class="order-btn" bindtap='moveToMyMeasture' data-id='{{product.reservation_Id}}' data-status="预约中" wx:elif="{{product.needMeasure==3}}">预约中</text>
-						<text class="order-btn" bindtap='moveToMyMeasture' data-id='{{product.reservation_Id}}' data-status="待量体" wx:elif="{{product.needMeasure==4}}">预约成功</text>
-						<text class="order-btn" bindtap='lookMeasureData' data-id='{{product.reservation_Id}}' data-status="已量体" wx:elif="{{product.needMeasure==5}}">量体数据</text>
+						<!-- <text class="order-btn" bindtap='reserveMeasure' data-id='{{orderInfo.order_Id}}' data-status="待预约" wx:elif="{{product.needMeasure==2}}">预约量体</text> -->
+						<!-- <text class="order-btn" bindtap='moveToMyMeasture' data-id='{{product.reservation_Id}}' data-status="预约中" wx:elif="{{product.needMeasure==3}}">预约中</text> -->
+						<!-- <text class="order-btn" bindtap='moveToMyMeasture' data-id='{{product.reservation_Id}}' data-status="待量体" wx:elif="{{product.needMeasure==4}}">预约成功</text> -->
+						<!-- <text class="order-btn" bindtap='lookMeasureData' data-id='{{product.reservation_Id}}' data-status="已量体" wx:elif="{{product.needMeasure==5}}">量体数据</text> -->
 						<text wx:else>{{product.size}}</text>
 					</view>
 					<view class='product-price'>￥{{product.priceFinal}}</view>
 				</view>
 				<view class='order-info-bot'>
-					<text class="goods-price red" wx:if="{{product.refund_Status=='退款中'}}">退款中</text>
-					<text class="goods-price red" wx:elif="{{product.refund_Status=='已退款'}}">已退款</text>
+					<!-- <text class="goods-price red" wx:if="{{product.refund_Status=='退款中'}}">退款中</text> -->
+					<text class="goods-price red" wx:if="{{product.refund_Status=='已退款'}}">已退款</text>
 					<text class="goods-price red" wx:elif="{{product.refund_Status=='拒绝退款'}}">退款申请被拒绝</text>
 					<block wx:else>
 						<navigator class='product-custom' url="/pages/measure/custom?id={{product.item_Id}}{{isSelf?'':'&allowModified=0'}}" wx:if="{{product.crafts=='高级定制'}}">个性化定制</navigator>
 						<view wx:else></view>
-						<text 
+						<!-- <text 
 							class="order-btn" 
 							bindtap='refund' 
 							data-id='{{product.item_Id}}' 
 							hidden="{{!isSelf||product.item_Status=='已驳回'||product.item_Status==='已完成'||product.item_Status==='退款中'||product.item_Status=='待评价'||product.item_Status=='已退款'}}"
-						>申请退款</text>
+						>申请退款</text> -->
 					</block>
 				</view>
 			</view>
@@ -62,7 +62,7 @@
 		<text>￥{{orderInfo.total_Original_Price}}</text>
 	</view>
 	<view class="row jc-sb ai-c">
-		<text>年底狂欢</text>
+		<text>优惠</text>
 		<text>-￥{{distritutor_Discount}}</text>
 	</view>
 	<view class="row jc-sb ai-c bold">

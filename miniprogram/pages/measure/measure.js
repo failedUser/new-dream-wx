@@ -74,6 +74,21 @@ Page({
     },
     onLoad: function (options) {
         console.log('---options---', options);
+        if (options.rid && options.load == '0') {
+            app.request('https://newdreamer.cn:8080/api/Reservation/get', {
+                reservation_Id: options.rid
+            }).then(data => {
+                this.setData({
+                    info: {
+                        ...this.data.info,
+                        ['姓名']: data.name,
+                        ['电话']: data.phone,
+                        ['性别']: data.gender
+                    }
+                })
+                console.log(data);
+            })
+        }
         this.setData({
             allowModified: options.allowModified == undefined ? false : options.allowModified,
             vid: options.vid, // 目前vid进来一定是有值的

@@ -2,7 +2,8 @@
 <view class='container'>
 	<scroll-view scroll-y="true" style="height:100%;" bindScroll="bindScrollListen" enable-back-to-top>
 		<view class='goods-gallery'>
-			<swiper indicator-dots autoplay circular interval="3000" duration="500" style='height:750rpx;' bindchange="bindSwiper">
+			<swiper indicator-dots autoplay circular interval="3000" duration="500" style='height:750rpx;'
+				bindchange="bindSwiper">
 				<swiper-item wx:for="{{products[mainProduct].image}}" wx:key="key" wx:for-item="img">
 					<image src='{{img}}' class='goods-gallery-img' lazy-load='true' mode="aspectFill" />
 				</swiper-item>
@@ -12,15 +13,15 @@
 		<view class='goods-info'>
 			<view class='goods-info0'>
 				<text class='goods-name'>{{showName}}</text>
-					<auth-modal authes="{{authes}}" type="button" bind:onClick="toShare" bind:authSuccess="toShare" >
-						<view  slot="shareBtn">
-								<view  class="ButtonCover share">
-									<image class="icon-share" src="/images/icon/share.png"></image>
-									<text style="font-size:14px;color:#AAA;">分享</text>
-								</view>
-								<view  class="shareInfo"  wx:if="{{Distributor_Wechat_Name}}">本商品由{{Distributor_Wechat_Name}}分享</view>
+				<auth-modal authes="{{authes}}" type="button" bind:onClick="toShare" bind:authSuccess="toShare">
+					<view slot="shareBtn">
+						<view class="ButtonCover share">
+							<image class="icon-share" src="/images/icon/share.png"></image>
+							<text style="font-size:14px;color:#AAA;">分享</text>
 						</view>
-					</auth-modal>
+						<view class="shareInfo" wx:if="{{Distributor_Wechat_Name}}">本商品由{{Distributor_Wechat_Name}}分享</view>
+					</view>
+				</auth-modal>
 				<!-- <block wx:if="{{phone==''}}">
 					<button class="ButtonCover share" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
 						<image class="icon-share" src="/images/icon/share.png"></image>
@@ -37,7 +38,8 @@
 			</view>
 			<view class='goods-info1'>
 				<view class='goods-price'>
-					<text><text style="font-size: 18rpx">￥</text>{{price.min==price.max?price.max:(price.min+"-"+price.max)}}</text>
+					<text><text
+							style="font-size: 18rpx">￥</text>{{price.min==price.max?price.max:(price.min+"-"+price.max)}}</text>
 				</view>
 				<view class='goods-sales'>月销量 : {{sales}}</view>
 			</view>
@@ -91,7 +93,8 @@
 			<view class='main'>
 				<view class='main-mid'>
 					<view wx:if="{{tabID==0}}">
-						<image src='{{item}}' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' wx:key="index" wx:for="{{products[mainProduct].detailImages}}"/>
+						<image src='{{item}}' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' wx:key="index"
+							wx:for="{{products[mainProduct].detailImages}}" />
 					</view>
 					<view class="goods-comment" wx:elif="{{tabID==1}}">
 						<!--
@@ -107,10 +110,12 @@
 										<!--<image class='avatar' src='{{comment.userAvatar}}'></image>-->
 										<text class='nickname'>{{utils.hideName(comment.name)}}</text>
 										<block wx:for="{{utils.defineArray(comment.star)}}" wx:key="1">
-											<image class="img" src="https://cdn.newdreamer.cn/icon/comment/comment star active.png" mode="aspectFit" />
+											<image class="img" src="https://cdn.newdreamer.cn/icon/comment/comment star active.png"
+												mode="aspectFit" />
 										</block>
 										<block wx:for="{{utils.defineArray(5-comment.star)}}" wx:key="2">
-											<image class="img" src="https://cdn.newdreamer.cn/icon/comment/comment star.png" mode="aspectFit" />
+											<image class="img" src="https://cdn.newdreamer.cn/icon/comment/comment star.png"
+												mode="aspectFit" />
 										</block>
 									</view>
 									<text class='comment-time'>{{comment.evaluation_Time}}</text>
@@ -121,7 +126,8 @@
 						</view>
 					</view>
 					<view wx:elif="{{tabID==2}}">
-						<image src='https://cdn.newdreamer.cn/index/Q%26A/Q%26A%20pic.png' mode="widthFix" style="width:100%;margin:0;" lazy-load='true' />
+						<image src='https://cdn.newdreamer.cn/index/Q%26A/Q%26A%20pic.png' mode="widthFix"
+							style="width:100%;margin:0;" lazy-load='true' />
 					</view>
 				</view>
 			</view>
@@ -131,13 +137,17 @@
 	<view class="spec-wrap {{showSpec==0?'hidden':''}}">
 		<view class='goods-house-wrap'>
 			<view class='goods-house'>
-				<image bindtap="showGallery" data-url='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}'  src='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}' class='goods-img' mode="aspectFill"></image>
+				<image bindtap="showGallery" data-url='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}'
+					src='{{products[selectProduct].image[0] || products[mainProduct].image[0]}}' class='goods-img'
+					mode="aspectFill"></image>
 				<view class='goods-house1'>
 					<view class='goods-price'>
-						<text class='goods-result-price'><text style="font-size: 20rpx">￥</text>{{products[selectProduct].distributor_Deduction?((products[selectProduct].distributorPrice)+' (年底狂欢)'): products[selectProduct].price}}</text>
-						<text wx:if="{{products[selectProduct].distributor_Deduction}}" class="goods-price-real">原价{{products[selectProduct].price}}</text>
+						<text class='goods-result-price'><text
+								style="font-size: 20rpx">￥</text>{{products[selectProduct].distributor_Deduction?((products[selectProduct].distributorPrice)+' (优惠)'): products[selectProduct].price}}</text>
+						<text wx:if="{{products[selectProduct].distributor_Deduction}}"
+							class="goods-price-real">原价{{products[selectProduct].price}}</text>
 					</view>
-					
+
 					<view class='goods-house2'>
 						<text></text>
 						<text>已选：{{products[selectProduct]["product_Name"]}}{{products[selectProduct]["mark"]=="定制"?"(定制)":""}}</text>
@@ -151,7 +161,9 @@
 					<text>产品</text>
 				</view>
 				<view class='type-list'>
-					<text wx:for="{{products}}" wx:for-item="product" wx:for-index="pid" class="{{pid==selectProduct?'sel':''}}" bindtap='choseProduct' data-pid='{{pid}}' wx:key="ps">{{product.product_Name}}{{product.mark=="定制"?"(定制)":""}}</text>
+					<text wx:for="{{products}}" wx:for-item="product" wx:for-index="pid" class="{{pid==selectProduct?'sel':''}}"
+						bindtap='choseProduct' data-pid='{{pid}}'
+						wx:key="ps">{{product.product_Name}}{{product.mark=="定制"?"(定制)":""}}</text>
 				</view>
 			</view>
 			<view class='type' wx:if="{{products[selectProduct]['mark']=='定制'}}">
@@ -159,7 +171,16 @@
 					<text>尺寸</text>
 				</view>
 				<view class='type-list'>
-					<text wx:for="{{measureData}}" wx:for-item="data" class="{{data.liangti_bianhao==selectSize?'sel':''}}" bindtap='choseSize' data-did='{{data.liangti_bianhao}}' data-name="{{data.liangti_mingcheng}}" wx:key="ps">{{data.liangti_mingcheng}}</text>
+					<text wx:for="{{measureData}}" wx:for-item="data" class="{{data.liangti_bianhao==selectSize?'sel':''}}"
+						bindtap='choseSize' data-did='{{data.liangti_bianhao}}' data-name="{{data.liangti_mingcheng}}" wx:key="ps">
+						<text wx:if="{{data.liangti_mingcheng === '量身定制' && !!selectedSizeInfo}}">
+							已选择:{{selectedSizeInfo.name}}/{{selectedSizeInfo.height}}cm/{{selectedSizeInfo.weight}}kg
+						</text>
+						<text wx:else>
+							{{data.liangti_mingcheng}}
+						</text>
+					</text>
+
 				</view>
 			</view>
 			<view class='type' wx:else>
@@ -167,13 +188,20 @@
 					<text>尺寸</text>
 				</view>
 				<view class='type-list'>
-					<text wx:for="{{products[selectProduct]['size']}}" wx:for-item="data" class="{{data==selectSize?'sel':''}}" bindtap='choseSize' data-did='{{data}}' data-name='{{data}}' wx:key="ps">{{data}}</text>
+					<view wx:for="{{products[selectProduct]['size']}}" wx:for-item="data" 
+						bindtap='choseSize' data-did='{{data}}' data-name='{{data}}' wx:key="ps">
+						<text class="{{data==selectSize?'sel':''}}" wx:if="{{data == '量身定制' && selectedSizeInfo}}">已选择:{{selectedSizeInfo.name}}/{{selectedSizeInfo.height}}cm/{{selectedSizeInfo.weight}}kg</text>
+						<text class="{{data==selectSize?'sel':''}}" wx:else>{{data}}</text>
+					</view>
 				</view>
 			</view>
 			<view class='type' wx:for="{{products[mainProduct].productSpec}}" wx:key="productSpec" wx:for-item="specItem">
 				<text>{{specItem.name}}:</text>
 				<view class='type-list'>
-					<text wx:for="{{specItem.subproperty}}" wx:for-item="subpropertyItem" class="{{subpropertyItem.ischosein==1?'sel':''}}" bindtap='choseProperty' data-propertyid="{{subpropertyItem.propertyid}}" data-subpropertyid='{{subpropertyItem.id}}' wx:key="subpropertyKey">{{subpropertyItem.nametrue}}
+					<text wx:for="{{specItem.subproperty}}" wx:for-item="subpropertyItem"
+						class="{{subpropertyItem.ischosein==1?'sel':''}}" bindtap='choseProperty'
+						data-propertyid="{{subpropertyItem.propertyid}}" data-subpropertyid='{{subpropertyItem.id}}'
+						wx:key="subpropertyKey">{{subpropertyItem.nametrue}}
 					</text>
 				</view>
 			</view>
@@ -189,23 +217,17 @@
 			</view>
 		</view>
 		<view class='act-spec-sure'>
-			<view bindtap='submit' class='spec-sure'>确定</view>
+			<view bindtap='toReservation' style="margin-right: 20px" class='spec-sure'>预约上门</view>
+			<view bindtap='submit' style="background: var(--colorGold);color:#fff;" class='spec-sure'>立即下单</view>
 		</view>
 	</view>
 	<view class="mask" catchtap="distpickerCancel" hidden="{{!showSpec}}"></view>
 	<view class='goodsDetails-footer'>
 		<view class='footer-l'>
 			<view>
-				<button 
-					wx:if="{{!!shareUrl}}"
-					class='consult' 
-					open-type='contact' 
-					session-from="新梦想家商场（微信小程序）" 
-					show-message-card="{{true}}"
-					send-message-title="{{showName}}"
-					send-message-path="{{shareUrl}}"
-					send-message-img="{{products[mainProduct].image[0]}}"
-				>
+				<button wx:if="{{!!shareUrl}}" class='consult' open-type='contact' session-from="新梦想家商场（微信小程序）"
+					show-message-card="{{true}}" send-message-title="{{showName}}" send-message-path="{{shareUrl}}"
+					send-message-img="{{products[mainProduct].image[0]}}">
 					<image src="https://cdn.newdreamer.cn/icon/order/售后.png" style="margin-bottom:2px;"></image>
 				</button>
 			</view>
@@ -216,27 +238,49 @@
 				<text class='cartCount' wx:if="{{cart.length>0}}">{{cart.length}}</text>
 			</view>
 		</view>
-		<view class='footer-r'>
-			<text class='act-cart' bindtap='bindChooseSpec' data-buynow="1">加入购物车</text>
-			<text class='act-buy' bindtap='bindChooseSpec' data-buynow="2">立即购买</text>
+		<view wx:if="{{!hasPhone}}" class='footer-r'>
+			<button open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber"	  data-buynow="1" style="width:250px;display:inline">
+				<text class='act-cart'>加入购物车</text>
+			</button>
+			<button style="width:250px;display:inline"  pen-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber" data-buynow="2">
+				<text class='act-buy'>立即购买</text>
+			</button>
+		</view>
+		<view wx:else class='footer-r'>
+				<text class='act-cart' bindtap='bindChooseSpec' data-buynow="1">加入购物车</text>
+				<text class='act-buy' bindtap='bindChooseSpec' data-buynow="2">立即购买</text>
 		</view>
 	</view>
 
 </view>
 
-<mp-halfScreenDialog show="{{shareDialogVisible}}" >
+<mp-halfScreenDialog 
+extClass="choose-sizeInfo"
+title="请选择量体数据" show="{{userSizeInfos.length}}">
+	<view style="max-height: 300px;overflow: auto;background:#f8f8f8;" slot="desc">
+		<view wx:for="{{userSizeInfos}}" data-info="{{sizeInfo}}" bindtap="chooseSizeInfo" wx:for-item="sizeInfo">
+			<size-card data="{{sizeInfo}}" />
+		</view>
+	</view>
+	<view slot="footer">
+		<view bindtap="closeSizeInfoModal"><text>跳过</text></view>
+	</view>
+</mp-halfScreenDialog>
+
+<mp-halfScreenDialog show="{{shareDialogVisible}}">
 	<view slot="desc" class="share-dialog-content">
 		<button open-type="share" bindtap="closeShareDialog" class="share-dialog-item">
-		<image class="share-dialog-image" src="../../../images/weixin.png" />
-		<text class="share-dialog-text">微信好友</text>
-	</button>
-	<view bindtap="onShareBtnClick" bin class="share-dialog-item">
-		<image class="share-dialog-image" src="../../../images/saveImage.png" />
-		<text class="share-dialog-text">保存图片</text>
+			<image class="share-dialog-image" src="../../../images/weixin.png" />
+			<text class="share-dialog-text">微信好友</text>
+		</button>
+		<view bindtap="onShareBtnClick" bin class="share-dialog-item">
+			<image class="share-dialog-image" src="../../../images/saveImage.png" />
+			<text class="share-dialog-text">保存图片</text>
+		</view>
 	</view>
-	</view>
-	<view slot="title" class="share-dialog-title">分享好物	</view>
+	<view slot="title" class="share-dialog-title">分享好物 </view>
 	<view slot="footer" class="share-dialog-footer"></view>
 </mp-halfScreenDialog>
 
-<mp-gallery show="{{galleryImgs && galleryImgs.length > 0}}"  showDelete="{{false}}" current="{{galleryCurrent}}" img-urls="{{galleryImgs}}" />
+<mp-gallery show="{{galleryImgs && galleryImgs.length > 0}}" showDelete="{{false}}" current="{{galleryCurrent}}"
+	img-urls="{{galleryImgs}}" />

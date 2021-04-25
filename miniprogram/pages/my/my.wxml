@@ -60,7 +60,7 @@
 		</view>
 	</view>
 	<view class="server-warp row jc-se">
-		<button class="column" bindtap="nav" data-url='/pages/measure/index' data-type="switchTab">
+		<button class="column" bindtap="nav" data-url='/pages/measure/myMeasureList/index'>
 			<image src="https://cdn.newdreamer.cn/icon/my/mySize.png" mode="aspectFit" />
 			<text>我的尺寸</text>
 		</button>

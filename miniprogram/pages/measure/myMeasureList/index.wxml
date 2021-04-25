@@ -36,15 +36,4 @@
 		</view>
 	</view>
 </view>
-<view wx:if="{{!measureData || measureData.length>0}}">
-	<button class='goShopping' style="width:400rpx;position:fixed;bottom:10px;left:50%;transform:translateX(-50%)" wx:if="{{!hasPhone}}" bindgetphonenumber="getPhoneNumber" open-type="getPhoneNumber">预约量体·免费上门</button>
-	<navigator
-	 wx:else
-	 class='goShopping' style="width:400rpx;position:fixed;bottom:10px;left:50%;transform:translateX(-50%)"  url="/pages/measure/reservation?status=待预约">预约量体·免费上门</navigator>
-</view>
-<view  wx:else>
-	<image src='https://cdn.newdreamer.cn/index/volume%20reservation/vo_lres_1.png' mode="widthFix" style="width:100%;margin:0;" />
-	<view class="row jc-c ai-c" style="position:fixed;bottom:25rpx;width:100vw;">
-		<navigator class='goShopping' style="width:400rpx;" open-type="switchTab" url="/pages/shop/category/classify">预约量体·选购商品</navigator>
-	</view>
-</view>
+

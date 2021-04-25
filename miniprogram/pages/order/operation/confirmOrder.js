@@ -33,6 +33,7 @@ Page({
         this.setData({
             products:products ,
             from: options.from,
+            vid: options.vid || '',
             isDIY: !!isDIY
         })
         if (options.from == "cart") {
@@ -145,7 +146,8 @@ Page({
                 address: this.data.address,
                 summary: this.data.summary,
                 remark: this.data.remark
-            }
+            },
+            vid: this.data.vid
         }).then(data => {
             wx.requestPayment({
                 timeStamp: data.timeStamp,
@@ -155,15 +157,16 @@ Page({
                 paySign: data.paySign,
                 success: (res) => {
                     console.log(res, data);
-                    if (this.data.isDIY) {
-                        wx.redirectTo({
-                            url: '/pages/measure/reservation?id=' + data.orderId + "&status=待预约"
-                        })
-                    } else {
-                        wx.redirectTo({
-                            url: '/pages/order/allOrders?currentTab=待发货',
-                        })
-                    }
+                    wx.redirectTo({
+                        url: '/pages/order/allOrders?currentTab=待发货',
+                    })
+                    // if (this.data.isDIY) {
+                    //     // wx.redirectTo({
+                    //     //     url: '/pages/measure/reservation?id=' + data.orderId + "&status=待预约"
+                    //     // })
+                    // } else {
+                       
+                    // }
                     
                 },
                 fail: (e) => {

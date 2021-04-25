@@ -1,0 +1,152 @@
+.measureData-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 650rpx;
+  padding: 15rpx 25rpx;
+  border-radius: 25rpx;
+  margin: 15rpx auto 60rpx;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px #ccc5;
+}
+
+.measureData-wrap .title-wrap {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0 1rem 1rem;
+  justify-content: space-between;
+}
+
+.measureData-wrap .title-wrap .left {
+  display: flex;
+  flex-direction: row;
+}
+
+.measureData-wrap .title-wrap .left .title {
+  width: auto;
+  max-width: 16rem;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.dataTag {
+  text-align: center;
+  font-size: 24rpx;
+  font-weight: 700;
+  color: #aaa;
+  padding: 5rpx 20rpx 5rpx 20rpx;
+  margin: 15rpx 0;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+}
+
+.dataTag.default {
+  color: #fff;
+  background: var(--colorGold);
+  border: 0;
+}
+
+.dataTag.cancel {
+  color: #fff;
+  background: var(--bgcolor);
+  border: 0;
+}
+
+.measureData-wrap .data-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 15rpx;
+  margin: 10rpx 0;
+  border-bottom: solid 1px #ddd;
+}
+
+.measureData-wrap .data-wrap .data {
+  width: 550rpx;
+  height: 25px;
+  color: #888;
+  font-size: 24rpx;
+  margin: 10rpx 0 10rpx 1rem;
+}
+
+.measureData-wrap .data-wrap .data.small {
+  width: 180rpx;
+  height: 25px;
+  color: #888;
+  font-size: 24rpx;
+  margin: 10rpx 0 10rpx 1rem;
+}
+
+.measureData-wrap .data-wrap .data .title {
+  min-width: 120rpx;
+  text-align: justify;
+}
+
+.noMeasureData {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.noMeasureDataImg {
+  width: 180px;
+  height: 180px;
+  display: block;
+  margin: 0 auto;
+}
+
+.noMeasureDataText {
+  font-size: 24rpx;
+  color: #555;
+  display: block;
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.goShopping {
+  display: block;
+  height: 80rpx;
+  font-size: 14px;
+  color: #fff;
+  background-color: var(--colorBlue);
+  line-height: 80rpx;
+  text-decoration: none;
+  border-radius: 25rpx;
+  text-align: center;
+  margin: 20px auto;
+  padding:0 20rpx;
+}
+
+.title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.data-wrap-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.data-wrap-content-item {
+  width: 33%;
+}
+.data-wrap-content-line {
+  width: 90%;
+  height: 1px;
+  background: #f0f0f0;
+  margin-top: 20px;
+}
+
+
+.size-card {
+  display: flex;
+  flex-direction: column;
+  width: 650rpx;
+  padding: 15px 25rpx;
+  border-radius: 25rpx;
+  margin: 15rpx auto 60rpx;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px #ccc5;
+}

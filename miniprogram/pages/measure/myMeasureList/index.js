@@ -3,7 +3,6 @@ Page({
     data: {
         measureData: null,
         status: '',
-        hasPhone: false,
         sizeShow: [
             {title: '身高', field: 'height'},
             {title: '体重', field: 'weight'},
@@ -15,35 +14,14 @@ Page({
 
         ]
     },
-    getPhoneNumber: function (e) {
-        if (e.detail.errMsg == "getPhoneNumber:ok") {
-            app.request("https://newdreamer.cn:8080/api/phone/set", e.detail).then(phone => {
-                app.globalData.phone = phone
-                this.setData({
-                    phone: phone,
-                    hasPhone: true
-                })
-                wx.navigateTo({
-                    url: '/pages/measure/reservation?status=待预约'
-                })
-            });
-        }
-    },
     onShow: function (options) {
         this.getMeasureData()
-    },
-    onLoad(options) {
-        setTimeout(() => {
-            this.setData({
-                hasPhone: !!getApp().globalData.phone
-            })
-        }, 500);
     },
     getMeasureData: function () {
         app.request("https://newdreamer.cn:8080/api/volume/getCustomerVolumeInfos").then(data => {
             if (data && (data.reservations.length || data.sizeInfos.length) ) {
                 this.setData({
-                    measureData: [...data.reservations ||[], ...data.sizeInfos ||[]]
+                    measureData:[ ...data.sizeInfos ||[]]
                 })
                 return ;
             }
